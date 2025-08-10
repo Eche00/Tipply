@@ -1,7 +1,14 @@
+import Header from "./Header"
+import { Outlet } from "react-router";
+import  Footer from "./Footer"
 
 function Container() {
   return (
-    <div>Container</div>
+    <div>
+      <Header/>
+      <Outlet/>
+      <Footer/>
+    </div>
   )
 }
 
