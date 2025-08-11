@@ -2,8 +2,7 @@ import {
   ArrowBackIos,
   ArrowForwardIos,
   Home,
-  Logout,
-  Newspaper,
+ 
   Person,
 } from "@mui/icons-material";
 import { NavLink } from "react-router-dom";
