@@ -7,23 +7,19 @@ function Faqs() {
   const[faq3,setFaq3] = useState(false)
   const[faq4,setFaq4] = useState(false)
   return (
-       <div className="bg-black h-[100ch] relative overflow-hidden">
-       {/* Hero left  background blur */}
-      <div 
-        className="absolute top-0 left-[-5%] w-[678px] h-[80px] bg-[#FFFFFF]/40  rounded-r-[50%] blur-[50px]  rotate-[43.54deg] z-10"
+       <div className="bg-[#171733] h-[100ch] relative overflow-hidden">
+        {/* Hero left  background blur */}
+          <div 
+        className="absolute top-[-10%] left-[-3%] w-[180px] h-[180px] bg-[#FFFFFF]/40  rounded-[50%] blur-[50px]   z-10"
       />
-      <div 
-        className="absolute top-[20%] left-[-5%] w-[438px] h-[80px] bg-[#FFFFFF]/40  rounded-r-[50%] blur-[50px]  rotate-[43.54deg] z-10"
-      />
-    <img src="/stars.png" alt="" className="absolute top-[-20%] left-[-0%] rotate-[-43.54deg] w-[269px] h-[525px] object-cover opacity-[70%] z-10" />
+     
+    <img src="/stars.png" alt="" className="absolute top-[-32%] left-[0%] rotate-[43.54deg] w-[269px] h-[585px] object-cover opacity-[70%] z-10" />
       {/* Hero right  background blur */}
       <div 
-        className="absolute top-0 right-[-5%] w-[678px] h-[80px] bg-[#FFFFFF]/40  rounded-l-[50%] blur-[50px]  rotate-[-43.54deg] z-10"
+        className="absolute top-[-10%] right-[-3%] w-[180px] h-[180px] bg-[#FFFFFF]/40  rounded-[50%] blur-[50px]   z-10"
       />
-      <div 
-        className="absolute top-[20%] right-[-5%] w-[438px] h-[80px] bg-[#FFFFFF]/40  rounded-l-[50%] blur-[50px]  rotate-[-43.54deg] z-10"
-      />
-    <img src="/stars.png" alt="" className="absolute top-[-20%] right-[-0%] rotate-[43.54deg] w-[269px] h-[525px] object-cover opacity-[70%] z-10" />
+     
+    <img src="/stars.png" alt="" className="absolute top-[-32%] right-[0%] rotate-[-43.54deg] w-[269px] h-[585px] object-cover opacity-[70%] z-10" />
 
       <section className="flex flex-col w-[90%] mx-auto py-[50px] z-30 relative">
          <h2 className="  text-[40px]  font-[400] leading-[55px] capitalize bg-gradient-to-r from-[#FFFFFF] to-[#FFFFFF69] bg-clip-text text-transparent text-center">Frequently asked questions</h2>
