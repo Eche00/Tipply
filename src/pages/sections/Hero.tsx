@@ -11,7 +11,7 @@ function Hero() {
 
         <h1 className=" text-[#FFFFFF] sm:text-[64px] text-[44px] font-extrabold sm:leading-[82px] leading-[62px] capitalize">Tipply, Your Web3 Tipping Vault</h1>
         <p className=" text-[#AFB3CA] text-[16px] font-[400] leading-[24px]">Tip, Discover, and Support Developers with Showcases That Inspire</p>
-        <Link to='/connect-wallet'  className="w-[146px] h-[40px] bg-[#56565653]  border-b-[1px] border-[#FFFFFFBD] flex  items-center justify-center rounded-[13px]">Connect Wallet</Link>
+        <Link to='/connect-wallet'  className="w-[146px] h-[40px] bg-[#56565653]  border-b-[1px] flex  items-center justify-center rounded-[13px] border-[#7346F1]">Connect Wallet</Link>
 
         <div className="relative w-[400px] mx-auto flex   top-1/2 gap-[20px]">
           <img src="/hey.png" alt="" className=" sm:w-[238px] w-[198px] sm:h-[484px] h-[384px] bg-black sm:object-cover  rounded-[34px]" />

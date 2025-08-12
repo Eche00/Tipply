@@ -26,12 +26,12 @@ function About() {
       {/* left sided page  */}
       <section className="flex-1">
         {/* first circle container  */}
-        <div className="w-full h-[182px]  bg-gradient-to-r from-[#B8ED3B] to-[#45454500] rounded-full p-[2px] ">
+        <div className="w-full h-[182px]  bg-gradient-to-r from-[#7346F1] to-[#45454500] rounded-full p-[2px] ">
           {/* fist section  */}
           <div className="flex-1 flex items-center  w-full h-full bg-[#171733] rounded-l-full pl-2">
             {/* the circle  */}
-            <div className="border border-[#B8ED3BA6] border-dotted h-fit w-fit p-[10px] rounded-full">
-              <p className=" w-[98px] h-[98px] bg-gradient-to-b from-[#B8ED3BA6] to-[#B8ED3B00] rounded-full flex items-center justify-center">{Svgs.facemoji}</p>
+            <div className="border border-[#7346F1] border-dotted h-fit w-fit p-[10px] rounded-full">
+              <p className=" w-[98px] h-[98px] bg-gradient-to-b from-[#7346F1] to-[#B8ED3B00] rounded-full flex items-center justify-center">{Svgs.facemoji}</p>
             </div>
             {/* other contents  */}
            <p className=" text-[#AFB3CA] text-[16px] font-[400] max-w-[350px] pl-[10px]">Discover and explore developers’ projects across multiple blockchains in a secure, non-custodial platfore.</p>
