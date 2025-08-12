@@ -1,7 +1,10 @@
 import { Link, NavLink } from "react-router"
 import { Icons } from "../lib/icons/Icons"
+import { useState } from "react"
+import { Close } from "@mui/icons-material"
 
 function Header() {
+  const [dropDown,setDropDown] = useState(false)
   return (
     <div className="bg-[#171733]/20 backdrop-blur-[24.7px] fixed top-0 left-0 w-full z-50" >
       <section className="flex items-center justify-between max-w-[85%] mx-auto py-[20px]">
@@ -13,15 +16,29 @@ function Header() {
      
        {/* navigations */}
          <nav className="bg-[#56565633] sm:flex hidden items-center gap-[40px] px-[36px] py-[10px] rounded-full ">
-          <NavLink to='/'>Home</NavLink>
-          <NavLink to='/about-us'>About Us</NavLink>
-          <NavLink to='/dev-spot'>DevSpot</NavLink>
+          <NavLink to='/' className={({isActive})=> isActive ? 'text-[#7346F1] font-bold text-sm': ' text-white font-bold text-sm'}>Home</NavLink>
+          <NavLink to='/about-us' className={({isActive})=> isActive ? 'text-[#7346F1] font-bold text-sm': ' text-white font-bold text-sm'}>About Us</NavLink>
+          <NavLink to='/dev-spot' className={({isActive})=> isActive ? 'text-[#7346F1] font-bold text-sm': ' text-white font-bold text-sm'}>DevSpot</NavLink>
          </nav>
 
       {/* auth button  */}
          <Link to='/connect-wallet'  className="w-[146px] h-[40px] bg-[#56565653]   sm:flex hidden items-center justify-center rounded-[13px]">Connect Wallet</Link>
-         <button className=" sm:hidden flex">{Icons.menu}</button>
+         <button className=" sm:hidden flex" onClick={()=>setDropDown(!dropDown)}>{dropDown ? <Close fontSize="large"/> : Icons.menu }</button>
        </section>
+
+       {dropDown &&    <section 
+      
+       className="fixed top-[70px] left-0 w-full h-[100vh] bg-[#141414] z-50 flex flex-col gap-[32px] ">
+          <div className="flex flex-col  text-white text-[16px] font-[500]" onClick={()=>setDropDown(!dropDown)}>
+          <NavLink to='/' className={({isActive})=> isActive ? 'text-[#7346F1] font-bold text-sm cursor-pointer p-[10px]  border-b border-gray-500': ' text-white font-bold text-sm cursor-pointer p-[10px]  border-b border-gray-500'}>Home</NavLink>
+          <NavLink to='/about-us' className={({isActive})=> isActive ? 'text-[#7346F1] font-bold text-sm cursor-pointer p-[10px]  border-b border-gray-500': ' text-white font-bold text-sm cursor-pointer p-[10px]  border-b border-gray-500'}>About Us</NavLink>
+          <NavLink to='/dev-spot' className={({isActive})=> isActive ? 'text-[#7346F1] font-bold text-sm cursor-pointer p-[10px]  border-b border-gray-500': ' text-white font-bold text-sm cursor-pointer p-[10px]  border-b border-gray-500'}>DevSpot</NavLink>
+           </div>
+           <button  className=" px-[32px] py-[10px] text-[16px] mx-[20px] rounded-[8px] bg-[#56565653] text-white cursor-pointer hover:scale-[105%] transition-all duration-300 ">Connect Wallet</button>
+
+            {/* bg */}
+         <span className=" circleBlurLH md:hidden inline-block"></span>
+        </section>}
     </div>
   )
 }
