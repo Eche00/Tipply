@@ -1,5 +1,6 @@
 import { Icons } from "../../lib/icons/Icons"
 import { Svgs } from "../../lib/svg/Svg"
+import { motion } from "framer-motion";
 
 function Process() {
   return (
@@ -35,30 +36,74 @@ function Process() {
       <section className="flex flex-col items-center justify-center gap-[10px] rounded-full border-none py-[50px]">
          <h2 className="  text-[40px]  font-extrabold leading-[55px] capitalize bg-gradient-to-r from-[#008CFF] to-[#FFFFFF69] bg-clip-text text-transparent text-center">How Tipply works ?</h2>
 
-        <span className="sm:block hidden">{Svgs.walletbig}</span>
-        <span className="block sm:hidden">{Svgs.walletsmall}</span>
-        <span className="bg-[#FFFFFF0A] px-[10px] py-[8px] border-[1px] shadow-sm  border-[#FFFFFF14] text-[#FFFFFF] text-[12px] font-extrabold leading-[16px] flex items-center justify-center gap-[10px] rounded-full uppercase w-fit text-nowrap">Connect Wallet</span>
+        <motion.span className="sm:block hidden" initial={{ scale: 0.8, opacity: 0 }}
+whileInView={{ scale: 1, opacity: 1 }}
+transition={{
+  type: "spring",   
+  bounce: 0.5,      
+  duration: 0.8,    
+  delay: 0.3        
+}}
+viewport={{ once: true }}>{Svgs.walletbig}</motion.span>
+        <motion.span className="block sm:hidden" initial={{ scale: 0.8, opacity: 0 }}
+whileInView={{ scale: 1, opacity: 1 }}
+transition={{
+  type: "spring",   
+  bounce: 0.5,      
+  duration: 0.8,    
+  delay: 0.3        
+}}
+viewport={{ once: true }}>{Svgs.walletsmall}</motion.span>
+        <motion.span className="bg-[#FFFFFF0A] px-[10px] py-[8px] border-[1px] shadow-sm  border-[#FFFFFF14] text-[#FFFFFF] text-[12px] font-extrabold leading-[16px] flex items-center justify-center gap-[10px] rounded-full uppercase w-fit text-nowrap" initial={{ scale: 0.8, opacity: 0 }}
+          whileInView={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 1.5, delay: 0.3 }}  viewport={{once:true}}>Connect Wallet</motion.span>
         <hr className="h-[100px] w-2 bg-gradient-to-b from-[#FFFFFF00] to-[#FFFFFF] border-none" />
-        <span className="">{Svgs.explore}</span>
-        <span className="bg-[#FFFFFF0A] px-[10px] py-[8px] border-[1px] shadow-sm  border-[#FFFFFF14] text-[#FFFFFF] text-[12px] font-extrabold leading-[16px] flex items-center justify-center gap-[10px] rounded-full uppercase w-fit text-nowrap">Explore </span>
+        <motion.span className="" initial={{ scale: 0.8, opacity: 0 }}
+whileInView={{ scale: 1, opacity: 1 }}
+transition={{
+  type: "spring",   
+  bounce: 0.5,      
+  duration: 0.8,    
+  delay: 0.3        
+}}
+viewport={{ once: true }}>{Svgs.explore}</motion.span>
+        <motion.span className="bg-[#FFFFFF0A] px-[10px] py-[8px] border-[1px] shadow-sm  border-[#FFFFFF14] text-[#FFFFFF] text-[12px] font-extrabold leading-[16px] flex items-center justify-center gap-[10px] rounded-full uppercase w-fit text-nowrap" initial={{ scale: 0.8, opacity: 0 }}
+          whileInView={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 1.5, delay: 0.3 }}  viewport={{once:true}}>Explore </motion.span>
         <hr className="h-[100px] w-2 bg-gradient-to-b from-[#FFFFFF00] to-[#FFFFFF] border-none" />
-        <span className="">{Svgs.tipbig}</span>
-        <span className="bg-[#FFFFFF0A] px-[10px] py-[8px] border-[1px] shadow-sm  border-[#FFFFFF14] text-[#FFFFFF] text-[12px] font-extrabold leading-[16px] flex items-center justify-center gap-[10px] rounded-full uppercase w-fit text-nowrap">Tip </span>
+        <motion.span className="" initial={{ scale: 0.8, opacity: 0 }}
+whileInView={{ scale: 1, opacity: 1 }}
+transition={{
+  type: "spring",   
+  bounce: 0.5,      
+  duration: 0.8,    
+  delay: 0.3        
+}}
+viewport={{ once: true }}>{Svgs.tipbig}</motion.span>
+        <motion.span className="bg-[#FFFFFF0A] px-[10px] py-[8px] border-[1px] shadow-sm  border-[#FFFFFF14] text-[#FFFFFF] text-[12px] font-extrabold leading-[16px] flex items-center justify-center gap-[10px] rounded-full uppercase w-fit text-nowrap" initial={{ scale: 0.8, opacity: 0 }}
+          whileInView={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 1.5, delay: 0.3 }}  viewport={{once:true}}>Tip </motion.span>
         
         
         <div className="sm:w-full w-[90%] mx-auto flex flex-wrap items-stretch justify-center gap-[20px] py-[30px] relative z-30">
-           <div className="bg-gradient-to-r from-[#56565653] to-[#141414] p-[24px] rounded-[24px] flex flex-col gap-[16px]">
+           <motion.div className="bg-gradient-to-r from-[#56565653] to-[#141414] p-[24px] rounded-[24px] flex flex-col gap-[16px]" initial={{ scale: 0.8, opacity: 0 }}
+          whileInView={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 1.5, delay: 0.3 }}  viewport={{once:true}}>
                      <h3 className="text-[24px] text-[#FFFFFF] font-[400]">Connect</h3>
                      <p className="max-w-[325px] text-[16px] text-[#AFB3CA] font-[400]">Securely link your wallet to start exploring, interacting, and participating in the Web3 ecosystem. Enjoy a smooth, fast connection that keeps you in control of your assets while unlocking access to Tipply.</p>
-            </div>
-           <div className="bg-gradient-to-r from-[#56565653] to-[#141414] p-[24px] rounded-[24px] flex flex-col gap-[16px]">
+            </motion.div>
+           <motion.div className="bg-gradient-to-r from-[#56565653] to-[#141414] p-[24px] rounded-[24px] flex flex-col gap-[16px]" initial={{ scale: 0.8, opacity: 0 }}
+          whileInView={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 1.5, delay: 0.3 }}  viewport={{once:true}}>
                      <h3 className="text-[24px] text-[#FFFFFF] font-[400]">Explore</h3>
                      <p className="max-w-[325px] text-[16px] text-[#AFB3CA] font-[400]">Discover developers from around the world and browse the projects they built. Dive into profiles, see their passions, and uncover innovative ideas shaping the Web3 space here on Tipply.</p>
-            </div>
-           <div className="bg-gradient-to-r from-[#56565653] to-[#141414] p-[24px] rounded-[24px] flex flex-col gap-[16px]">
+            </motion.div>
+           <motion.div className="bg-gradient-to-r from-[#56565653] to-[#141414] p-[24px] rounded-[24px] flex flex-col gap-[16px]" initial={{ scale: 0.8, opacity: 0 }}
+          whileInView={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 1.5, delay: 0.3 }}  viewport={{once:true}}>
                      <h3 className="text-[24px] text-[#FFFFFF] font-[400]">Tip</h3>
                      <p className="max-w-[325px] text-[16px] text-[#AFB3CA] font-[400]">Show your support in seconds, just click Tip, choose an amount, and send it directly to any developer you admire. Quick, simple, and fully in your control.</p>
-            </div>
+            </motion.div>
          
           
         </div>
