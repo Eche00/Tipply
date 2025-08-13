@@ -1,21 +1,19 @@
-import { Link } from "react-router";
 import { Icons } from "../../lib/icons/Icons";
+import { Search } from "@mui/icons-material";
+import { Svgs } from "../../lib/svg/Svg";
 
 function Devs() {
   return (
     <div className="    bg-[linear-gradient(to_right,#4f4f4f0e_0.8px,transparent_0.1px),linear-gradient(to_bottom,#4f4f4f0e_0.8px,transparent_0.1px)] md:bg-[size:104px_104px] bg-[size:50px_50px]  [mask-image:radial-gradient(ellipse_100%_70%_at_50%_100%,#000_70%,transparent_[200%])]   h-fit  flex  items-center justify-center  w-full ">
-      <section className="flex flex-col w-[90%] mx-auto py-[50px] relative z-30">
-        <div className="flex sm:flex-row flex-col sm:items-start items-center sm:justify-between justify-center">
-          <h2 className="  text-[40px]  font-[400] leading-[55px] capitalize bg-gradient-to-r from-[#FFFFFF] to-[#FFFFFF69] bg-clip-text text-transparent text-center">
-            Core Values
+      <section className="flex flex-col w-[90%] mx-auto py-[50px] relative z-30 sm:h-[100vh]">
+        <div className="flex sm:flex-row flex-col sm:items-center sm:justify-between gap-[20px]  relative z-30">
+          <h2 className="flex-1  text-[40px]  leading-[55px] capitalize bg-gradient-to-r from-[#008CFF] to-[#FFFFFF69] font-extrabold bg-clip-text text-transparent">
+            Developers
           </h2>
-
-          <p className=" text-[#AFB3CA] text-[16px] font-[400] leading-[24px] sm:text-start text-center max-w-[400px]">
-            We believe in transparency, innovation, and community-driven growth.
-            Our commitment is to empower developers and supporters alike with
-            privacy, security, and seamless interactions across the Web3
-            ecosystem.
-          </p>
+          <div className="flex flex-1 items-center gap-[10px] border-1 border-[#008CFF] px-[10px] py-[5px] rounded-[8px]"><Search fontSize="large"/> <input type="text" className=" w-full flex-1 outline-none border-none" placeholder="Search by username..."/></div>
+              <div className="flex-1 flex justify-end ">
+               <span>{Svgs.person}</span>
+              </div>
         </div>
 
         <section className="flex  flex-wrap gap-[48px] sm:justify-start justify-center py-[48px] ">
@@ -152,36 +150,7 @@ function Devs() {
               </button>
               </div>
         </section>
-        {/* Discover & Tip */}
-        <div className="flex sm:flex-row flex-col gap-[20px] bg-[#141414] rounded-[24px] sm:h-full sm:max-h-[377px] h-[752px] overflow-hidden ">
-          <div className="flex flex-col gap-[16px] sm:py-[61px] py-[30px] sm:pl-[70px] sm:pr-0 pr-[30px] pl-[30px] sm:flex-1 w-full">
-            <p className="bg-[#FFFFFF0A] px-[10px] py-[8px] border-[1px] shadow-sm  border-[#FFFFFF14] text-[#FFFFFF] text-[12px] font-extrabold leading-[16px] flex items-center justify-center gap-[10px] rounded-full uppercase w-[117px]">
-              DevSpot
-            </p>
-            <h3 className=" text-[#CAD1E9] text-[32px] font-[400]">
-              Discover & Tip
-            </h3>
-            <p className=" text-[#AFB3CA] text-[16px] font-[400] max-w-[750px]">
-              Discover talented developers shaping the Web3 space. Explore their
-              projects, tip your favorites, and connect directly to support
-              innovation.
-            </p>
-            <Link
-              to="/dev-spot"
-              className="w-[146px] h-[40px] bg-gradient-to-b from-[#505050] to-[#030404]  border-b-[1px] border-[#FFFFFFBD] flex  items-center justify-center rounded-[13px]">
-              View Devs
-            </Link>
-          </div>
-          <div className="flex sm:items-end justify-baseline sm:w-[35%] w-full sm:pr-[70px] pr-[0px] relative ">
-            <div className="absolute sm:top-1/5 top-[100px] sm:left-0 left-1/2 sm:-translate-x-0 -translate-x-1/2  sm:w-fit w-[90%]  h-fit  bg-black rounded-[34px] p-[27px]">
-              <img
-                src="/hey.png"
-                alt=""
-                className="w-[238px] h-[484px]  object-cover rounded-[20px] mx-auto"
-              />
-            </div>
-          </div>
-        </div>
+       
       </section>
     </div>
   );
