@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 
 function WhatIs() {
   return (
@@ -17,12 +18,18 @@ function WhatIs() {
 
     
      <section className="flex flex-col w-[90%] mx-auto py-[50px]">
-         <h2 className="  text-[40px]  font-extrabold leading-[55px] capitalize bg-gradient-to-r from-[#008CFF] to-[#FFFFFF69] bg-clip-text text-transparent text-center">What is Tipply ?</h2>
-         <p className=" text-[#AFB3CA] text-[16px] font-[400] leading-[24px] text-center">Empowering Developers with Safe Tips, Risk Control, and Reward Growth</p>
+         <motion.h2 className="  text-[40px]  font-extrabold leading-[55px] capitalize bg-gradient-to-r from-[#008CFF] to-[#FFFFFF69] bg-clip-text text-transparent text-center" initial={{ y: 40, opacity: 0 }}
+          whileInView={{ y: 1, opacity: 1 }}
+          transition={{ duration: 1.5, delay: 0.3 }}  viewport={{once:true}}>What is Tipply ?</motion.h2>
+         <motion.p className=" text-[#AFB3CA] text-[16px] font-[400] leading-[24px] text-center" initial={{ y: 40, opacity: 0 }}
+          whileInView={{ y: 1, opacity: 1 }}
+          transition={{ duration: 1.5, delay: 0.3 }}  viewport={{once:true}}>Empowering Developers with Safe Tips, Risk Control, and Reward Growth</motion.p>
 
         <section className="flex flex-col gap-[32px] py-[32px]" >
           {/* Multichain Tipping */}
-          <div className="flex sm:flex-row flex-col gap-[20px] bg-[#141414] rounded-[24px] sm:h-full sm:max-h-[307px] h-[752px] overflow-hidden ">
+          <motion.div className="flex sm:flex-row flex-col gap-[20px] bg-[#141414] rounded-[24px] sm:h-full sm:max-h-[307px] h-[752px] overflow-hidden " initial={{ scale: 0.8, opacity: 0 }}
+          whileInView={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 1.5, delay: 0.3 }}  viewport={{once:true}}>
            <div className="flex flex-col gap-[16px] sm:py-[61px] py-[30px] sm:pl-[70px] sm:pr-0 pr-[30px] pl-[30px] sm:flex-1 w-full" >
              <p className="bg-[#FFFFFF0A] px-[10px] py-[8px] border-[1px] shadow-sm  border-[#FFFFFF14] text-[#FFFFFF] text-[12px] font-extrabold leading-[16px] flex items-center justify-center gap-[10px] rounded-full uppercase w-[117px]">About</p>
              <h3 className=" text-[#CAD1E9] text-[32px] font-[400]">Multichain Tipping</h3>
@@ -34,10 +41,12 @@ function WhatIs() {
              </div>
 
            </div>
-          </div>
+          </motion.div>
 
           {/* Explore & Support */}
-          <div className="flex sm:flex-row flex-col gap-[20px] bg-[#141414] rounded-[24px] sm:h-full sm:max-h-[307px] h-[752px] overflow-hidden ">
+          <motion.div className="flex sm:flex-row flex-col gap-[20px] bg-[#141414] rounded-[24px] sm:h-full sm:max-h-[307px] h-[752px] overflow-hidden " initial={{ scale: 0.8, opacity: 0 }}
+          whileInView={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 1.5, delay: 0.3 }}  viewport={{once:true}}>
            <div className="flex flex-col gap-[16px] sm:py-[61px] py-[30px] sm:pl-[70px] sm:pr-0 pr-[30px] pl-[30px] sm:flex-1 w-full" >
              <p className="bg-[#FFFFFF0A] px-[10px] py-[8px] border-[1px] shadow-sm  border-[#FFFFFF14] text-[#FFFFFF] text-[12px] font-extrabold leading-[16px] flex items-center justify-center gap-[10px] rounded-full uppercase w-[117px]">About</p>
              <h3 className=" text-[#CAD1E9] text-[32px] font-[400]">Explore & Support </h3>
@@ -53,7 +62,7 @@ function WhatIs() {
               
 
            </div>
-          </div>
+          </motion.div>
 
          
         </section>
