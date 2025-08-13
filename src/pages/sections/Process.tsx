@@ -34,7 +34,9 @@ function Process() {
 <div className="    bg-[linear-gradient(to_right,#4f4f4f0e_0.8px,transparent_0.1px),linear-gradient(to_bottom,#4f4f4f0e_0.8px,transparent_0.1px)] md:bg-[size:104px_104px] bg-[size:50px_50px]  [mask-image:radial-gradient(ellipse_100%_70%_at_50%_100%,#000_70%,transparent_[200%])]   h-fit  flex  items-center justify-center  w-full ">
   
       <section className="flex flex-col items-center justify-center gap-[10px] rounded-full border-none py-[50px]">
-         <h2 className="  text-[40px]  font-extrabold leading-[55px] capitalize bg-gradient-to-r from-[#008CFF] to-[#FFFFFF69] bg-clip-text text-transparent text-center">How Tipply works ?</h2>
+         <motion.h2 className="  text-[40px]  font-extrabold leading-[55px] capitalize bg-gradient-to-r from-[#008CFF] to-[#FFFFFF69] bg-clip-text text-transparent text-center" initial={{ x: -50, opacity: 0 }}
+          whileInView={{ x: 1, opacity: 1 }}
+          transition={{ duration: 1.5, delay: 0.3 }}  viewport={{once:true}}>How Tipply works ?</motion.h2>
 
         <motion.span className="sm:block hidden" initial={{ scale: 0.8, opacity: 0 }}
 whileInView={{ scale: 1, opacity: 1 }}
