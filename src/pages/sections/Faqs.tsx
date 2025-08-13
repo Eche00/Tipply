@@ -27,7 +27,7 @@ function Faqs() {
 
 
        <section className="flex flex-col w-[90%] mx-auto py-[50px] z-30 relative ">
-         <h2 className="  text-[40px]  font-[400] leading-[55px] capitalize bg-gradient-to-r from-[#FFFFFF] to-[#FFFFFF69] bg-clip-text text-transparent text-center">Frequently asked questions</h2>
+         <h2 className="  text-[40px]  font-extrabold leading-[55px] capitalize bg-gradient-to-r from-[#008CFF] to-[#FFFFFF69] bg-clip-text text-transparent text-center">Frequently asked questions</h2>
          <p className=" text-[#AFB3CA] text-[16px] font-[400] leading-[24px] text-center">Discover Devs, access Projects and tip with you fully in control.</p>
 
  <div className="flex xl:flex-row flex-col-reverse items-center">

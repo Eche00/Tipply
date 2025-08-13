@@ -11,7 +11,7 @@ function Hero() {
       
           <p className="bg-[#FFFFFF0A] px-[10px] py-[8px] border-[1px] shadow-sm  border-[#FFFFFF14] text-[#FFFFFF] text-[12px] font-extrabold leading-[16px] flex items-center justify-center gap-[10px] rounded-full uppercase">Tipper Inquiry {Icons.star}</p>
 
-        <h1 className=" text-[#FFFFFF] sm:text-[64px] text-[44px] font-extrabold sm:leading-[82px] leading-[62px] capitalize">Tipply, Your Web3 Tipping Vault</h1>
+        <h1 className=" bg-gradient-to-r from-[#008CFF] to-[#FFFFFF69] bg-clip-text text-transparent sm:text-[64px] text-[44px] font-extrabold sm:leading-[82px] leading-[62px] capitalize">Tipply, Your Web3 Tipping Vault</h1>
         <p className=" text-[#AFB3CA] text-[16px] font-[400] leading-[24px]">Tip, Discover, and Support Developers with Showcases That Inspire</p>
         <Link to='/connect-wallet'  className="w-[146px] h-[40px] bg-[#56565653]  border-b-[1px] flex  items-center justify-center rounded-[13px] border-[#008CFF]">Connect Wallet</Link>
 

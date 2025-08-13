@@ -11,6 +11,7 @@ import ShowRoom from "./dashboard/dashpages/ShowRoom"
 import Profile from "./dashboard/dashpages/Profile"
 import DashContainer from "./dashboard/DashContainer"
 import NotFound from "./components/NotFound"
+import Tipboard from "./pages/Tipboard"
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
             <Route path="/" element={<Home/>}/>
             <Route path="/about-us" element={<AboutUs/>}/>
             <Route path="/dev-spot" element={<DevSpot/>}/>
+            <Route path="/tip-board" element={<Tipboard/>}/>
            </Route>
 
            {/* Indipendent Route  */}

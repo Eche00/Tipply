@@ -34,7 +34,10 @@ function About() {
               <p className=" w-[98px] h-[98px] bg-gradient-to-b from-[#008CFF] to-[#B8ED3B00] rounded-full flex items-center justify-center">{Svgs.facemoji}</p>
             </div>
             {/* other contents  */}
-           <p className=" text-[#AFB3CA] text-[16px] font-[400] max-w-[350px] pl-[10px]">Discover and explore developers’ projects across multiple blockchains in a secure, non-custodial platfore.</p>
+            
+           <p className=" text-[#AFB3CA] text-[16px] font-[400] max-w-[350px] pl-[10px]">
+            <h2 className="  text-[14px] m-0  font-bold capitalize bg-gradient-to-r from-[#008CFF] to-[#FFFFFF69] bg-clip-text text-transparent ">what Tiply enables users to do</h2>
+            Discover talented Web3 creators and back their work with instant, crypto-powered tips.</p>
           </div>
         </div>
 
@@ -46,7 +49,10 @@ function About() {
           {/* fist section  */}
           <div className="flex-1 flex items-center justify-end  w-full h-full bg-[#050520] rounded-r-full pr-2 ">
             {/* other contents  */}
-            <p className=" text-[#AFB3CA] text-[16px] font-[400] max-w-[350px] pr-[10px]">Discover and explore developers’ projects across multiple blockchains in a secure, non-custodial platform. </p>
+            
+            <p className=" text-[#AFB3CA] text-[16px] font-[400] max-w-[350px] pr-[10px]">
+              <h2 className="  text-[14px]  font-bold capitalize bg-gradient-to-r from-[#008CFF] to-[#FFFFFF69] bg-clip-text text-transparent  text-end">how Tiply works / philosophy</h2>
+              A decentralized platform where your support goes straight to the developer — no banks, no barriers.</p>
             {/* the circle  */}
             <div className="border border-[#FFFFFF14] border-dotted h-fit w-fit p-[10px] rounded-full">
               <p className=" w-[98px] h-[98px] bg-gradient-to-b from-[#FFFFFF14] to-[#FFFFFF66] rounded-full flex items-center justify-center">{Svgs.dollar}</p>

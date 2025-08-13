@@ -17,7 +17,7 @@ function WhatIs() {
 
     
      <section className="flex flex-col w-[90%] mx-auto py-[50px]">
-         <h2 className="  text-[40px]  font-[400] leading-[55px] capitalize bg-gradient-to-r from-[#FFFFFF] to-[#FFFFFF69] bg-clip-text text-transparent text-center">What is Tipply ?</h2>
+         <h2 className="  text-[40px]  font-extrabold leading-[55px] capitalize bg-gradient-to-r from-[#008CFF] to-[#FFFFFF69] bg-clip-text text-transparent text-center">What is Tipply ?</h2>
          <p className=" text-[#AFB3CA] text-[16px] font-[400] leading-[24px] text-center">Empowering Developers with Safe Tips, Risk Control, and Reward Growth</p>
 
         <section className="flex flex-col gap-[32px] py-[32px]" >

@@ -19,6 +19,7 @@ function Header() {
           <NavLink to='/' className={({isActive})=> isActive ? 'text-[#008CFF] font-bold text-sm': ' text-white font-bold text-sm'}>Home</NavLink>
           <NavLink to='/about-us' className={({isActive})=> isActive ? 'text-[#008CFF] font-bold text-sm': ' text-white font-bold text-sm'}>About Us</NavLink>
           <NavLink to='/dev-spot' className={({isActive})=> isActive ? 'text-[#008CFF] font-bold text-sm': ' text-white font-bold text-sm'}>DevSpot</NavLink>
+          <NavLink to='/tip-board' className={({isActive})=> isActive ? 'text-[#008CFF] font-bold text-sm': ' text-white font-bold text-sm'}>Tipboard</NavLink>
          </nav>
 
       {/* auth button  */}
@@ -28,11 +29,12 @@ function Header() {
 
        {dropDown &&    <section 
       
-       className="fixed top-[70px] left-0 w-full h-[100vh] bg-[#141414] z-50 flex flex-col gap-[32px] ">
+       className="fixed top-[70px] left-0 w-full h-[100vh] bg-[#050520] z-50 flex flex-col gap-[32px] ">
           <div className="flex flex-col  text-white text-[16px] font-[500]" onClick={()=>setDropDown(!dropDown)}>
-          <NavLink to='/' className={({isActive})=> isActive ? 'text-[#7346F1] font-bold text-sm cursor-pointer p-[10px]  border-b border-gray-500': ' text-white font-bold text-sm cursor-pointer p-[10px]  border-b border-gray-500'}>Home</NavLink>
-          <NavLink to='/about-us' className={({isActive})=> isActive ? 'text-[#7346F1] font-bold text-sm cursor-pointer p-[10px]  border-b border-gray-500': ' text-white font-bold text-sm cursor-pointer p-[10px]  border-b border-gray-500'}>About Us</NavLink>
-          <NavLink to='/dev-spot' className={({isActive})=> isActive ? 'text-[#7346F1] font-bold text-sm cursor-pointer p-[10px]  border-b border-gray-500': ' text-white font-bold text-sm cursor-pointer p-[10px]  border-b border-gray-500'}>DevSpot</NavLink>
+          <NavLink to='/' className={({isActive})=> isActive ? 'text-[#008CFF] font-bold text-sm cursor-pointer p-[10px]  border-b border-gray-500': ' text-white font-bold text-sm cursor-pointer p-[10px]  border-b border-gray-500'}>Home</NavLink>
+          <NavLink to='/about-us' className={({isActive})=> isActive ? 'text-[#008CFF] font-bold text-sm cursor-pointer p-[10px]  border-b border-gray-500': ' text-white font-bold text-sm cursor-pointer p-[10px]  border-b border-gray-500'}>About Us</NavLink>
+          <NavLink to='/dev-spot' className={({isActive})=> isActive ? 'text-[#008CFF] font-bold text-sm cursor-pointer p-[10px]  border-b border-gray-500': ' text-white font-bold text-sm cursor-pointer p-[10px]  border-b border-gray-500'}>DevSpot</NavLink>
+          <NavLink to='/tip-board' className={({isActive})=> isActive ? 'text-[#008CFF] font-bold text-sm cursor-pointer p-[10px]  border-b border-gray-500': ' text-white font-bold text-sm cursor-pointer p-[10px]  border-b border-gray-500'}>Tipboard </NavLink>
            </div>
            <button  className=" px-[32px] py-[10px] text-[16px] mx-[20px] rounded-[8px] bg-[#56565653] text-white cursor-pointer hover:scale-[105%] transition-all duration-300 ">Connect Wallet</button>
 
