@@ -1,11 +1,10 @@
-import { Link } from "react-router"
 import { Icons } from "../lib/icons/Icons"
 import Devs from "./sections/Devs"
 import Footer from "../components/Footer"
 
 function DevSpot() {
   return (
-     <div className="relative w-full h-[100vh] bg-[#171733]">
+     <div className="relative w-full h-[100vh]">
        {/* Hero left  background blur */}
           {/* <div 
         className="absolute top-[-10%] left-[-3%] w-[180px] h-[180px] bg-[#FFFFFF]/40  rounded-[50%] blur-[50px]   z-10"

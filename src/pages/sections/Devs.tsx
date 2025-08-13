@@ -19,164 +19,135 @@ function Devs() {
         </div>
 
         <section className="flex  flex-wrap gap-[48px] sm:justify-start justify-center py-[48px] ">
-          {/* mission  */}
-          <section className=" bg-[#141414] rounded-[24px] flex flex-col gap-[5px] overflow-hidden w-[320px] group hover:scale-[102%] transition-all duration-300">
+          {/* profile  */}
+          <section className=" bg-[#141414] rounded-[24px] flex flex-col gap-[5px] overflow-hidden w-[320px] h-fit group hover:scale-[102%] transition-all duration-300">
             <div className=" w-full h-fit ">
               <img
-                src="/logo.png"
+                src="/profile.webp"
                 alt=""
                 className=" w-full h-[150px] hover:scale-[105%]  object-cover duration-300"
               />
             </div>
 
-            <div className="w-[90%] mx-auto pb-[10px]">
+            <div className="w-[90%] mx-auto pb-[10px] flex items-center justify-between gap-[5px]">
               <h3 className="text-[20px] text-[#FFFFFF] font-[400] italic">
-                @_Mission
+                @username
               </h3>
-              <p className="text-[14px] text-[#AFB3CA] font-[400] ">
-                To connect tippers and developers worldwide community growth.
+              <p className="bg-[#FFFFFF0A] px-[10px] py-[5px] border-[1px] shadow-sm  border-[#FFFFFF14] text-[#FFFFFF] text-[10px] font-bold leading-[16px] flex items-center justify-center gap-[10px] rounded-full uppercase">
+                Software Developer
               </p>
             </div>
             <div className="w-[90%] mx-auto flex gap-[15px] items-center pb-[20px]">
-              <button className="flex-1 py-[8px] bg-[#56565653] rounded-[13px] flex items-center justify-center border-b cursor-pointer hover:scale-[102%] transition-all duration-300 font-extrabold">
+              <button className="flex-1 py-[8px] bg-[#56565653] rounded-[13px] flex items-center justify-center border-b border-[#008CFF] cursor-pointer hover:scale-[102%] transition-all duration-300 font-extrabold">
                 View
               </button>
-              <button className="flex-1 py-[8px] bg-[#56565653] rounded-[13px] flex items-center justify-center border-b border-[#7346F1] text-[#7346F1] font-extrabold cursor-pointer hover:scale-[102%] transition-all duration-300">
+              <button className="flex-1 py-[8px] bg-[#008CFF] rounded-[13px] flex items-center justify-center border-b border-[#7346F1] text-white font-extrabold cursor-pointer hover:scale-[102%] transition-all duration-300">
                 𝓣ip
               </button>
             </div>
           </section>
-          {/* mission  */}
-          <section className=" bg-[#141414] rounded-[24px] flex flex-col gap-[5px] overflow-hidden w-[320px] group hover:scale-[102%] transition-all duration-300">
+          {/* profile  */}
+          <section className=" bg-[#141414] rounded-[24px] flex flex-col gap-[5px] overflow-hidden w-[320px] h-fit group hover:scale-[102%] transition-all duration-300">
             <div className=" w-full h-fit ">
               <img
-                src="/logo.png"
+                src="/profile.webp"
                 alt=""
                 className=" w-full h-[150px] hover:scale-[105%]  object-cover duration-300"
               />
             </div>
 
-            <div className="w-[90%] mx-auto pb-[10px]">
+            <div className="w-[90%] mx-auto pb-[10px] flex items-center justify-between gap-[5px]">
               <h3 className="text-[20px] text-[#FFFFFF] font-[400] italic">
-                @_Mission
+                @username
               </h3>
-              <p className="text-[14px] text-[#AFB3CA] font-[400] ">
-                To connect tippers and developers worldwide community growth.
+              <p className="bg-[#FFFFFF0A] px-[10px] py-[5px] border-[1px] shadow-sm  border-[#FFFFFF14] text-[#FFFFFF] text-[10px] font-bold leading-[16px] flex items-center justify-center gap-[10px] rounded-full uppercase">
+                Software Developer
               </p>
             </div>
             <div className="w-[90%] mx-auto flex gap-[15px] items-center pb-[20px]">
-              <button className="flex-1 py-[8px] bg-[#56565653] rounded-[13px] flex items-center justify-center border-b cursor-pointer hover:scale-[102%] transition-all duration-300">
+              <button className="flex-1 py-[8px] bg-[#56565653] rounded-[13px] flex items-center justify-center border-b border-[#008CFF] cursor-pointer hover:scale-[102%] transition-all duration-300 font-extrabold">
                 View
               </button>
-              <button className="flex-1 py-[8px] bg-[#56565653] rounded-[13px] flex items-center justify-center border-b cursor-pointer hover:scale-[102%] transition-all duration-300">
+              <button className="flex-1 py-[8px] bg-[#008CFF] rounded-[13px] flex items-center justify-center border-b border-[#7346F1] text-white font-extrabold cursor-pointer hover:scale-[102%] transition-all duration-300">
                 𝓣ip
               </button>
             </div>
           </section>
-          {/* mission  */}
-          <section className=" bg-[#141414] rounded-[24px] flex flex-col gap-[5px] overflow-hidden w-[320px] group hover:scale-[102%] transition-all duration-300">
+          {/* profile  */}
+          <section className=" bg-[#141414] rounded-[24px] flex flex-col gap-[5px] overflow-hidden w-[320px] h-fit group hover:scale-[102%] transition-all duration-300">
             <div className=" w-full h-fit ">
               <img
-                src="/logo.png"
+                src="/profile.webp"
                 alt=""
                 className=" w-full h-[150px] hover:scale-[105%]  object-cover duration-300"
               />
             </div>
 
-            <div className="w-[90%] mx-auto pb-[10px]">
+            <div className="w-[90%] mx-auto pb-[10px] flex items-center justify-between gap-[5px]">
               <h3 className="text-[20px] text-[#FFFFFF] font-[400] italic">
-                @_Mission
+                @username
               </h3>
-              <p className="text-[14px] text-[#AFB3CA] font-[400] ">
-                To connect tippers and developers worldwide community growth.
+              <p className="bg-[#FFFFFF0A] px-[10px] py-[5px] border-[1px] shadow-sm  border-[#FFFFFF14] text-[#FFFFFF] text-[10px] font-bold leading-[16px] flex items-center justify-center gap-[10px] rounded-full uppercase">
+                Software Developer
               </p>
             </div>
             <div className="w-[90%] mx-auto flex gap-[15px] items-center pb-[20px]">
-              <button className="flex-1 py-[8px] bg-[#56565653] rounded-[13px] flex items-center justify-center border-b cursor-pointer hover:scale-[102%] transition-all duration-300">
+              <button className="flex-1 py-[8px] bg-[#56565653] rounded-[13px] flex items-center justify-center border-b border-[#008CFF] cursor-pointer hover:scale-[102%] transition-all duration-300 font-extrabold">
                 View
               </button>
-              <button className="flex-1 py-[8px] bg-[#56565653] rounded-[13px] flex items-center justify-center border-b cursor-pointer hover:scale-[102%] transition-all duration-300">
+              <button className="flex-1 py-[8px] bg-[#008CFF] rounded-[13px] flex items-center justify-center border-b border-[#7346F1] text-white font-extrabold cursor-pointer hover:scale-[102%] transition-all duration-300">
                 𝓣ip
               </button>
             </div>
           </section>
-          {/* mission  */}
-          <section className=" bg-[#141414] rounded-[24px] flex flex-col gap-[5px] overflow-hidden w-[320px] group hover:scale-[102%] transition-all duration-300">
+          {/* profile  */}
+          <section className=" bg-[#141414] rounded-[24px] flex flex-col gap-[5px] overflow-hidden w-[320px] h-fit group hover:scale-[102%] transition-all duration-300">
             <div className=" w-full h-fit ">
               <img
-                src="/logo.png"
+                src="/profile.webp"
                 alt=""
                 className=" w-full h-[150px] hover:scale-[105%]  object-cover duration-300"
               />
             </div>
 
-            <div className="w-[90%] mx-auto pb-[10px]">
+            <div className="w-[90%] mx-auto pb-[10px] flex items-center justify-between gap-[5px]">
               <h3 className="text-[20px] text-[#FFFFFF] font-[400] italic">
-                @_Mission
+                @username
               </h3>
-              <p className="text-[14px] text-[#AFB3CA] font-[400] ">
-                To connect tippers and developers worldwide community growth.
+              <p className="bg-[#FFFFFF0A] px-[10px] py-[5px] border-[1px] shadow-sm  border-[#FFFFFF14] text-[#FFFFFF] text-[10px] font-bold leading-[16px] flex items-center justify-center gap-[10px] rounded-full uppercase">
+                Software Developer
               </p>
             </div>
             <div className="w-[90%] mx-auto flex gap-[15px] items-center pb-[20px]">
-              <button className="flex-1 py-[8px] bg-[#56565653] rounded-[13px] flex items-center justify-center border-b cursor-pointer hover:scale-[102%] transition-all duration-300">
+              <button className="flex-1 py-[8px] bg-[#56565653] rounded-[13px] flex items-center justify-center border-b border-[#008CFF] cursor-pointer hover:scale-[102%] transition-all duration-300 font-extrabold">
                 View
               </button>
-              <button className="flex-1 py-[8px] bg-[#56565653] rounded-[13px] flex items-center justify-center border-b cursor-pointer hover:scale-[102%] transition-all duration-300">
+              <button className="flex-1 py-[8px] bg-[#008CFF] rounded-[13px] flex items-center justify-center border-b border-[#7346F1] text-white font-extrabold cursor-pointer hover:scale-[102%] transition-all duration-300">
                 𝓣ip
               </button>
             </div>
           </section>
-          {/* mission  */}
-          <section className=" bg-[#141414] rounded-[24px] flex flex-col gap-[5px] overflow-hidden w-[320px] group hover:scale-[102%] transition-all duration-300">
-            <div className=" w-full h-fit ">
-              <img
-                src="/logo.png"
-                alt=""
-                className=" w-full h-[150px] hover:scale-[105%]  object-cover duration-300"
-              />
-            </div>
+        
+         
+        
 
-            <div className="w-[90%] mx-auto pb-[10px]">
-              <h3 className="text-[20px] text-[#FFFFFF] font-[400] italic">
-                @_Mission
-              </h3>
-              <p className="text-[14px] text-[#AFB3CA] font-[400] ">
-                To connect tippers and developers worldwide community growth.
-              </p>
-            </div>
-            <div className="w-[90%] mx-auto flex gap-[15px] items-center pb-[20px]">
-              <button className="flex-1 py-[8px] bg-[#56565653] rounded-[13px] flex items-center justify-center border-b cursor-pointer hover:scale-[102%] transition-all duration-300">
-               View
-              </button>
-              <button className="flex-1 py-[8px] bg-[#56565653] rounded-[13px] flex items-center justify-center border-b cursor-pointer hover:scale-[102%] transition-all duration-300">
-                𝓣ip
-              </button>
-            </div>
-          </section>
-
-          {/* support  */}
-          {/* <div className=" bg-[#141414] p-[24px] rounded-[24px] flex flex-col gap-[16px]">
-                    <span>{Icons.people}</span>
-                    <h3 className="text-[24px] text-[#FFFFFF] font-[400]">Connect. Support. Grow.</h3>
-                    <p className="max-w-[325px] text-[16px] text-[#AFB3CA] font-[400]">At Tipply, we believe the power of Web3 comes from people coming together. Connect with talented developers, support innovative projects through seamless tipping, and grow a vibrant community that drives the future of decentralized collaboration. Together, we create more than just technology, we build lasting impact.</p>
-                  </div> */}
+          
         </section>
 
         {/* controller  */}
         <section className="flex flex-col gap-[5px] py-[50px]">
           <div className=" w-full flex items-center justify-center ">
            <div className="w-fit flex items-center gap-[10px] bg-[#56565633] rounded-[8px]">
-             <p className=" px-[15px] py-[2px] rounded-[8px] bg-[#7346F1] cursor-pointer">1</p>
+             <p className=" px-[15px] py-[2px] rounded-[8px] bg-[#008CFF] cursor-pointer">1</p>
             <p className=" px-[15px] py-[2px] rounded-[8px] cursor-pointer">2</p>
             <p className=" px-[15px] py-[2px] rounded-[8px] cursor-pointer">3</p>
            </div>
           </div>
           <div className="flex items-center justify-between">
-              <button className="w-[120px] sm:w-[300px] py-[16px] bg-[#56565653] rounded-[13px] flex items-center justify-center gap-[10px] border-b cursor-pointer hover:scale-[102%] transition-all duration-300 border-[#7346F1]">
+              <button className="w-[120px] sm:w-[300px] py-[16px] bg-[#56565653] rounded-[13px] flex items-center justify-center gap-[10px] border-b border-[#008CFF] cursor-pointer hover:scale-[102%] transition-all duration-300 ">
                {Icons.arrowleft}  Prev
               </button>
-              <button className="w-[120px] sm:w-[300px] py-[16px] bg-[#56565653] rounded-[13px] flex items-center justify-center gap-[10px] border-b cursor-pointer hover:scale-[102%] transition-all duration-300 border-[#7346F1] f">
+              <button className="w-[120px] sm:w-[300px] py-[16px] bg-[#56565653] rounded-[13px] flex items-center justify-center gap-[10px] border-b border-[#008CFF] cursor-pointer hover:scale-[102%] transition-all duration-300  f">
                 Next {Icons.arrowright} 
               </button>
               </div>

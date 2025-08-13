@@ -8,11 +8,8 @@ import WhatIs from "./sections/WhatIs"
 
 function Home() {
   return (
-    <div className="relative w-full h-[100vh] bg-[#171733]">
-      {/* Hero center  background blur */}
-      <div 
-        className="absolute top-1/2 left-0 w-full h-[200%] bg-[#dfdfdf] opacity-40 blur-[393.85px] rounded-full z-0 "
-      />
+    <div className="relative w-full h-[100vh] ">
+    
       {/* Hero left  background blur */}
           <div 
         className="absolute top-[-10%] left-[-3%] w-[180px] h-[180px] bg-[#FFFFFF]/40  rounded-[50%] blur-[50px]   z-10"

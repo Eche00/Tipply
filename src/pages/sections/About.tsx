@@ -2,7 +2,7 @@ import { Svgs } from "../../lib/svg/Svg"
 
 function About() {
   return (
-    <div className="relative w-full h-[100vh] bg-[#171733]">
+    <div className="relative w-full h-[100vh] ">
         {/* Hero left  background blur */}
           <div 
         className="absolute top-[-10%] left-[-3%] w-[180px] h-[180px] bg-[#FFFFFF]/40  rounded-[50%] blur-[50px]   z-10"
@@ -26,12 +26,12 @@ function About() {
       {/* left sided page  */}
       <section className="flex-1">
         {/* first circle container  */}
-        <div className="w-full h-[182px]  bg-gradient-to-r from-[#7346F1] to-[#45454500] rounded-full p-[2px] ">
+        <div className="w-full h-[182px]  bg-gradient-to-r from-[#008CFF] to-[#45454500] rounded-full p-[2px] ">
           {/* fist section  */}
-          <div className="flex-1 flex items-center  w-full h-full bg-[#171733] rounded-l-full pl-2">
+          <div className="flex-1 flex items-center  w-full h-full bg-[#050520] rounded-l-full pl-2">
             {/* the circle  */}
-            <div className="border border-[#7346F1] border-dotted h-fit w-fit p-[10px] rounded-full">
-              <p className=" w-[98px] h-[98px] bg-gradient-to-b from-[#7346F1] to-[#B8ED3B00] rounded-full flex items-center justify-center">{Svgs.facemoji}</p>
+            <div className="border border-[#008CFF] border-dotted h-fit w-fit p-[10px] rounded-full">
+              <p className=" w-[98px] h-[98px] bg-gradient-to-b from-[#008CFF] to-[#B8ED3B00] rounded-full flex items-center justify-center">{Svgs.facemoji}</p>
             </div>
             {/* other contents  */}
            <p className=" text-[#AFB3CA] text-[16px] font-[400] max-w-[350px] pl-[10px]">Discover and explore developers’ projects across multiple blockchains in a secure, non-custodial platfore.</p>
@@ -44,7 +44,7 @@ function About() {
         {/* second circle container  */}
         <div className="sm:mt-42 w-full h-[182px]  bg-gradient-to-r from-[#45454500] to-[#454545] rounded-full p-[2px] ">
           {/* fist section  */}
-          <div className="flex-1 flex items-center justify-end  w-full h-full bg-[#171733] rounded-r-full pr-2 ">
+          <div className="flex-1 flex items-center justify-end  w-full h-full bg-[#050520] rounded-r-full pr-2 ">
             {/* other contents  */}
             <p className=" text-[#AFB3CA] text-[16px] font-[400] max-w-[350px] pr-[10px]">Discover and explore developers’ projects across multiple blockchains in a secure, non-custodial platform. </p>
             {/* the circle  */}

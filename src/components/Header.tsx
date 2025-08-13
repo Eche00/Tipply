@@ -6,7 +6,7 @@ import { Close } from "@mui/icons-material"
 function Header() {
   const [dropDown,setDropDown] = useState(false)
   return (
-    <div className="bg-[#171733]/20 backdrop-blur-[24.7px] fixed top-0 left-0 w-full z-50" >
+    <div className="bg-[#050520]/20 backdrop-blur-[24.7px] fixed top-0 left-0 w-full z-50" >
       <section className="flex items-center justify-between max-w-[85%] mx-auto py-[20px]">
         {/* logo  */}
          <div className="flex items-center gap-2">
@@ -16,9 +16,9 @@ function Header() {
      
        {/* navigations */}
          <nav className="bg-[#56565633] sm:flex hidden items-center gap-[40px] px-[36px] py-[10px] rounded-full ">
-          <NavLink to='/' className={({isActive})=> isActive ? 'text-[#7346F1] font-bold text-sm': ' text-white font-bold text-sm'}>Home</NavLink>
-          <NavLink to='/about-us' className={({isActive})=> isActive ? 'text-[#7346F1] font-bold text-sm': ' text-white font-bold text-sm'}>About Us</NavLink>
-          <NavLink to='/dev-spot' className={({isActive})=> isActive ? 'text-[#7346F1] font-bold text-sm': ' text-white font-bold text-sm'}>DevSpot</NavLink>
+          <NavLink to='/' className={({isActive})=> isActive ? 'text-[#008CFF] font-bold text-sm': ' text-white font-bold text-sm'}>Home</NavLink>
+          <NavLink to='/about-us' className={({isActive})=> isActive ? 'text-[#008CFF] font-bold text-sm': ' text-white font-bold text-sm'}>About Us</NavLink>
+          <NavLink to='/dev-spot' className={({isActive})=> isActive ? 'text-[#008CFF] font-bold text-sm': ' text-white font-bold text-sm'}>DevSpot</NavLink>
          </nav>
 
       {/* auth button  */}

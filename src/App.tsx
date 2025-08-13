@@ -14,7 +14,7 @@ import NotFound from "./components/NotFound"
 
 function App() {
   return (
-    <div className=" bg-[#171733] text-white h-[100vh] relative w-full overflow-x-hidden">
+    <div className=" bg-[#050520] text-white h-[100vh] relative w-full overflow-x-hidden">
         <Routes>
           {/* General Routes */}
            <Route element={<Container/>}>

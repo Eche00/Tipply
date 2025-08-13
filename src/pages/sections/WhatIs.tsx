@@ -1,7 +1,7 @@
 
 function WhatIs() {
   return (
-    <div className="bg-[#171733]  relative overflow-hidden">
+    <div className="  relative overflow-hidden">
         {/* Hero left  background blur */}
           <div 
         className="absolute top-[-5%] left-[-3%] w-[180px] h-[180px] bg-[#FFFFFF]/40  rounded-[50%] blur-[50px]   z-10"
