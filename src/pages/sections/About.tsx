@@ -1,3 +1,4 @@
+import { motion } from "framer-motion"
 import { Svgs } from "../../lib/svg/Svg"
 
 function About() {
@@ -17,12 +18,18 @@ function About() {
     <img src="/stars.png" alt="" className="absolute top-[-32%] right-[0%] rotate-[-43.54deg] w-[269px] h-[585px] object-cover opacity-[70%] z-10" />
 
     <section className="flex flex-col w-[90%] mx-auto py-[50px]">
-         <h2 className="  text-[40px]  font-[400] leading-[55px] capitalize bg-gradient-to-r from-[#FFFFFF] to-[#FFFFFF69] bg-clip-text text-transparent text-center">About Tipply</h2>
-         <p className=" text-[#AFB3CA] text-[16px] font-[400] leading-[24px] text-center">Empowering Developers with Safe Tips, Risk Control, and Reward Growth</p>
+         <motion.h2 className="  text-[40px]  font-extrabold leading-[55px] capitalize bg-gradient-to-r from-[#008CFF] to-[#FFFFFF69] bg-clip-text text-transparent text-center" initial={{ y: 40, opacity: 0 }}
+          whileInView={{ y: 1, opacity: 1 }}
+          transition={{ duration: 1.5, delay: 0.3 }}  viewport={{once:true}}>About Tipply </motion.h2>
+         <motion.p className=" text-[#AFB3CA] text-[16px] font-[400] leading-[24px] text-center" initial={{ y: 40, opacity: 0 }}
+          whileInView={{ y: 1, opacity: 1 }}
+          transition={{ duration: 1.5, delay: 0.3 }}  viewport={{once:true}}>Empowering Developers with Safe Tips, Risk Control, and Reward Growth</motion.p>
 
     </section>
 
-    <main className="flex sm:flex-row flex-col items-stretch justify-between gap-[20px] w-[90%] mx-auto py-[50px] ">
+    <motion.main className="flex sm:flex-row flex-col items-stretch justify-between gap-[20px] w-[90%] mx-auto py-[50px] " initial={{ scale: 0.8, opacity: 0 }}
+          whileInView={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 1.5, delay: 0.3 }}  viewport={{once:true}}>
       {/* left sided page  */}
       <section className="flex-1">
         {/* first circle container  */}
@@ -62,10 +69,11 @@ function About() {
         </div>
 
       </section>
-    </main>
-    <div className="flex items-center justify-center">
+    </motion.main>
+    <motion.div className="flex items-center justify-center" whileInView={{ rotate: 360 }}
+              transition={{ duration: 2}} >
       <span>{Svgs.repeat}</span>
-    </div>
+    </motion.div>
 
     </div>
   )
