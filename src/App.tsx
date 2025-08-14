@@ -12,6 +12,7 @@ import Profile from "./dashboard/dashpages/Profile"
 import DashContainer from "./dashboard/DashContainer"
 import NotFound from "./components/NotFound"
 import Tipboard from "./pages/Tipboard"
+import Authentication from "./auth/Authentication"
 
 function App() {
   return (
@@ -27,7 +28,7 @@ function App() {
 
            {/* Indipendent Route  */}
             <Route path="/connect-wallet" element={<ConnectWallet/>}/>
-            <Route path="/about-us" element={<AboutUs/>}/>
+            <Route path="/auth" element={<Authentication/>}/>
 
             {/* Dashboard Routes  */}
             <Route path="/dashboard"  element={<DashContainer/>}>
