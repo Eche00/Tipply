@@ -1,8 +1,11 @@
 import { Icons } from "../../lib/icons/Icons";
 import { Search } from "@mui/icons-material";
 import { Svgs } from "../../lib/svg/Svg";
+import { useState } from "react";
+import Tip from "../../components/Tip";
 
 function Devs() {
+  const [tip,setTip] = useState<boolean>(false)
   return (
     <div className="    bg-[linear-gradient(to_right,#4f4f4f0e_0.8px,transparent_0.1px),linear-gradient(to_bottom,#4f4f4f0e_0.8px,transparent_0.1px)] md:bg-[size:104px_104px] bg-[size:50px_50px]  [mask-image:radial-gradient(ellipse_100%_70%_at_50%_100%,#000_70%,transparent_[200%])]   h-fit  flex  items-center justify-center  w-full ">
       <section className="flex flex-col w-[90%] mx-auto py-[50px] relative z-30 sm:h-[100vh]">
@@ -39,7 +42,7 @@ function Devs() {
               <button className="flex-1 py-[8px] bg-[#56565653] rounded-[13px] flex items-center justify-center border-b border-[#008CFF] cursor-pointer hover:scale-[102%] transition-all duration-300 font-extrabold">
                 View
               </button>
-              <button className="flex-1 py-[8px] bg-[#008CFF] rounded-[13px] flex items-center justify-center border-b border-[#7346F1] text-white font-extrabold cursor-pointer hover:scale-[102%] transition-all duration-300">
+              <button className="flex-1 py-[8px] bg-[#008CFF] rounded-[13px] flex items-center justify-center border-b border-[#7346F1] text-white font-extrabold cursor-pointer hover:scale-[102%] transition-all duration-300" onClick={()=>setTip(!tip)}>
                 𝓣ip
               </button>
             </div>
@@ -152,6 +155,8 @@ function Devs() {
         </section>
        
       </section>
+      {/* Tip Modal  */}
+      {tip && <Tip tip={tip} setTip={setTip} />}
     </div>
   );
 }
