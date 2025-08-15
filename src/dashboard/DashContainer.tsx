@@ -9,17 +9,17 @@ function DashContainer() {
 
 
   return (
-    <div className="h-[100vh] relative sm:h-full bg-[#1F1F1F] w-full">
+    <div className="h-[100vh] relative sm:h-full bg-[#050520] w-full">
      
-      <section className=" w-full flex  relative bg-white dark:bg-[rgb(31,31,31)]">
-        <div className="hidden md:flex fixed left-0">
+      <section className=" w-full flex  relative ">
+        <div className="hidden md:flex fixed left-[20px] top-[20px] bottom-[20px]">
           <Sidebar compress={compress} setCompress={setCompress} />
         </div>
         <div
           className={
             compress
-              ? "ml-0 md:ml-[80px] flex-1 p-5 h-[100vh] bg-[#1F1F1F] "
-              : "ml-0 md:ml-[300px] flex-1 p-5 h-[100vh] bg-[#1F1F1F] "
+              ? "ml-0 md:ml-[80px] flex-1 p-5 h-[100vh]  "
+              : "ml-0 md:ml-[300px] flex-1 p-5 h-[100vh]  "
           }>
           <Outlet />
         </div>

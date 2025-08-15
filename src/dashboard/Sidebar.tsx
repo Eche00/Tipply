@@ -18,30 +18,31 @@ function Sidebar({ compress, setCompress }: SidebarProp) {
     <div
       className={
         compress
-          ? "w-fit h-[100vh] bg-[#034FE3] transition-all duration-500"
-          : "w-[300px] h-[100vh] bg-[#034FE3]  transition-all duration-500"
+          ? "w-fit   transition-all duration-500 rounded-[16px] overflow-hidden"
+          : "w-[280px]    transition-all duration-500 rounded-[16px] overflow-hidden"
       }>
-      <nav className=" flex flex-col   text-[14px] px-[20px] py-[10px] gap-[5px]">
-        {/* logo */}
-        {compress && (
-          <section className=" flex flex-col items-center gap-[4px]  py-[20px] mb-[20px]  border-b-2 h-[256px]"></section>
-        )}
-        {!compress && (
-          <section className=" flex flex-col items-center gap-[4px]  py-[20px] mb-[20px]  border-b-2">
+         {/* logo */}
+         <img
+              src='/logo.png'
+              alt={"logo"}
+                            className={compress ? "w-[40px] h-[30px] object-cover bg-white rounded-[8px] m-[10px]" : "w-[80px] h-[50px] object-cover bg-white rounded-[8px] m-[10px]"}
+
+            />
+          <section className=" flex flex-col items-center justify-center gap-[4px]   mb-[20px]  border-b-2 bg-[#034FE3] rounded-[16px] p-[10px]">
             <img
               src='/logo.png'
               alt={"logo"}
-              className="w-[150px] h-[150px] object-cover bg-white rounded-full "
+              className={compress ? "w-[40px] h-[30px] object-cover bg-white rounded-[8px] " : "w-[80px] h-[50px] object-cover bg-white rounded-[8px] "}
             />
+            {!compress &&<>
             <h1 className=" text-[24px] font-[600] text-white tracking-wider ">
-              Zion Tech Hub
+              Welcome Back, <br /> @user 
             </h1>
              <p className="font-bold text-white">@user</p>
-          </section>
-        )}
-
-        <button
-          className="absolute right-5 text-gray-500 font-bold py-[10px] px-[12px] rounded-[10px] transition-all duration-300 bg-[#1e222b]  "
+             </>
+            }
+              <button
+          className="absolute right-5 text-gray-500 font-bold py-[10px] px-[12px] rounded-[10px] transition-all duration-300 bg-[#141414]  "
           onClick={() => setCompress(!compress)}>
           {compress ? (
             <ArrowForwardIos fontSize="small" />
@@ -49,12 +50,17 @@ function Sidebar({ compress, setCompress }: SidebarProp) {
             <ArrowBackIos fontSize="small" />
           )}
         </button>
+          </section>
+
+      <nav className=" flex flex-col   text-[14px] px-[20px] py-[10px] gap-[5px] bg-[#034FE3] rounded-[16px]">
+       
+       
         <NavLink
           to="/dashboard/home"
           className={({ isActive }) =>
             isActive
-              ? "flex items-center  gap-[5px] bg-[#1e222b]  font-extrabold py-[10px] px-[12px] rounded-[10px] text-white transition-all duration-300 "
-              : "flex items-center  text-gray-300 gap-[5px] font-bold py-[10px] px-[12px] rounded-[10px] transition-all duration-300 hover:bg-[#1e222b38] scale-95 "
+              ? "flex items-center  gap-[5px] bg-[#141414]  font-extrabold py-[10px] px-[12px] rounded-[10px] text-white transition-all duration-300 "
+              : "flex items-center  text-gray-300 gap-[5px] font-bold py-[10px] px-[12px] rounded-[10px] transition-all duration-300 hover:bg-[#14141438] scale-95 "
           }>
           {" "}
           <Home />
@@ -65,8 +71,8 @@ function Sidebar({ compress, setCompress }: SidebarProp) {
             to="/dashboard/wallet"
             className={({ isActive }) =>
               isActive
-                ? "flex items-center  gap-[5px] bg-[#1e222b]  font-extrabold py-[10px] px-[12px] rounded-[10px] text-white transition-all duration-300 "
-                : "flex items-center  text-gray-300 gap-[5px] font-bold py-[10px] px-[12px] rounded-[10px] transition-all duration-300 hover:bg-[#1e222b38] scale-95"
+                ? "flex items-center  gap-[5px] bg-[#141414]  font-extrabold py-[10px] px-[12px] rounded-[10px] text-white transition-all duration-300 "
+                : "flex items-center  text-gray-300 gap-[5px] font-bold py-[10px] px-[12px] rounded-[10px] transition-all duration-300 hover:bg-[#14141438] scale-95"
             }>
             {" "}
             <Person />
@@ -76,8 +82,8 @@ function Sidebar({ compress, setCompress }: SidebarProp) {
             to="/dashboard/leaderboard"
             className={({ isActive }) =>
               isActive
-                ? "flex items-center  gap-[5px] bg-[#1e222b]  font-extrabold py-[10px] px-[12px] rounded-[10px] text-white transition-all duration-300 "
-                : "flex items-center  text-gray-300 gap-[5px] font-bold py-[10px] px-[12px] rounded-[10px] transition-all duration-300 hover:bg-[#1e222b38] scale-95"
+                ? "flex items-center  gap-[5px] bg-[#141414]  font-extrabold py-[10px] px-[12px] rounded-[10px] text-white transition-all duration-300 "
+                : "flex items-center  text-gray-300 gap-[5px] font-bold py-[10px] px-[12px] rounded-[10px] transition-all duration-300 hover:bg-[#14141438] scale-95"
             }>
             {" "}
             <Person />
@@ -87,8 +93,8 @@ function Sidebar({ compress, setCompress }: SidebarProp) {
             to="/dashboard/showroom"
             className={({ isActive }) =>
               isActive
-                ? "flex items-center  gap-[5px] bg-[#1e222b]  font-extrabold py-[10px] px-[12px] rounded-[10px] text-white transition-all duration-300 "
-                : "flex items-center  text-gray-300 gap-[5px] font-bold py-[10px] px-[12px] rounded-[10px] transition-all duration-300 hover:bg-[#1e222b38] scale-95"
+                ? "flex items-center  gap-[5px] bg-[#141414]  font-extrabold py-[10px] px-[12px] rounded-[10px] text-white transition-all duration-300 "
+                : "flex items-center  text-gray-300 gap-[5px] font-bold py-[10px] px-[12px] rounded-[10px] transition-all duration-300 hover:bg-[#14141438] scale-95"
             }>
             {" "}
             <Person />
@@ -98,8 +104,8 @@ function Sidebar({ compress, setCompress }: SidebarProp) {
             to="/dashboard/profile"
             className={({ isActive }) =>
               isActive
-                ? "flex items-center  gap-[5px] bg-[#1e222b]  font-extrabold py-[10px] px-[12px] rounded-[10px] text-white transition-all duration-300 "
-                : "flex items-center  text-gray-300 gap-[5px] font-bold py-[10px] px-[12px] rounded-[10px] transition-all duration-300 hover:bg-[#1e222b38] scale-95"
+                ? "flex items-center  gap-[5px] bg-[#141414]  font-extrabold py-[10px] px-[12px] rounded-[10px] text-white transition-all duration-300 "
+                : "flex items-center  text-gray-300 gap-[5px] font-bold py-[10px] px-[12px] rounded-[10px] transition-all duration-300 hover:bg-[#14141438] scale-95"
             }>
             {" "}
             <Person />
@@ -110,8 +116,8 @@ function Sidebar({ compress, setCompress }: SidebarProp) {
             to="/dashboard/admin"
             className={({ isActive }) =>
               isActive
-                ? "flex items-center  gap-[5px] bg-[#1e222b]  font-extrabold py-[10px] px-[12px] rounded-[10px] text-white transition-all duration-300 "
-                : "flex items-center  text-gray-300 gap-[5px] font-bold py-[10px] px-[12px] rounded-[10px] transition-all duration-300 hover:bg-[#1e222b38] scale-95"
+                ? "flex items-center  gap-[5px] bg-[#141414]  font-extrabold py-[10px] px-[12px] rounded-[10px] text-white transition-all duration-300 "
+                : "flex items-center  text-gray-300 gap-[5px] font-bold py-[10px] px-[12px] rounded-[10px] transition-all duration-300 hover:bg-[#14141438] scale-95"
             }>
             {" "}
             <Person />
