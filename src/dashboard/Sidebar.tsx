@@ -17,9 +17,8 @@ import { NavLink } from "react-router-dom";
 interface SidebarProp{
   compress: boolean,
   setCompress: React.Dispatch<React.SetStateAction<boolean>>,
-  setHide: React.Dispatch<React.SetStateAction<boolean>>
 }
-function Sidebar({ compress, setCompress,setHide }: SidebarProp) {
+function Sidebar({ compress, setCompress }: SidebarProp) {
 
 
   return (

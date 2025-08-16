@@ -20,7 +20,7 @@ function DashContainer() {
       <section className=" w-full flex  relative ">
        {!hide && 
         <div className="flex fixed left-0 sm:left-[20px] top-[20px] bottom-[20px] ">
-          <Sidebar compress={compress} setCompress={setCompress} setHide={setHide} />
+          <Sidebar compress={compress} setCompress={setCompress} />
         </div>}
         <div
           className={
