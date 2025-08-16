@@ -2,7 +2,6 @@ import {
   AdminPanelSettings,
   ArrowBackIos,
   ArrowForwardIos,
-  Close,
   Home,
  
   Leaderboard,
@@ -64,11 +63,7 @@ function Sidebar({ compress, setCompress,setHide }: SidebarProp) {
           <ArrowForwardIos fontSize="small" />
         </button>
          )}
-               <button
-          className=" text-white  py-[8px] px-[10px] rounded-[8px] transition-all duration-300 bg-[#141414] cursor-pointer sm:hidden flex items-center justify-center"
-          onClick={() => setHide(!false)}>
-          <Close fontSize="small" />
-        </button>
+              
           </section>
 
       <nav className=" flex flex-col h-fit text-[14px] p-[10px] gap-[5px] bg-[#034FE3] rounded-[16px] z-50">

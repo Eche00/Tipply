@@ -2,6 +2,7 @@ import {  useState } from "react";
 import { Outlet } from "react-router-dom";
 import Sidebar from "./Sidebar";
 import { Icons } from "../lib/icons/Icons";
+import { Close } from "@mui/icons-material";
 
 
 function DashContainer() {
@@ -12,14 +13,10 @@ function DashContainer() {
 
   return (
     <div className="h-[100vh] relative sm:h-full bg-[#050520] w-full">
-      {hide && 
-        <div className="w-[90%] mx-auto flex items-center justify-between py-[10px]">
-           <div className="flex items-center gap-2">
-          <img src="/logo.png" alt="Tipply-logo" className="sm:w-[54px] sm:h-[50px] w-[38px] h-[34px] rounded-full object-cover" />
-          <h2 className="text-[#FFFFFF] sm:text-[36px] text-[24px] font-[400] leading-[30px]">ipply</h2>
-         </div>
-          <span onClick={()=>setHide(false)}>{Icons.menu}</span>
-        </div>}
+      
+        <div className="w-[90%] mx-auto flex items-end justify-end py-[10px]">
+          <span onClick={()=>setHide(!hide)} className=" sm:hidden flex z-50">{hide ? Icons.menu : <Close/>}</span>
+        </div>
       <section className=" w-full flex  relative ">
        {!hide && 
         <div className="flex fixed left-0 sm:left-[20px] top-[20px] bottom-[20px] ">
