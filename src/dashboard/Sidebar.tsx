@@ -1,7 +1,15 @@
 import {
+  AdminPanelSettings,
   ArrowBackIos,
   ArrowForwardIos,
+  Close,
   Home,
+ 
+  Leaderboard,
+ 
+  Link,
+ 
+  Logout,
  
   Person,
 } from "@mui/icons-material";
@@ -9,9 +17,10 @@ import { NavLink } from "react-router-dom";
 
 interface SidebarProp{
   compress: boolean,
-  setCompress: React.Dispatch<React.SetStateAction<boolean>>
+  setCompress: React.Dispatch<React.SetStateAction<boolean>>,
+  setHide: React.Dispatch<React.SetStateAction<boolean>>
 }
-function Sidebar({ compress, setCompress }: SidebarProp) {
+function Sidebar({ compress, setCompress,setHide }: SidebarProp) {
 
 
   return (
@@ -25,14 +34,15 @@ function Sidebar({ compress, setCompress }: SidebarProp) {
          <img
               src='/logo.png'
               alt={"logo"}
-                            className={compress ? "w-[40px] h-[30px] object-cover bg-white rounded-[8px] m-[10px]" : "w-[80px] h-[50px] object-cover bg-white rounded-[8px] m-[10px]"}
+                            className={compress ? "w-[40px] h-[30px] object-cover bg-white rounded-[8px] m-[10px] sm:flex hidden" : "w-[80px] h-[50px] object-cover bg-white rounded-[8px] m-[10px]"}
 
             />
-          <section className=" flex flex-col items-center justify-center gap-[4px]   mb-[20px]  border-b-2 bg-[#034FE3] rounded-[16px] p-[10px]">
+            
+          <section className=" flex flex-col  gap-[4px]   mb-[20px]  border-b-2 bg-[#034FE3] rounded-[16px] p-[10px] z-50">
             <img
-              src='/logo.png'
+              src='/profile.webp'
               alt={"logo"}
-              className={compress ? "w-[40px] h-[30px] object-cover bg-white rounded-[8px] " : "w-[80px] h-[50px] object-cover bg-white rounded-[8px] "}
+              className={compress ? "w-[40px] h-[30px] object-cover bg-white rounded-[8px] mx-auto" : "w-[80px] h-[50px] object-cover bg-white rounded-[8px] "}
             />
             {!compress &&<>
             <h1 className=" text-[24px] font-[600] text-white tracking-wider ">
@@ -41,18 +51,27 @@ function Sidebar({ compress, setCompress }: SidebarProp) {
              <p className="font-bold text-white">@user</p>
              </>
             }
+            {!compress ? (
               <button
-          className="absolute right-5 text-gray-500 font-bold py-[10px] px-[12px] rounded-[10px] transition-all duration-300 bg-[#141414]  "
+          className="absolute right-5 text-white  py-[8px] px-[10px] rounded-[8px] transition-all duration-300 bg-[#141414] cursor-pointer"
           onClick={() => setCompress(!compress)}>
-          {compress ? (
-            <ArrowForwardIos fontSize="small" />
-          ) : (
-            <ArrowBackIos fontSize="small" />
-          )}
+          <ArrowBackIos fontSize="small" />
+        </button>
+         ) : (
+        <button
+          className=" text-white  py-[8px] px-[10px] rounded-[8px] transition-all duration-300 bg-[#141414] cursor-pointer"
+          onClick={() => setCompress(!compress)}>
+          <ArrowForwardIos fontSize="small" />
+        </button>
+         )}
+               <button
+          className=" text-white  py-[8px] px-[10px] rounded-[8px] transition-all duration-300 bg-[#141414] cursor-pointer sm:hidden flex items-center justify-center"
+          onClick={() => setHide(!false)}>
+          <Close fontSize="small" />
         </button>
           </section>
 
-      <nav className=" flex flex-col   text-[14px] px-[20px] py-[10px] gap-[5px] bg-[#034FE3] rounded-[16px]">
+      <nav className=" flex flex-col h-fit text-[14px] p-[10px] gap-[5px] bg-[#034FE3] rounded-[16px] z-50">
        
        
         <NavLink
@@ -67,17 +86,7 @@ function Sidebar({ compress, setCompress }: SidebarProp) {
           {!compress && <span>Home</span>}
         </NavLink>
 
-          <NavLink
-            to="/dashboard/wallet"
-            className={({ isActive }) =>
-              isActive
-                ? "flex items-center  gap-[5px] bg-[#141414]  font-extrabold py-[10px] px-[12px] rounded-[10px] text-white transition-all duration-300 "
-                : "flex items-center  text-gray-300 gap-[5px] font-bold py-[10px] px-[12px] rounded-[10px] transition-all duration-300 hover:bg-[#14141438] scale-95"
-            }>
-            {" "}
-            <Person />
-            {!compress && <span>Wallet</span>}
-          </NavLink>
+         
           <NavLink
             to="/dashboard/leaderboard"
             className={({ isActive }) =>
@@ -86,7 +95,7 @@ function Sidebar({ compress, setCompress }: SidebarProp) {
                 : "flex items-center  text-gray-300 gap-[5px] font-bold py-[10px] px-[12px] rounded-[10px] transition-all duration-300 hover:bg-[#14141438] scale-95"
             }>
             {" "}
-            <Person />
+            <Leaderboard fontSize="small" />
             {!compress && <span>LeaderBoard</span>}
           </NavLink>
           <NavLink
@@ -97,7 +106,7 @@ function Sidebar({ compress, setCompress }: SidebarProp) {
                 : "flex items-center  text-gray-300 gap-[5px] font-bold py-[10px] px-[12px] rounded-[10px] transition-all duration-300 hover:bg-[#14141438] scale-95"
             }>
             {" "}
-            <Person />
+            <Link fontSize="small" />
             {!compress && <span>Showroom</span>}
           </NavLink>
           <NavLink
@@ -120,11 +129,22 @@ function Sidebar({ compress, setCompress }: SidebarProp) {
                 : "flex items-center  text-gray-300 gap-[5px] font-bold py-[10px] px-[12px] rounded-[10px] transition-all duration-300 hover:bg-[#14141438] scale-95"
             }>
             {" "}
-            <Person />
+            <AdminPanelSettings />
             {!compress && <span>Admin</span>}
           </NavLink>
-      
+      <button className="sm:hidden w-full flex items-center  gap-[5px] bg-[#14141438]   py-[10px] px-[12px] rounded-[10px] text-white transition-all duration-300 cursor-pointer">
+         <Logout />
+          {!compress && <span>Logout</span>}
+       </button>
       </nav>
+
+
+     <div className=" absolute bottom-0 left-0 w-full hidden sm:flex">
+       <button className="w-full flex items-center sm:justify-center  gap-[5px] bg-[#034FE3]   py-[10px] px-[12px] rounded-[10px] text-white transition-all duration-300 cursor-pointer">
+         <Logout />
+          {!compress && <span>Logout</span>}
+       </button>
+     </div>
     </div>
   );
 }
