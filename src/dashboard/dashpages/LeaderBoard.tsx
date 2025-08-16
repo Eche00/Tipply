@@ -1,7 +1,10 @@
+import Tipboard from "../../pages/Tipboard"
 
 function LeaderBoard() {
   return (
-    <div>LeaderBoard</div>
+    <div>
+      <Tipboard/>
+    </div>
   )
 }
 
