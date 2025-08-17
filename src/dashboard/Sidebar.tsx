@@ -3,8 +3,8 @@ import {
   ArrowBackIos,
   ArrowForwardIos,
   Dashboard,
+  History,
   Home,
-  Leaderboard,
   Logout,
   Person,
   SpaceDashboard,
@@ -91,8 +91,8 @@ function Sidebar({ compress, setCompress }: SidebarProp) {
                 : "flex items-center  text-gray-300 gap-[5px] font-bold py-[10px] px-[12px] rounded-[10px] transition-all duration-300 hover:bg-[#14141438] scale-95"
             }>
             {" "}
-            <Leaderboard fontSize="small" />
-            {!compress && <span>LeaderBoard</span>}
+            <History fontSize="small" />
+            {!compress && <span>History</span>}
           </NavLink>
           <NavLink
             to="/dashboard/showroom"
@@ -107,8 +107,11 @@ function Sidebar({ compress, setCompress }: SidebarProp) {
           </NavLink>
           <NavLink
             to="/dashboard/profile"
-            className="flex items-center  text-gray-300 gap-[5px] font-bold py-[10px] px-[12px] rounded-[10px] transition-all duration-300 hover:bg-[#14141438] scale-95"
-            >
+            className={({ isActive }) =>
+              isActive
+                ? "flex items-center  gap-[5px] bg-[#141414]  font-extrabold py-[10px] px-[12px] rounded-[10px] text-white transition-all duration-300 "
+                : "flex items-center  text-gray-300 gap-[5px] font-bold py-[10px] px-[12px] rounded-[10px] transition-all duration-300 hover:bg-[#14141438] scale-95"
+            }>
             <Person />
             {!compress && <span>Profile</span>}
           </NavLink>
