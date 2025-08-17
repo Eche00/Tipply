@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { GitHub, Link, LinkedIn, Twitter } from "@mui/icons-material";
+import { GitHub, Twitter } from "@mui/icons-material";
 
 const Profile = () => {
   const [edit, setEdit] = useState(false);
@@ -17,8 +17,6 @@ const Profile = () => {
     bio: "Passionate about building scalable web and blockchain applications. Always learning and exploring new technologies.",
     techStacks: ["React", "Tailwind", "Solidity", "Node.js", "Ether.js"],
     twitter: "https://twitter.com/username",
-    linkedin: "https://linkedin.com/in/username",
-    portfolio: "https://yourportfolio.com",
     github: "https://github.com/username",
     projects: [
       {
@@ -40,9 +38,9 @@ const Profile = () => {
   });
 
   // handle updates for editable fields
-  const handleChange = (field, value) => {
-    setProfile((prev) => ({ ...prev, [field]: value }));
-  };
+  // const handleChange = (field, value) => {
+  //   setProfile((prev) => ({ ...prev, [field]: value }));
+  // };
 
   return (
     <div className="bg-[#141718] sm:h-[98%] rounded-2xl overflow-hidden flex flex-col gap-5 p-5 overflow-y-scroll">
@@ -82,12 +80,7 @@ const Profile = () => {
             <a href={profile.twitter} target="_blank" rel="noreferrer">
               <Twitter className="text-2xl text-blue-400 hover:text-blue-300" />
             </a>
-            <a href={profile.linkedin} target="_blank" rel="noreferrer">
-              <LinkedIn className="text-2xl text-blue-500 hover:text-blue-400" />
-            </a>
-            <a href={profile.portfolio} target="_blank" rel="noreferrer">
-              <Link className="text-2xl hover:text-gray-300" />
-            </a>
+          
           </div>
         </div>
 
@@ -104,22 +97,22 @@ const Profile = () => {
                   <input
                     className="bg-[#1A1D1F] p-2 rounded-lg"
                     value={profile.username}
-                    onChange={(e) => handleChange("username", e.target.value)}
+                    // onChange={(e) => handleChange("username", e.target.value)}
                   />
                   <input
                     className="bg-[#1A1D1F] p-2 rounded-lg"
                     value={profile.name}
-                    onChange={(e) => handleChange("name", e.target.value)}
+                    // onChange={(e) => handleChange("name", e.target.value)}
                   />
                   <input
                     className="bg-[#1A1D1F] p-2 rounded-lg"
                     value={profile.email}
-                    onChange={(e) => handleChange("email", e.target.value)}
+                    // onChange={(e) => handleChange("email", e.target.value)}
                   />
                   <input
                     className="bg-[#1A1D1F] p-2 rounded-lg"
                     value={profile.phone}
-                    onChange={(e) => handleChange("phone", e.target.value)}
+                    // onChange={(e) => handleChange("phone", e.target.value)}
                   />
                 </>
               ) : (
@@ -156,17 +149,17 @@ const Profile = () => {
                   <input
                     className="bg-[#1A1D1F] p-2 rounded-lg"
                     value={profile.dob}
-                    onChange={(e) => handleChange("dob", e.target.value)}
+                    // onChange={(e) => handleChange("dob", e.target.value)}
                   />
                   <input
                     className="bg-[#1A1D1F] p-2 rounded-lg"
                     value={profile.gender}
-                    onChange={(e) => handleChange("gender", e.target.value)}
+                    // onChange={(e) => handleChange("gender", e.target.value)}
                   />
                   <input
                     className="bg-[#1A1D1F] p-2 rounded-lg col-span-2"
                     value={profile.address}
-                    onChange={(e) => handleChange("address", e.target.value)}
+                    // onChange={(e) => handleChange("address", e.target.value)}
                   />
                 </>
               ) : (
@@ -197,7 +190,7 @@ const Profile = () => {
               <textarea
                 className="bg-[#1A1D1F] w-full p-3 rounded-lg mb-4"
                 value={profile.bio}
-                onChange={(e) => handleChange("bio", e.target.value)}
+                // onChange={(e) => handleChange("bio", e.target.value)}
               />
             ) : (
               <p className="text-gray-400 text-sm mb-4 italic">{profile.bio}</p>
@@ -210,11 +203,11 @@ const Profile = () => {
                     key={idx}
                     className="bg-[#1A1D1F] px-3 py-1 rounded-lg text-xs font-medium text-gray-200 border border-gray-800/50"
                     value={stack}
-                    onChange={(e) => {
-                      const newStacks = [...profile.techStacks];
-                      newStacks[idx] = e.target.value;
-                      handleChange("techStacks", newStacks);
-                    }}
+                    // onChange={(e) => {
+                    //   const newStacks = [...profile.techStacks];
+                    //   newStacks[idx] = e.target.value;
+                    //   handleChange("techStacks", newStacks);
+                    // }}
                   />
                 ) : (
                   <span
@@ -242,29 +235,29 @@ const Profile = () => {
                       <input
                         className="bg-[#0D0F10] p-2 w-full mb-2 rounded"
                         value={project.title}
-                        onChange={(e) => {
-                          const newProjects = [...profile.projects];
-                          newProjects[index].title = e.target.value;
-                          handleChange("projects", newProjects);
-                        }}
+                        // onChange={(e) => {
+                        //   const newProjects = [...profile.projects];
+                        //   newProjects[index].title = e.target.value;
+                        //   handleChange("projects", newProjects);
+                        // }}
                       />
                       <textarea
                         className="bg-[#0D0F10] p-2 w-full mb-2 rounded"
                         value={project.description}
-                        onChange={(e) => {
-                          const newProjects = [...profile.projects];
-                          newProjects[index].description = e.target.value;
-                          handleChange("projects", newProjects);
-                        }}
+                        // onChange={(e) => {
+                        //   const newProjects = [...profile.projects];
+                        //   newProjects[index].description = e.target.value;
+                        //   handleChange("projects", newProjects);
+                        // }}
                       />
                       <input
                         className="bg-[#0D0F10] p-2 w-full rounded"
                         value={project.link}
-                        onChange={(e) => {
-                          const newProjects = [...profile.projects];
-                          newProjects[index].link = e.target.value;
-                          handleChange("projects", newProjects);
-                        }}
+                        // onChange={(e) => {
+                        //   const newProjects = [...profile.projects];
+                        //   newProjects[index].link = e.target.value;
+                        //   handleChange("projects", newProjects);
+                        // }}
                       />
                     </>
                   ) : (
