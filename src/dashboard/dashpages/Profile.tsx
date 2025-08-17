@@ -50,7 +50,7 @@ const Profile = () => {
         <button
           onClick={() => setEdit((prev) => !prev)}
          className="text-lg font-medium border border-[#FFFFFF14] py-1 px-6 rounded-lg bg-[#034FE3]">
-          {edit ? "Save" : "Edit"}
+          {edit ? "Save" : "Update"}
         </button>
       </div>
 

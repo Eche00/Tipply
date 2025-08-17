@@ -42,7 +42,6 @@ function Sidebar({ compress, setCompress }: SidebarProp) {
             />
             {!compress &&<>
              <p className="font-bold text-white">Developer <SupportAgent fontSize="small"/></p>
-             {/* <p className="font-bold text-white">Admin <AdminPanelSettings fontSize="small"/></p> */}
 
             <h1 className=" text-[24px] font-[600] text-white tracking-wider ">
               Welcome Back, <br /> @user 
