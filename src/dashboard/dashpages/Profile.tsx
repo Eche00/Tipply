@@ -49,8 +49,7 @@ const Profile = () => {
         <h2 className="text-[32px] font-extrabold">Profile</h2>
         <button
           onClick={() => setEdit((prev) => !prev)}
-          className="px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-lg transition"
-        >
+         className="text-lg font-medium border border-[#FFFFFF14] py-1 px-6 rounded-lg bg-[#034FE3]">
           {edit ? "Save" : "Edit"}
         </button>
       </div>
