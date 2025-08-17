@@ -1,21 +1,271 @@
+import { useEffect, useState } from "react";
+import { Icons } from "../../lib/icons/Icons";
+import {
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  Tooltip,
+  ResponsiveContainer,
+} from "recharts";
+
+type Prices = {
+  [key: string]: {
+    usd: number;
+    usd_24h_change: number;
+  };
+};
 
 function DashHome() {
+  const [prices, setPrices] = useState<Prices | null>(null);
+
+  useEffect(() => {
+    const fetchPrices = async () => {
+      try {
+        const res = await fetch(
+          "https://api.coingecko.com/api/v3/simple/price?ids=ethereum,bitcoin,binancecoin,solana&vs_currencies=usd&include_24hr_change=true"
+        );
+        const data = await res.json();
+        setPrices(data);
+      } catch (err) {
+        console.error("Failed to fetch prices:", err);
+      }
+    };
+
+    fetchPrices();
+    const interval = setInterval(fetchPrices, 1000); // refresh every 60s
+    return () => clearInterval(interval);
+  }, []);
+
+  const coins = [
+    {
+      id: "bitcoin",
+      name: "Bitcoin (BTC)",
+      logo: "https://thumbs.dreamstime.com/b/bitcoin-orange-logo-icon-circle-cryptocurrency-btc-payment-symbol-flat-style-illustration-isolated-white-background-226221967.jpg",
+    },
+     {
+      id: "ethereum",
+      name: "Ethereum (ETH)",
+      logo: "https://www.cdnlogo.com/logos/e/81/ethereum-eth.svg",
+    },
+   
+    // {
+    //   id: "binancecoin",
+    //   name: "BNB",
+    //   logo: "https://cryptologos.cc/logos/bnb-bnb-logo.png",
+    // },
+    {
+      id: "solana",
+      name: "Solana (SOL)",
+      logo: "https://www.creativefabrica.com/wp-content/uploads/2021/06/16/Cryptocurrency-Solana-Logo-Graphics-13460284-1.jpg",
+    },
+  ];
+
   return (
-    <div className="bg-[#141718]  h-[98%] rounded-[16px] overflow-hidden flex flex-col gap-[20px] p-[20px]">
-      {/* first section  */}
-      <section className="flex sm:flex-row flex-col gap-[20px] flex-1  w-full">
-        <div className="flex flex-1 bg-[#034FE3] rounded-[16px]">22</div>
-        <div className="flex flex-1 bg-[#034FE3] rounded-[16px]">22</div>
-        <div className="flex flex-1 bg-[#034FE3] rounded-[16px]">22</div>
+    <div className="bg-[#141718] sm:h-[98%] rounded-2xl overflow-hidden flex flex-col gap-5 p-5 overflow-y-scroll">
+      {/* Dashboard header */}
+      <section className="flex sm:flex-row flex-col items-center justify-between gap-5">
+        <h2 className="text-[32px] font-extrabold">Dashboard</h2>
+        <div className="flex items-center gap-5">
+          <h2 className="text-lg font-medium border border-[#FFFFFF14] py-1 px-6 rounded-lg bg-[#FFFFFF0A]">
+            Total Tips:
+          </h2>
+          <h2 className="text-lg font-medium border border-[#FFFFFF14] py-1 px-6 rounded-lg bg-[#034FE3]">
+            Total Tips:
+          </h2>
+        </div>
       </section>
-      {/* second section  */}
-      <section className="flex sm:flex-row flex-col gap-[20px] flex-1  w-full">
-        <div className="flex flex-1 bg-[#034FE3] rounded-[16px]">22</div>
-        <div className="flex w-[32.5%] bg-[#034FE3] rounded-[16px]">22</div>
-        
+
+      {/* First section */}
+      <section className="flex sm:flex-row flex-col gap-5 flex-1 w-full">
+        {/* Total Earning */}
+        <div className="flex flex-col justify-between gap-5 bg-gradient-to-br from-black via-[#050520] to-[#034FE3] rounded-2xl p-5 sm:w-[30%] w-full">
+          <h2 className="text-2xl font-extrabold border border-[#FFFFFF14] w-fit px-8 py-1 rounded-lg bg-[#FFFFFF0A]">
+            Total Earning
+          </h2>
+          <p className="text-[42px]  md:text-[24px] lg:text-[42px]  font-extrabold leading-tight">
+            200 ETH{" "}
+            <span className="ml-2 text-lg font-medium text-gray-400">
+              ≈ $650,000
+            </span>{" "}
+            <br />
+            <span className="ml-2 text-base font-medium text-gray-400">
+              (All-time tips received)
+            </span>
+          </p>
+        </div>
+
+        {/* Market Overview */}
+        <div className="flex flex-col flex-1 bg-black rounded-2xl p-5">
+          <h2 className="text-2xl font-extrabold mb-4">Market Overview</h2>
+          {!prices ? (
+            <p className="text-gray-400">Loading prices...</p>
+          ) : (
+            <div className="space-y-3">
+              {coins.map((coin, i) => {
+                const price = prices[coin.id]?.usd ?? 0;
+                const change = prices[coin.id]?.usd_24h_change ?? 0;
+                const isUp = change >= 0;
+
+                return (
+                  <div
+                    key={coin.id}
+                    className={`flex items-center justify-between ${
+                      i !== coins.length - 1
+                        ? "border-b border-gray-800 pb-1"
+                        : ""
+                    }`}
+                  >
+                    <div className="flex items-center gap-2">
+                      <img
+                        src={coin.logo}
+                        alt={coin.name}
+                        className="w-6 h-6 object-cover rounded-full"
+                      />
+                      <span className="font-semibold text-white text-[12px]">
+                        {coin.name}
+                      </span>
+                    </div>
+                    <div className="text-right text-[12px]">
+                      <p className="font-bold text-green-400">
+                        ${price.toLocaleString()}
+                      </p>
+                      <span
+                        className={`text-xs ${
+                          isUp ? "text-green-400" : "text-red-400"
+                        }`}
+                      >
+                        {isUp ? "+" : ""}
+                        {change.toFixed(2)}%
+                      </span>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          )}
+          {/* 📊 Chart Section */}
+          {prices && (
+  <div
+    className="mt-6 h-24 w-full cursor-pointer bg-transparent hover:bg-transparent"
+  >
+    <ResponsiveContainer width="100%" height="100%">
+      <BarChart
+        data={coins.map((coin) => ({
+          name: coin.name,
+          price: prices[coin.id]?.usd ?? 0,
+        }))}
+        barSize={100} // adjust bar thickness
+      >
+        <XAxis dataKey="name" stroke="#aaa" />
+        <YAxis stroke="#aaa" />
+        <Tooltip
+        cursor={{ fill: "transparent" }}
+          contentStyle={{
+            
+            backgroundColor: "#111",
+            border: "1px solid #333",
+            borderRadius: "8px",
+          }}
+          formatter={(value: number) => `$${value.toLocaleString()}`}
+        />
+        <Bar dataKey="price" fill="#3b82f6" radius={[6, 6, 0, 0]} />
+      </BarChart>
+    </ResponsiveContainer>
+  </div>
+)}
+
+        </div>
+
+
+      </section>
+
+      {/* Second section (Tip board) */}
+      <section className="flex flex-1 sm:flex-row flex-col gap-5 w-full h-full">
+        {/* Tip board */}
+          <div className="flex-1 bg-black rounded-2xl p-5 overflow-scroll">
+            <h3 className="font-bold py-2">TOP TIPPERS</h3>
+            <table className="w-full text-left">
+              <thead className="border-b border-[#008CFF]">
+                <tr>
+                  <th className="py-2">#</th>
+                  <th className="py-2">Address</th>
+                  <th className="py-2 sm:flex hidden">Tip</th>
+                  <th className="py-2">Tipped</th>
+                  <th className="py-2">Badge</th>
+                </tr>
+              </thead>
+              <tbody className="text-xs">
+                {[1, 2, 3, 4, 5].map((i) => (
+                  <tr
+                    key={i}
+                    className="border-b border-[#343841] cursor-pointer"
+                  >
+                    <td className="py-3">{i}.</td>
+                    <td className="py-3">
+                      <p className="bg-[#FFFFFF0A] w-fit px-2 py-0.5 border shadow-sm border-[#008CFF] text-[#008CFF] text-[10px] font-bold leading-4 rounded-full">
+                        0xA34......56F8
+                      </p>
+                    </td>
+                    <td className="py-3 sm:flex hidden">2x</td>
+                    <td className="py-3">2.5 ETH</td>
+                    <td className="py-3 group relative">
+                      {Icons.star}
+                      <span className="hidden group-hover:flex absolute top-1/2 -translate-y-1/2 right-0 bg-[#008CFF]/20 text-[#008CFF] text-sm rounded-full px-2 py-1">
+                        Supporter
+                      </span>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+        </div>
+
+        {/* Placeholder side card */}
+       <div className="flex sm:w-[30%] w-full bg-black rounded-2xl p-5 flex-col gap-6">
+  {/* Top Section: Last Project */}
+  <div className="bg-gray-900 rounded-xl p-4 shadow-md">
+    <h3 className="text-white text-lg font-bold mb-2">Last Project Added</h3>
+    <div className="bg-gray-800 rounded-lg p-3">
+      <h4 className="text-white font-semibold">Crypto Dashboard</h4>
+      <p className="text-gray-400 text-sm">A live crypto market overview app built with React & Tailwind.</p>
+      <a 
+        href="#" 
+        className="text-blue-400 text-sm mt-2 inline-block hover:underline"
+      >
+        View Project →
+      </a>
+    </div>
+  </div>
+
+  {/* Bottom Section: Notifications */}
+  <div className="bg-gray-900 rounded-xl p-4 shadow-md flex-1">
+    <h3 className="text-white text-lg font-bold mb-3">Live Chat Notifications</h3>
+    <div className="flex flex-col gap-3 max-h-40 overflow-y-auto">
+      <div className="bg-gray-800 rounded-lg p-3">
+        <p className="text-gray-300 text-sm">
+          <span className="font-bold text-white">Eche:</span> Just pushed an update to Tipply UI 🚀
+        </p>
+      </div>
+      <div className="bg-gray-800 rounded-lg p-3">
+        <p className="text-gray-300 text-sm">
+          <span className="font-bold text-white">Alex:</span> New project "NFT Marketplace" is live 🎉
+        </p>
+      </div>
+      <div className="bg-gray-800 rounded-lg p-3">
+        <p className="text-gray-300 text-sm">
+          <span className="font-bold text-white">Maya:</span> Fixed the ETH price fetch bug 🔧
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
       </section>
     </div>
-  )
+  );
 }
 
-export default DashHome
+export default DashHome;
