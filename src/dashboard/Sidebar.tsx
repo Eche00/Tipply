@@ -10,7 +10,7 @@ import {
   SpaceDashboard,
   SupportAgent,
 } from "@mui/icons-material";
-import { NavLink,Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 interface SidebarProp{
   compress: boolean,
@@ -35,13 +35,11 @@ function Sidebar({ compress, setCompress }: SidebarProp) {
             />
             
           <section className=" flex flex-col  gap-[4px]   mb-[20px]  border-b-2 bg-[#034FE3] rounded-[16px] p-[10px] z-50">
-            <Link to='/'>
             <img
               src='/profile.webp'
               alt={"logo"}
               className={compress ? "w-[40px] h-[30px] object-cover bg-white rounded-[8px] mx-auto" : "w-[80px] h-[50px] object-cover bg-white rounded-[8px] "}
             />
-            </Link>
             {!compress &&<>
              <p className="font-bold text-white">Developer <SupportAgent fontSize="small"/></p>
              {/* <p className="font-bold text-white">Admin <AdminPanelSettings fontSize="small"/></p> */}
