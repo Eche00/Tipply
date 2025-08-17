@@ -15,7 +15,7 @@ function DashContainer() {
     <div className="h-[100vh] relative sm:h-full bg-[#050520] w-full">
       
         <div className="w-[90%] mx-auto flex items-end justify-end py-[10px]">
-          <span onClick={()=>setHide(!hide)} className=" sm:hidden flex z-50">{hide ? Icons.menu : <Close/>}</span>
+          <span onClick={()=>setHide(!hide)} className=" md:hidden flex z-50">{hide ? Icons.menu : <Close/>}</span>
         </div>
       <section className=" w-full flex  relative ">
        {!hide && 
@@ -25,8 +25,8 @@ function DashContainer() {
         <div
           className={
             compress
-              ? "ml-0 md:ml-[80px] flex-1 p-5 h-[100vh]  "
-              : "ml-0 md:ml-[300px] flex-1 p-5 h-[100vh]  "
+              ? "ml-0 md:ml-[80px] flex-1 sm:p-5 h-[100vh]  "
+              : "ml-0 md:ml-[300px] flex-1 sm:p-5 h-[100vh]  "
           }>
           <Outlet />
         </div>
