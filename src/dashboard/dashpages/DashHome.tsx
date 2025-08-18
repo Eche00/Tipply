@@ -79,7 +79,7 @@ function DashHome() {
       {/* First section */}
       <section className="flex sm:flex-row flex-col gap-5 flex-1 w-full">
         {/* Total Earning */}
-        <div className="flex flex-col justify-between gap-5 bg-gradient-to-br from-black via-[#050520] to-[#034FE3] rounded-2xl p-5 sm:w-[30%] w-full">
+        <div className="flex flex-col justify-between gap-5 bg-gradient-to-br from-[#0D0F10] via-[#050520] to-[#034FE3] rounded-2xl p-5 sm:w-[30%] w-full">
           <h2 className="text-2xl font-extrabold border border-[#FFFFFF14] w-fit px-8 py-1 rounded-lg bg-[#FFFFFF0A]">
             Total Earning
           </h2>
@@ -96,7 +96,7 @@ function DashHome() {
         </div>
 
         {/* Market Overview */}
-        <div className="flex flex-col flex-1 bg-black rounded-2xl p-5">
+        <div className="flex flex-col flex-1 bg-[#0D0F10] shadow-md border border-gray-800/50 rounded-2xl p-5">
           <h2 className="text-2xl font-extrabold mb-4">Market Overview</h2>
           {!prices ? (
             <p className="text-gray-400">Loading prices...</p>
@@ -183,7 +183,7 @@ function DashHome() {
       {/* Second section (Tip board) */}
       <section className="flex flex-1 sm:flex-row flex-col gap-5 w-full h-full">
         {/* Tip board */}
-          <div className="flex-1 bg-black rounded-2xl p-5 overflow-scroll">
+          <div className="flex-1 bg-[#0D0F10] shadow-md border border-gray-800/50 rounded-2xl p-5 overflow-scroll">
             <h3 className="font-bold py-2">TOP TIPPERS</h3>
             <table className="w-full text-left">
               <thead className="border-b border-[#008CFF]">
@@ -222,7 +222,7 @@ function DashHome() {
         </div>
 
         {/* Placeholder side card */}
-       <div className="flex sm:w-[30%] w-full bg-black rounded-2xl p-5 flex-col gap-6">
+       <div className="flex sm:w-[30%] w-full bg-[#0D0F10] shadow-md border border-gray-800/50 rounded-2xl p-5 flex-col gap-6">
   {/* Top Section: Last Project */}
   <div className="bg-gray-900 rounded-xl p-4 shadow-md">
     <h3 className="text-white text-lg font-bold mb-2">Last Project Added</h3>

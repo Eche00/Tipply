@@ -2,7 +2,7 @@ import { Icons } from "../../lib/icons/Icons"
 
 function LeaderBoard() {
   return (
-  <div className="bg-[#141718]  h-[98%] rounded-[16px] overflow-hidden flex flex-col gap-[20px] p-[20px]">
+  <div className="bg-[#141718]   h-[98%] rounded-[16px] overflow-hidden flex flex-col gap-[20px] p-[20px]">
     <section className="flex items-center justify-between gap-[20px]">
           <h2 className="text-[32px] font-extrabold  w-fit">History</h2>
           <div className="flex items-center gap-[20px]">
@@ -11,7 +11,7 @@ function LeaderBoard() {
           </div>
 
       </section>
-     <main className="flex-1 bg-black h-fit rounded-[16px] p-[20px]">
+     <main className="flex-1 bg-[#0D0F10] shadow-md border border-gray-800/50 h-fit rounded-[16px] p-[20px]">
        {/* Tip board  */}
                           <table className=" w-full text-left ">
                             <thead className="border-b-[0.1px] border-[#008CFF]"> 
