@@ -1,6 +1,7 @@
 import { Link } from "react-router"
 import { Svgs } from "../lib/svg/Svg"
 import { motion } from "framer-motion"
+import { Icons } from "../lib/icons/Icons"
 
 function ConnectWallet() {
   return (
@@ -18,6 +19,15 @@ function ConnectWallet() {
       />
      
     <img src="/stars.png" alt="" className="absolute top-[-20%] right-[0%] rotate-[-43.54deg] w-[269px] h-[585px] object-cover opacity-[70%] z-10" />
+
+   {/* background icons T */}
+          <span className="absolute top-20 left-[10%]">{Icons.usdt}</span>
+          <span className="absolute top-20 right-[10%]">{Icons.usdt}</span>
+      
+       
+          {/* background icons T */}
+          <span className="absolute bottom-[20%] left-[5%]">{Icons.bnb}</span>
+          <span className="absolute bottom-[20%] right-[5%]">{Icons.solana}</span>
 
     <motion.section className="flex flex-col items-center justify-center gap-[10px] relative z-10" initial={{ y: -40, opacity: 0 }}
           whileInView={{ y: 1, opacity: 1 }}
