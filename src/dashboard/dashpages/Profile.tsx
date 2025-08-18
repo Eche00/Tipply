@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { GitHub, Twitter } from "@mui/icons-material";
+import { Add, GitHub, Twitter } from "@mui/icons-material";
 
 const Profile = () => {
   const [edit, setEdit] = useState(false);
@@ -229,7 +229,7 @@ const Profile = () => {
           {/* Projects Section */}
           <div className="bg-[#0D0F10] rounded-xl p-6 mt-6 shadow-md border border-gray-800/50">
             <h3 className="text-xl font-bold mb-4">Projects</h3>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 items-stretch">
               {profile.projects.map((project, index) => (
                 <div
                   key={index}
@@ -279,7 +279,16 @@ const Profile = () => {
                   )}
                 </div>
               ))}
+              {/* add project  */}
+              <div
+                  className="bg-[#1A1D1F] rounded-xl p-8 shadow-md border  border-blue-500/50 hover:shadow-blue-500/10 transition flex flex-col items-center justify-center cursor-pointer hover:scale-[102%]"
+                >
+                      <h4 className="text-white font-semibold"><Add/></h4>
+                      <p className="text-gray-400 text-sm">Add Project</p>
+                    
+                </div>
             </div>
+            
           </div>
         </div>
       </div>
