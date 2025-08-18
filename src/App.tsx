@@ -12,6 +12,7 @@ import DashContainer from "./dashboard/DashContainer"
 import NotFound from "./components/NotFound"
 import Tipboard from "./pages/Tipboard"
 import Authentication from "./auth/Authentication"
+import GeneralChat from "./dashboard/dashpages/GeneralChat"
 
 function App() {
   return (
@@ -32,7 +33,8 @@ function App() {
             {/* Dashboard Routes  */}
             <Route path="/dashboard"  element={<DashContainer/>}>
               <Route path="/dashboard/home" element={<DashHome/>}/>
-              <Route path="/dashboard/leaderboard" element={<LeaderBoard/>}/>
+              <Route path="/dashboard/history" element={<LeaderBoard/>}/>
+              <Route path="/dashboard/chat" element={<GeneralChat/>}/>
               <Route path="/dashboard/showroom" element={<ShowRoom/>}/>
               <Route path="/dashboard/profile" element={<Profile/>}/>
            </Route>

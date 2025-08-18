@@ -6,6 +6,7 @@ import {
   History,
   Home,
   Logout,
+  Message,
   Person,
   SpaceDashboard,
   SupportAgent,
@@ -81,7 +82,18 @@ function Sidebar({ compress, setCompress }: SidebarProp) {
 
          
           <NavLink
-            to="/dashboard/leaderboard"
+            to="/dashboard/chat"
+            className={({ isActive }) =>
+              isActive
+                ? "flex items-center  gap-[5px] bg-[#141414]  font-extrabold py-[10px] px-[12px] rounded-[10px] text-white transition-all duration-300 "
+                : "flex items-center  text-gray-300 gap-[5px] font-bold py-[10px] px-[12px] rounded-[10px] transition-all duration-300 hover:bg-[#14141438] scale-95"
+            }>
+            {" "}
+            <Message fontSize="small" />
+            {!compress && <span>General Chat</span>}
+          </NavLink>
+          <NavLink
+            to="/dashboard/history"
             className={({ isActive }) =>
               isActive
                 ? "flex items-center  gap-[5px] bg-[#141414]  font-extrabold py-[10px] px-[12px] rounded-[10px] text-white transition-all duration-300 "
