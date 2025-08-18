@@ -38,9 +38,14 @@ const Profile = () => {
   });
 
   // handle updates for editable fields
-  // const handleChange = (field, value) => {
-  //   setProfile((prev) => ({ ...prev, [field]: value }));
-  // };
+  const handleChange = (
+    // field, value
+  ) => {
+    const field = 1
+    const value = 'alien'
+    setProfile((prev) => ({ ...prev, [field]: value }));
+    
+  };
 
   return (
     <div className="bg-[#141718] sm:h-[98%] rounded-2xl overflow-hidden flex flex-col gap-5 p-5 overflow-y-scroll">
@@ -97,6 +102,7 @@ const Profile = () => {
                     className="bg-[#1A1D1F] p-2 rounded-lg"
                     value={profile.username}
                     // onChange={(e) => handleChange("username", e.target.value)}
+                    onChange={handleChange}
                   />
                   <input
                     className="bg-[#1A1D1F] p-2 rounded-lg"
