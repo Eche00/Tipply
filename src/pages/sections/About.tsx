@@ -3,7 +3,7 @@ import { Svgs } from "../../lib/svg/Svg"
 
 function About() {
   return (
-    <div className="relative w-full h-[100vh] ">
+    <div className="relative w-full h-[100vh] bg-[linear-gradient(to_right,#4f4f4f0e_0.8px,transparent_0.1px),linear-gradient(to_bottom,#4f4f4f0e_0.8px,transparent_0.1px)] md:bg-[size:104px_104px] bg-[size:50px_50px]  [mask-image:radial-gradient(ellipse_100%_70%_at_50%_100%,#000_70%,transparent_[200%])]">
         {/* Hero left  background blur */}
           <div 
         className="absolute top-[-10%] left-[-3%] w-[180px] h-[180px] bg-[#FFFFFF]/40  rounded-[50%] blur-[50px]   z-10"
