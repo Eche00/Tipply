@@ -5,14 +5,27 @@ import { Svgs } from "../lib/svg/Svg"
 
 function Tipboard() {
   return (
-    <div>
+    <div className="relative ">
         <div className="    bg-[linear-gradient(to_right,#4f4f4f0e_0.8px,transparent_0.1px),linear-gradient(to_bottom,#4f4f4f0e_0.8px,transparent_0.1px)] md:bg-[size:104px_104px] bg-[size:50px_50px]  [mask-image:radial-gradient(ellipse_100%_70%_at_50%_100%,#000_70%,transparent_[200%])]   h-fit   w-full">
+            {/* Hero left  background blur */}
+          <div 
+        className="absolute top-[-10%] left-[-3%] w-[180px] h-[180px] bg-[#FFFFFF]/40  rounded-[50%] blur-[50px]   z-10"
+      />
+     
+    <img src="/stars.png" alt="" className="absolute top-[-32%] left-[0%] rotate-[43.54deg] w-[269px] h-[585px] object-cover opacity-[70%] z-10" />
+      {/* Hero right  background blur */}
+      <div 
+        className="absolute top-[-10%] right-[-3%] w-[180px] h-[180px] bg-[#FFFFFF]/40  rounded-[50%] blur-[50px]   z-10"
+      />
+     
+    <img src="/stars.png" alt="" className="absolute top-[-32%] right-[0%] rotate-[-43.54deg] w-[269px] h-[585px] object-cover opacity-[70%] z-10" />
+
           <h2 className="flex-1  text-[40px]  leading-[55px] capitalize bg-gradient-to-r from-[#008CFF] to-[#FFFFFF69] font-extrabold bg-clip-text text-transparent w-[90%] mx-auto">
             Tipboard
           </h2>
          
         {/* Tippers */}
-       <section className="w-[90%] mx-auto flex sm:flex-row flex-col gap-[20px] py-[20px] pb-[50px]">
+       <section className="w-[90%] mx-auto flex sm:flex-row flex-col gap-[20px] py-[20px] pb-[50px] sm:h-[100vh]">
         <div className="flex-1 bg-black h-fit rounded-[16px] p-[20px]">
           <h3 className=" font-bold py-2">TOP TIPPERS</h3>
           <table className=" w-full text-left ">

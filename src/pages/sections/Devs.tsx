@@ -8,6 +8,19 @@ function Devs() {
   const [tip,setTip] = useState<boolean>(false)
   return (
     <div className="    bg-[linear-gradient(to_right,#4f4f4f0e_0.8px,transparent_0.1px),linear-gradient(to_bottom,#4f4f4f0e_0.8px,transparent_0.1px)] md:bg-[size:104px_104px] bg-[size:50px_50px]  [mask-image:radial-gradient(ellipse_100%_70%_at_50%_100%,#000_70%,transparent_[200%])]   h-fit  flex  items-center justify-center  w-full ">
+        {/* Hero left  background blur */}
+          <div 
+        className="absolute top-[-10%] left-[-3%] w-[180px] h-[180px] bg-[#FFFFFF]/40  rounded-[50%] blur-[50px]   z-10"
+      />
+     
+    <img src="/stars.png" alt="" className="absolute top-[-32%] left-[0%] rotate-[43.54deg] w-[269px] h-[585px] object-cover opacity-[70%] z-10" />
+      {/* Hero right  background blur */}
+      <div 
+        className="absolute top-[-10%] right-[-3%] w-[180px] h-[180px] bg-[#FFFFFF]/40  rounded-[50%] blur-[50px]   z-10"
+      />
+     
+    <img src="/stars.png" alt="" className="absolute top-[-32%] right-[0%] rotate-[-43.54deg] w-[269px] h-[585px] object-cover opacity-[70%] z-10" />
+
       <section className="flex flex-col w-[90%] mx-auto py-[50px] relative z-30 sm:h-[100vh]">
         <div className="flex sm:flex-row flex-col sm:items-center sm:justify-between gap-[20px]  relative z-30">
           <h2 className="flex-1  text-[40px]  leading-[55px] capitalize bg-gradient-to-r from-[#008CFF] to-[#FFFFFF69] font-extrabold bg-clip-text text-transparent">
