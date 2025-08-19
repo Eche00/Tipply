@@ -69,7 +69,7 @@ export const useUserInfo = () => {
     }
   };
 
-  // --- Projects ---
+  //  Projects 
   const handleChangeProject = (field: string, value: string) => {
     setNewProject((prev) => ({ ...prev, [field]: value }));
   };
@@ -125,6 +125,28 @@ export const useUserInfo = () => {
     }
   };
 
+  //  Notifications 
+  const markNotificationsAsSeen = async () => {
+    if (user?.uid && user?.notifications?.some((n: any) => !n.seen)) {
+      const updatedNotifications = user.notifications.map((n: any) => ({
+        ...n,
+        seen: true,
+      }));
+
+      try {
+        const userDocRef = doc(db, "user", user.uid);
+        await updateDoc(userDocRef, { notifications: updatedNotifications });
+
+        setUser((prev: any) => ({
+          ...prev,
+          notifications: updatedNotifications,
+        }));
+      } catch (error) {
+        console.error("Error marking notifications as seen:", error);
+      }
+    }
+  };
+
   // HANDLE LOG OUT 
   const handleLogOutUser = async () => {
     try {
@@ -148,6 +170,7 @@ export const useUserInfo = () => {
     handleUpdateUser,
     handleChangeProject,
     handleAddProject,
-    handleLogOutUser
+    handleLogOutUser,
+    markNotificationsAsSeen
   };
 };

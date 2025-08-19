@@ -57,7 +57,7 @@ function Sidebar({ compress, setCompress }: SidebarProp) {
              <p className="font-bold text-white">Developer <SupportAgent fontSize="small"/></p>
 
             <h1 className=" text-[24px] font-[600] text-white tracking-wider ">
-              Welcome Back, <br /> {user?.name} 
+              Welcome Back, <br /> {user?.name || user?.username} 
             </h1>
              </>
             }

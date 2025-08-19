@@ -8,6 +8,9 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
+import { Circle, Close, NotificationsActive } from "@mui/icons-material";
+import { useUserInfo } from "../../lib/logics/profileLogic";
+import { motion, AnimatePresence } from "framer-motion";
 
 type Prices = {
   [key: string]: {
@@ -18,7 +21,8 @@ type Prices = {
 
 function DashHome() {
   const [prices, setPrices] = useState<Prices | null>(null);
-
+  const [notificationD, setNotificatioD] = useState<boolean>(false);
+const {user,markNotificationsAsSeen} = useUserInfo();
   useEffect(() => {
     const fetchPrices = async () => {
       try {
@@ -36,7 +40,13 @@ function DashHome() {
     const interval = setInterval(fetchPrices, 1000); // refresh every 60s
     return () => clearInterval(interval);
   }, []);
-
+useEffect(() => {
+  if (notificationD) {
+    setTimeout(() => {
+      markNotificationsAsSeen();
+    }, 5000);
+  }
+}, [notificationD]);
   const coins = [
     {
       id: "bitcoin",
@@ -70,9 +80,9 @@ function DashHome() {
           <h2 className="text-lg font-medium border border-[#FFFFFF14] py-1 px-6 rounded-lg bg-[#FFFFFF0A]">
             Total Tips:
           </h2>
-          <h2 className="text-lg font-medium border border-[#FFFFFF14] py-1 px-6 rounded-lg bg-[#034FE3]">
-            Total Tips:
-          </h2>
+          <button className="text-lg font-medium border border-[#FFFFFF14] py-1 px-6 rounded-lg bg-[#034FE3] cursor-pointer" onClick={()=>setNotificatioD(!notificationD)}>
+            <NotificationsActive/>
+          </button>
         </div>
       </section>
 
@@ -264,6 +274,71 @@ function DashHome() {
 
 
       </section>
+
+      <AnimatePresence>
+      {notificationD && (
+        <motion.div
+          className="fixed w-full left-0 top-0 h-[100vh] bg-black/60 flex justify-end "
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          
+        >
+          <motion.section
+            className="sm:w-[400px] w-full h-[100vh] bg-[#0D0F10] text-white p-4 overflow-y-auto relative md:mt-0 mt-12"
+            initial={{ x: "100%" }}
+            animate={{ x: 0 }}
+            exit={{ x: "100%" }}
+            transition={{ type: "tween", duration: 0.3 }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button className="absolute top-2 right-4 text-gray-400 cursor-pointer" onClick={() => setNotificatioD(!notificationD)}><Close/></button>
+            <h2 className="text-[24px] font-bold my-5 flex items-center justify-between gap-[10px]">Notifications 
+              <span  className="ml-2 px-2 py-0.5  text-sm font-semibold rounded-full bg-[#034FE3] text-white shadow">{user?.notifications?.length}
+             </span>
+            </h2>
+
+            {user?.notifications?.length ? (
+              <ul className="space-y-3">
+                {user.notifications.map((notif: any, idx:number) => (
+                 <motion.li
+  key={idx}
+  className={`p-4 rounded-2xl shadow-md flex flex-col gap-2 border transition-all duration-200 hover:scale-[1.01] ${
+    notif.seen
+      ? "border-gray-700 bg-gray-900/80"
+      : "border-2 border-[#034FE3] bg-[#034FE3]/30"
+  }`}
+  initial={{ opacity: 0, y: 10 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ delay: idx * 0.05 }}
+>
+  <div className="flex items-start justify-between">
+    <p className="font-semibold text-sm sm:text-base text-white">
+      {notif.message}
+    </p>
+    <span
+      className={`wrounded-full ${
+        notif.seen ? "text-gray-500" : "text-[#034FE3] animate-pulse"
+      }`}
+    ><Circle fontSize="small"/></span>
+  </div>
+  <span className="text-xs text-gray-400">
+    {notif.timestamp?.toDate
+    ? notif.timestamp.toDate().toLocaleString() // Firestore Timestamp object
+    : new Date(notif.timestamp).toLocaleString() // fallback if already string/Date
+  }
+  </span>
+</motion.li>
+
+                ))}
+              </ul>
+            ) : (
+              <p className="text-gray-400">No notifications yet.</p>
+            )}
+          </motion.section>
+        </motion.div>
+      )}
+    </AnimatePresence>
     </div>
   );
 }
