@@ -11,14 +11,32 @@ import {
   SpaceDashboard,
   SupportAgent,
 } from "@mui/icons-material";
+import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
+import { auth, db } from "../lib/firebase";
+import { doc, getDoc } from "firebase/firestore";
 
 interface SidebarProp{
   compress: boolean,
   setCompress: React.Dispatch<React.SetStateAction<boolean>>,
 }
 function Sidebar({ compress, setCompress }: SidebarProp) {
+    const [user,setUser] = useState<any>()
 
+  useEffect(()=>{
+
+    const unsubscribe = auth.onAuthStateChanged(async(authUser)=>{
+      if(authUser){
+       const userDocRef = doc(db,'user',authUser.uid)
+       const userDoc = await getDoc(userDocRef);
+       if(userDoc.exists()){
+        setUser(userDoc.data())
+       }
+      }
+    })
+
+    return ()=>unsubscribe()
+  },[auth])
 
   return (
     <div
@@ -45,7 +63,7 @@ function Sidebar({ compress, setCompress }: SidebarProp) {
              <p className="font-bold text-white">Developer <SupportAgent fontSize="small"/></p>
 
             <h1 className=" text-[24px] font-[600] text-white tracking-wider ">
-              Welcome Back, <br /> @user 
+              Welcome Back, <br /> {user?.username} 
             </h1>
              </>
             }
