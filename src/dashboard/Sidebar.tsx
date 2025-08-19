@@ -12,9 +12,11 @@ import {
   SupportAgent,
 } from "@mui/icons-material";
 import { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { auth, db } from "../lib/firebase";
 import { doc, getDoc } from "firebase/firestore";
+import { signOut } from "firebase/auth";
+import toast from "react-hot-toast";
 
 interface SidebarProp{
   compress: boolean,
@@ -22,7 +24,7 @@ interface SidebarProp{
 }
 function Sidebar({ compress, setCompress }: SidebarProp) {
     const [user,setUser] = useState<any>()
-
+    const navigate = useNavigate()
   useEffect(()=>{
 
     const unsubscribe = auth.onAuthStateChanged(async(authUser)=>{
@@ -38,6 +40,17 @@ function Sidebar({ compress, setCompress }: SidebarProp) {
     return ()=>unsubscribe()
   },[auth])
 
+  // HANDLE LOG OUT 
+  const handleLogOut = async()=>{
+    try {
+      await signOut(auth)
+       navigate('/auth')
+      toast.success("Signed out successfully");
+} catch (error) {
+  console.error("Logout Failed:", error);
+  toast.error("Unable to sign out. Please try again.");
+    }
+  }
   return (
     <div
       className={
@@ -165,7 +178,7 @@ function Sidebar({ compress, setCompress }: SidebarProp) {
             <Home />
             {!compress && <span>Home</span>}
           </NavLink>
-      <button className="sm:hidden w-full flex items-center  gap-[5px] bg-[#14141438]   py-[10px] px-[12px] rounded-[10px] text-white transition-all duration-300 cursor-pointer">
+      <button className="sm:hidden w-full flex items-center  gap-[5px] bg-[#14141438]   py-[10px] px-[12px] rounded-[10px] text-white transition-all duration-300 cursor-pointer" onClick={handleLogOut}>
          <Logout />
           {!compress && <span>Logout</span>}
        </button>
@@ -173,7 +186,7 @@ function Sidebar({ compress, setCompress }: SidebarProp) {
 
 
      <div className=" absolute bottom-0 left-0 w-full hidden sm:flex">
-       <button className="w-full flex items-center sm:justify-center  gap-[5px] bg-[#034FE3]   py-[10px] px-[12px] rounded-[10px] text-white transition-all duration-300 cursor-pointer">
+       <button className="w-full flex items-center sm:justify-center  gap-[5px] bg-[#034FE3]   py-[10px] px-[12px] rounded-[10px] text-white transition-all duration-300 cursor-pointer" onClick={handleLogOut}>
          <Logout />
           {!compress && <span>Logout</span>}
        </button>
