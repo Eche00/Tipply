@@ -18,7 +18,39 @@ import { Toaster } from "react-hot-toast";
 function App() {
   return (
     <div className=" bg-[#050520] text-white h-[100vh] relative w-full overflow-x-hidden">
-      <Toaster position="top-right"  reverseOrder={false} />
+
+<Toaster
+  position="top-right"
+  reverseOrder={false}
+  toastOptions={{
+    style: {
+      background: "#1A1D1F", // dark background
+      color: "#FFFFFF",        // white text
+      fontWeight: "500",
+      borderRadius: "8px",
+      padding: "12px 16px",
+    },
+    success: {
+      iconTheme: {
+        primary: "#22C55E", // green icon
+        secondary: "#1A1D1F",
+      },
+    },
+    error: {
+      iconTheme: {
+        primary: "#EF4444", // red icon
+        secondary: "#1A1D1F",
+      },
+    },
+    loading: {
+      iconTheme: {
+        primary: "#034FE3", // blue icon
+        secondary: "#1A1D1F",
+      },
+    },
+  }}
+/>
+
         <Routes>
           {/* General Routes */}
            <Route element={<Container/>}>
