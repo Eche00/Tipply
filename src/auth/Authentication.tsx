@@ -1,13 +1,85 @@
 
-import { useState } from "react";
-import {   Email, Google, Password } from "@mui/icons-material";
-import { Link } from "react-router";
+import React, { useEffect, useState} from "react";
+import {   SupportAgent, Email, Google, Password } from "@mui/icons-material";
+import { Link,useNavigate } from "react-router";
+import { HandleGoogleAuthentication, HandleLogin, HandleRegisteration, ResetPassword } from "../lib/logics/reglogic";
+import Loader from "../components/Loader";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "../lib/firebase";
 
+interface Project{
+  title: string,
+  link: string,
+}
+interface Wallet{
+  title: string,
+}
+
+interface FormData{
+  username: string,
+  name: string,
+  email: string,
+  password: string,
+  phone: string,
+  dob: string,
+  gender: string,
+  address: string,
+  wallet: Wallet[],
+  devType: string,
+  bio: string,
+  techStacks: string[],
+  twitter: string,
+  github: string,
+  projects: Project[],
+};
+interface FormDataLogin{
+  email: string,
+  password: string,
+};
 function Authentication() {
+  // DISPLAY STATES 
   const [signIn, setSignIn] = useState<boolean>(true);
   const [createAccount, setCreateAccount] = useState<boolean>(false);
   const [resetPassword, setResetPassword] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [success, setSuccess] = useState<boolean>(false);
+  const [resetEmail, setResetEmail] = useState<string>('');
+  const navigate = useNavigate()
+  // FORMDATA 
+  const [formData, setFormData] = useState<FormData>({
+  username: "",
+  name: "",
+  email: "",
+  password: "",
+  phone: "",
+  dob: "",
+  gender: "",
+  address: "",
+  wallet: [],
+  devType: "",
+  bio: "",
+  techStacks: [],
+  twitter: "",
+  github: "",
+  projects: [],
+});
+  const [formDataLogin, setFormDataLogin] = useState<FormDataLogin>({
+  email: "",
+  password: "",
+ 
+});
 
+// Handling if a user is logged in 
+useEffect(()=>{
+   const unsubscribe = auth.onAuthStateChanged(async(authUser)=>{
+    if(authUser){
+      navigate('/dashboard/home')
+    }
+   })
+   return () => unsubscribe();
+},[auth])
+
+  // DISPLAY SWITCHES 
   const handleSwitch = (e: React.MouseEvent<HTMLButtonElement | HTMLParagraphElement>) => {
     e.preventDefault();
     const target = e.target as HTMLElement
@@ -30,9 +102,77 @@ function Authentication() {
     }
   };
 
+  //  HANDLE CHANGE 
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>)=>{
+   const {name,value} = e.target;
+   setFormData((prev)=>({...prev, [name]: value}))
+  }
+  const handleChangeLogin = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const { name, value } = e.target;
+  setFormDataLogin(prev => ({ ...prev, [name]: value }));
+};
+  // HANDLE SIGN UP 
+  const handleSignUp = async(e: React.FormEvent)=>{
+    e.preventDefault()
+    setLoading(true)
+    try {
+      await HandleRegisteration(formData)
+      navigate('/dashboard/home')
+    } catch (error) {
+      console.log("Error:", error);
+    }finally{
+      setLoading(false)
+    }
+  }
+
+  // HANDLE SIGN IN 
+  const handleSignIn = async(e: React.FormEvent)=>{
+    e.preventDefault()
+    setLoading(true)
+
+   try {
+    await HandleLogin(formDataLogin)
+    navigate('/dashboard/home')
+   } catch (error) {
+   console.error('SignIn Failed',error);
+   } finally{
+    setLoading(false)
+   }
+  }
+
+  // HANDLE  Google Sign Up
+  const handleGoogleAuth = async(e: React.FormEvent)=>{
+    e.preventDefault()
+    try {
+        const user = await HandleGoogleAuthentication(formData); // wait until done
+    if (user) {
+      navigate('/dashboard/home');
+    }
+    } catch (error) {
+      console.error("Error signing in with Google",error);
+    }
+  }
+  // HANDLE  RESET PASSWORD 
+  const handleResetPassword = async(e: React.FormEvent)=>{
+    e.preventDefault()
+    setLoading(true);
+    try {
+      await ResetPassword(resetEmail);
+      setSuccess(true);
+      setResetEmail('')
+      setTimeout(() => {
+        setSuccess(false);
+      }, 5000);
+    } catch (error) {
+      console.error("Error resetting password:", error);
+    } finally{
+      setLoading(false);
+    }
+  }
+
   return (
     <div className=" w-full relative">
-
+      {loading && <Loader/>}
        {/* Hero left  background blur */}
           <div 
         className="absolute top-[-5%] left-[-3%] w-[180px] h-[180px] bg-[#FFFFFF]/40  rounded-[50%] blur-[50px]   z-10"
@@ -53,8 +193,10 @@ function Authentication() {
           <div className=" w-[90%] mx-auto   h-full sm:rounded-[20px] flex relative  items-center justify-center">
             {/* auth components  */}
             {resetPassword ? (
-              <form className="flex flex-col gap-[16px] xl:w-[504px]  md:w-[447px] sm:w-[463px] w-[291px]  ">
+              
+              <form className="flex flex-col gap-[16px] xl:w-[504px]  md:w-[447px] sm:w-[463px] w-[291px]  " onSubmit={handleResetPassword}>
                 {/* input container  */}
+                
                 <section className=" flex flex-col gap-[16px]">
                   <p className=" text-[#141718] dark:text-[#FEFEFE] text-[24px] font-[600] leading-[40px] flex  items-center gap-[16px]">
                     <span
@@ -65,20 +207,39 @@ function Authentication() {
                     </span>{" "}
                     Reset password
                   </p>
+                   {success ? (
+            <div className="flex flex-col items-center justify-center gap-4 w-full  p-6 rounded-2xl shadow-lg bg-[#1A1D1F]">
+  <span className="flex items-center justify-center w-16 h-16 rounded-full bg-[#008CFF]/10 border-2 border-[#008CFF]">
+    <Email fontSize="large" className="text-[#008CFF]" />
+  </span>
+
+  <p className="text-center text-lg font-bold text-gray-500">
+    Password reset email sent!  <br />
+    <span className="text-sm font-medium text-white">
+      Please check your inbox/spams and follow the instructions.
+    </span>
+  </p>
+</div>
+
+                 ) : (
                   <div className=" dark:bg-[#141718] bg-[#F3F5F7] rounded-[12px] flex items-center py-[14px] px-[16px] gap-[12px]">
                     <Email/>{" "}
                     <input
                       type="text"
                       className="flex flex-1 bg-transparent outline-none text-[14px] font-[500] leading-[24px]"
                       placeholder="Username or email"
+                      value={resetEmail}
+                      onChange={(e: React.ChangeEvent<HTMLInputElement>)=>setResetEmail(e.target.value)}
                     />
                   </div>
+                  )}
                 </section>
-
+          
                 {/* button  */}
-                <button className="bg-[#008CFF] cursor-pointer py-[14px] text-[16px] font-[600] leading-[24px] w-full rounded-[12px] text-white">
+                {!success && <button className="bg-[#008CFF] cursor-pointer py-[14px] text-[16px] font-[600] leading-[24px] w-full rounded-[12px] text-white" type="submit">
                   Reset password
-                </button>
+                </button>}
+                
               </form>
             ) : (
               <div className=" flex flex-col gap-[8px]">
@@ -113,7 +274,7 @@ function Authentication() {
                  {/* sign in form  */}
                  
                 {signIn && (
-                  <form className="flex flex-col gap-[16px] xl:w-[504px]  md:w-[447px] sm:w-[463px] w-[291px]">
+                  <form className="flex flex-col gap-[16px] xl:w-[504px]  md:w-[447px] sm:w-[463px] w-[291px]" onSubmit={handleSignIn}>
                     {/* input container  */}
                     <section className=" flex flex-col gap-[16px]">
                       <div className=" dark:bg-[#141718] bg-[#F3F5F7] rounded-[12px] flex items-center py-[14px] px-[16px] gap-[12px]">
@@ -122,6 +283,9 @@ function Authentication() {
                           type="text"
                           className="flex flex-1 bg-transparent outline-none text-[14px] font-[500] leading-[24px]"
                           placeholder="Username or email"
+                          name="email"
+                          value={formDataLogin.email}
+                          onChange={handleChangeLogin}
                         />
                       </div>
                       <div className=" dark:bg-[#141718] bg-[#F3F5F7] rounded-[12px] flex items-center py-[14px] px-[16px] gap-[12px]">
@@ -130,6 +294,9 @@ function Authentication() {
                           type="password"
                           className="flex flex-1 bg-transparent outline-none text-[14px] font-[500] leading-[24px]"
                           placeholder="Password"
+                          name="password"
+                          value={formDataLogin.password}
+                          onChange={handleChangeLogin}
                         />
                       </div>
                       <p
@@ -141,23 +308,38 @@ function Authentication() {
                     </section>
 
                     {/* button  */}
-                    <button className="bg-[#008CFF] cursor-pointer py-[14px] text-[16px] font-[600] leading-[24px] w-full rounded-[12px] text-white">
-                      Sign In
+                    <button className="bg-[#008CFF] cursor-pointer py-[14px] text-[16px] font-[600] leading-[24px] w-full rounded-[12px] text-white" type="submit">
+                      {!loading ? 'Sign In' : 'Loading...' }
                     </button>
                   </form>
                 )}
 
                 {/* create account form  */}
                 {createAccount && (
-                  <form className="flex flex-col gap-[16px] xl:w-[504px]  md:w-[447px] sm:w-[463px] w-[291px]">
+                  <form className="flex flex-col gap-[16px] xl:w-[504px]  md:w-[447px] sm:w-[463px] w-[291px]" onSubmit={handleSignUp}>
                     {/* input container  */}
                     <section className=" flex flex-col gap-[16px]">
                       <div className=" dark:bg-[#141718] bg-[#F3F5F7] rounded-[12px] flex items-center py-[14px] px-[16px] gap-[12px]">
-                        <Email/>{" "}
+                        <SupportAgent/>{" "}
                         <input
                           type="text"
                           className="flex flex-1 bg-transparent outline-none text-[14px] font-[500] leading-[24px]"
-                          placeholder="Username or email"
+                          placeholder="Username"
+                          name="username"
+                          value={formData.username}
+                          onChange={handleChange}
+                          min={4}
+                        />
+                      </div>
+                      <div className=" dark:bg-[#141718] bg-[#F3F5F7] rounded-[12px] flex items-center py-[14px] px-[16px] gap-[12px]">
+                        <Email/>{" "}
+                        <input
+                          type="email"
+                          className="flex flex-1 bg-transparent outline-none text-[14px] font-[500] leading-[24px]"
+                          placeholder="Email"
+                          name="email"
+                          value={formData.email}
+                          onChange={handleChange}
                         />
                       </div>
                       <div className=" dark:bg-[#141718] bg-[#F3F5F7] rounded-[12px] flex items-center py-[14px] px-[16px] gap-[12px]">
@@ -166,13 +348,18 @@ function Authentication() {
                           type="password"
                           className="flex flex-1 bg-transparent outline-none text-[14px] font-[500] leading-[24px]"
                           placeholder="Password"
+                          name="password"
+                          value={formData.password}
+                          onChange={handleChange}
+                          min={8}
+
                         />
                       </div>
                     </section>
 
                     {/* button  */}
-                    <button className="bg-[#008CFF] cursor-pointer py-[14px] text-[16px] font-[600] leading-[24px] w-full rounded-[12px] text-white">
-                      Sign Up 
+                    <button className="bg-[#008CFF] cursor-pointer py-[14px] text-[16px] font-[600] leading-[24px] w-full rounded-[12px] text-white" type="submit">
+                      {!loading ? 'Sign Up' : 'Loading...' }
                     </button>
                     <p className=" text-[12px] font-[500] leading-[20px] w-full  text-[#6C7275]  text-center">
                       By creating an account, you agree to our{" "}
@@ -195,7 +382,7 @@ function Authentication() {
                 </section>
                 {/* easier auth methods  */}
                  <section className="flex flex-col gap-[12px]">
-                  <button className=" flex items-center justify-center gap-[16px] border-[2px] border-[#008CFF] rounded-[12px] py-[14px] text-[16px] font-[600] leading-[24px] text-[#141718] dark:text-[#FEFEFE]">
+                  <button className=" flex items-center justify-center gap-[16px] border-[2px] border-[#008CFF] rounded-[12px] py-[14px] text-[16px] font-[600] leading-[24px] text-[#141718] dark:text-[#FEFEFE] hover:bg-[#008CFF] hover:scale-[103%] cursor-pointer transition-all duration-300" onClick={handleGoogleAuth}>
                     <Google/> Continue With Google
                   </button>
                 </section>
