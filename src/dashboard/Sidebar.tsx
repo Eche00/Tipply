@@ -11,44 +11,25 @@ import {
   SpaceDashboard,
   SupportAgent,
 } from "@mui/icons-material";
-import { useEffect, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-import { auth, db } from "../lib/firebase";
-import { doc, getDoc } from "firebase/firestore";
-import { signOut } from "firebase/auth";
-import toast from "react-hot-toast";
+import { useUserInfo } from "../lib/logics/profileLogic";
 
 interface SidebarProp{
   compress: boolean,
   setCompress: React.Dispatch<React.SetStateAction<boolean>>,
 }
 function Sidebar({ compress, setCompress }: SidebarProp) {
-    const [user,setUser] = useState<any>()
+    const {user,handleLogOutUser} = useUserInfo()
     const navigate = useNavigate()
-  useEffect(()=>{
-
-    const unsubscribe = auth.onAuthStateChanged(async(authUser)=>{
-      if(authUser){
-       const userDocRef = doc(db,'user',authUser.uid)
-       const userDoc = await getDoc(userDocRef);
-       if(userDoc.exists()){
-        setUser(userDoc.data())
-       }
-      }
-    })
-
-    return ()=>unsubscribe()
-  },[auth])
+  
 
   // HANDLE LOG OUT 
   const handleLogOut = async()=>{
     try {
-      await signOut(auth)
+      await handleLogOutUser()
        navigate('/auth')
-      toast.success("Signed out successfully");
-} catch (error) {
-  console.error("Logout Failed:", error);
-  toast.error("Unable to sign out. Please try again.");
+    } catch (error) {
+    console.error("Logout Failed:", error);
     }
   }
   return (
@@ -76,7 +57,7 @@ function Sidebar({ compress, setCompress }: SidebarProp) {
              <p className="font-bold text-white">Developer <SupportAgent fontSize="small"/></p>
 
             <h1 className=" text-[24px] font-[600] text-white tracking-wider ">
-              Welcome Back, <br /> {user?.username} 
+              Welcome Back, <br /> {user?.name} 
             </h1>
              </>
             }

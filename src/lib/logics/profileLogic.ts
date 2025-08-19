@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { auth, db } from "../firebase";
 import { doc, getDoc, updateDoc } from "firebase/firestore";
 import toast from "react-hot-toast"; // import toast
+import { signOut } from "firebase/auth";
 
 export const useUserInfo = () => {
   const [user, setUser] = useState<any>({});
@@ -124,7 +125,16 @@ export const useUserInfo = () => {
     }
   };
 
-
+  // HANDLE LOG OUT 
+  const handleLogOutUser = async () => {
+    try {
+      await signOut(auth)
+      toast.success("Signed out successfully");
+    } catch (error) {
+      console.error("Logout Failed:", error);
+      toast.error("Unable to sign out. Please try again.");
+    }
+  }
 
   return {
     user,
@@ -137,6 +147,7 @@ export const useUserInfo = () => {
     handleChange,
     handleUpdateUser,
     handleChangeProject,
-    handleAddProject
+    handleAddProject,
+    handleLogOutUser
   };
 };
