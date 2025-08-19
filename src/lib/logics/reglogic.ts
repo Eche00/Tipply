@@ -4,7 +4,30 @@ import { toast } from "react-hot-toast";
 import { auth, db, googleProvider } from "../firebase";
 
 export const HandleRegisteration = async (formdata: any) => {
-  const { username, name, email, password, phone, dob, gender, address, wallet, devType, bio, techStacks, twitter, github, projects } = formdata;
+  const {
+    username,
+    name,
+    email,
+    password,
+    phone,
+    dob,
+    gender,
+    address,
+    wallet,
+    balance,
+    transactions,
+    tipsReceived,
+    tippers,
+    devType,
+    bio,
+    techStacks,
+    twitter,
+    github,
+    projects,
+    status,
+    notifications
+  } = formdata;
+
 
   try {
     const userCresidentials = await createUserWithEmailAndPassword(auth, email, password)
@@ -12,8 +35,29 @@ export const HandleRegisteration = async (formdata: any) => {
 
     // setting user details to db
     await setDoc(doc(db, 'user', user.uid), {
-      username, name, email, phone, dob, gender, address, wallet, devType, bio, techStacks, twitter, github, projects
-    })
+      username,
+      name,
+      email,
+      phone,
+      dob,
+      gender,
+      address,
+      wallet,
+      balance,
+      transactions,
+      tipsReceived,
+      tippers,
+      devType,
+      bio,
+      techStacks,
+      twitter,
+      github,
+      projects,
+      status,
+      notifications,
+      createdAt: new Date()
+    });
+
     toast.success("User Registered Successfully");
     return user;
 
@@ -54,39 +98,52 @@ export const HandleGoogleAuthentication = async (formdata: any) => {
         username,
         name,
         email,
-        password,
         phone,
         dob,
         gender,
         address,
         wallet,
+        balance,
+        transactions,
+        tipsReceived,
+        tippers,
         devType,
         bio,
         techStacks,
         twitter,
         github,
         projects,
+        status,
+        notifications,
       } = formdata;
+
 
       // Prepare payload
       const userData = {
         username: username || user.displayName?.split(" ")[0] || "",
         name: name || user.displayName || "",
         email: email || user.email || "",
-        password: password || "", // optional: may not store plain password
         phone: phone || "",
         dob: dob || "",
         gender: gender || "",
         address: address || "",
-        wallet: wallet || "",
+        wallet: wallet || [],
+        balance: balance || 0,
+        transactions: transactions || [],
+        tipsReceived: tipsReceived || 0,
+        tippers: tippers || [],
         devType: devType || "",
         bio: bio || "",
         techStacks: techStacks || [],
         twitter: twitter || "",
         github: github || "",
         projects: projects || [],
+        status: status || "offline",
+        notifications: notifications || [],
         photoURL: user.photoURL || "",
+        createdAt: new Date()
       };
+
 
       // If user does not exist yet, create record
       if (!userSnap.exists()) {

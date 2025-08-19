@@ -14,24 +14,56 @@ interface Project{
 interface Wallet{
   title: string,
 }
+interface Message {
+  senderId: string;
+  content: string;
+  timestamp: Date;
+}
+interface Chat {
+  chatId: string;
+  participants: string[]; // user IDs
+  messages: Message[];
+}
 
-interface FormData{
-  username: string,
-  name: string,
-  email: string,
-  password: string,
-  phone: string,
-  dob: string,
-  gender: string,
-  address: string,
-  wallet: Wallet[],
-  devType: string,
-  bio: string,
-  techStacks: string[],
-  twitter: string,
-  github: string,
-  projects: Project[],
-};
+// Transactions for tipping
+interface Transaction {
+  fromUserWallet: string;
+  toUserWallet: string; // or userId
+  amount: number;
+  timestamp: Date;
+}
+
+// Notifications
+interface Notification {
+  type: string;       
+  message: string;
+  seen: boolean;
+  timestamp: Date;
+}
+
+interface FormData {
+  username: string;
+  name: string;
+  email: string;
+  password: string;
+  phone: string;
+  dob: string;
+  gender: string;
+  address: string;
+  wallet: Wallet[];
+  balance: number;                // Current wallet balance
+  transactions: Transaction[];    // Track tips sent/received
+  tipsReceived: number;           // Number of times user was tipped
+  tippers: string[];              // User IDs who tipped this user
+  devType: string;
+  bio?: string;
+  techStacks: string[];
+  twitter?: string;
+  github?: string;
+  projects: Project[];
+  status: string;                 // Online/offline or chat presence
+  notifications: Notification[];  // Optional: notify when tipped or mentioned
+}
 interface FormDataLogin{
   email: string,
   password: string,
@@ -46,7 +78,7 @@ function Authentication() {
   const [resetEmail, setResetEmail] = useState<string>('');
   const navigate = useNavigate()
   // FORMDATA 
-  const [formData, setFormData] = useState<FormData>({
+ const [formData, setFormData] = useState<FormData>({
   username: "",
   name: "",
   email: "",
@@ -55,14 +87,21 @@ function Authentication() {
   dob: "",
   gender: "",
   address: "",
-  wallet: [],
+  wallet: [],              
+  balance: 0,              
+  transactions: [],        
+  tipsReceived: 0,         
+  tippers: [],             
   devType: "",
-  bio: "",
-  techStacks: [],
-  twitter: "",
-  github: "",
-  projects: [],
+  bio: "",                 
+  techStacks: [],          
+  twitter: "",             
+  github: "",             
+  projects: [],            
+  status: "offline",       
+  notifications: [],      
 });
+
   const [formDataLogin, setFormDataLogin] = useState<FormDataLogin>({
   email: "",
   password: "",
