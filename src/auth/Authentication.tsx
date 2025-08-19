@@ -4,7 +4,6 @@ import {   SupportAgent, Email, Google, Password } from "@mui/icons-material";
 import { Link,useNavigate } from "react-router";
 import { HandleGoogleAuthentication, HandleLogin, HandleRegisteration, ResetPassword } from "../lib/logics/reglogic";
 import Loader from "../components/Loader";
-import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../lib/firebase";
 
 interface Project{
@@ -13,16 +12,6 @@ interface Project{
 }
 interface Wallet{
   title: string,
-}
-interface Message {
-  senderId: string;
-  content: string;
-  timestamp: Date;
-}
-interface Chat {
-  chatId: string;
-  participants: string[]; // user IDs
-  messages: Message[];
 }
 
 // Transactions for tipping
