@@ -1,15 +1,25 @@
-import {  useState } from "react";
-import { Outlet } from "react-router-dom";
+import {  useEffect, useState } from "react";
+import { Outlet, useNavigate } from "react-router-dom";
 import Sidebar from "./Sidebar";
 import { Icons } from "../lib/icons/Icons";
 import { Close } from "@mui/icons-material";
+import { auth } from "../lib/firebase";
 
 
 function DashContainer() {
   const [compress, setCompress] = useState(false);
   const [hide, setHide] = useState(false);
+ const navigate = useNavigate()
 
+  useEffect(()=>{
+    const unsubscribe = auth.onAuthStateChanged(async(authUser)=>{
+      if(!authUser){
+        return navigate('/auth')
+      }
+    })
 
+    return ()=>unsubscribe()
+  },[auth])
 
   return (
     <div className="h-[100vh] relative sm:h-full bg-[#050520] w-full">
