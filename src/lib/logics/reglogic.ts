@@ -1,5 +1,5 @@
 import { createUserWithEmailAndPassword, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
-import { doc, getDoc, setDoc } from "firebase/firestore";
+import { arrayUnion, collection, doc, getDoc, getDocs, setDoc, updateDoc } from "firebase/firestore";
 import { toast } from "react-hot-toast";
 import { auth, db, googleProvider } from "../firebase";
 
@@ -28,10 +28,20 @@ export const HandleRegisteration = async (formdata: any) => {
     notifications
   } = formdata;
 
-
   try {
     const userCresidentials = await createUserWithEmailAndPassword(auth, email, password)
     const user = userCresidentials.user;
+
+    // Add a default welcome notification
+    const initialNotifications: Notification[] = [
+      {
+        type: "welcome",
+        message: `Welcome ${name || username}! Your account has been successfully created, Kindly set up your Profile.`,
+        seen: false,
+        timestamp: new Date(),
+      },
+      ...(notifications || []),
+    ];
 
     // setting user details to db
     await setDoc(doc(db, 'user', user.uid), {
@@ -54,7 +64,7 @@ export const HandleRegisteration = async (formdata: any) => {
       github,
       projects,
       status,
-      notifications,
+      notifications: initialNotifications,
       createdAt: new Date()
     });
 
@@ -67,6 +77,7 @@ export const HandleRegisteration = async (formdata: any) => {
     throw error;
   }
 }
+
 
 
 export const HandleLogin = async (formDataLogin: any) => {
@@ -84,7 +95,6 @@ export const HandleLogin = async (formDataLogin: any) => {
 
 
 export const HandleGoogleAuthentication = async (formdata: any) => {
-
   try {
     const result = await signInWithPopup(auth, googleProvider);
     const user = result.user;
@@ -117,7 +127,6 @@ export const HandleGoogleAuthentication = async (formdata: any) => {
         notifications,
       } = formdata;
 
-
       // Prepare payload
       const userData = {
         username: username || user.displayName?.split(" ")[0] || "",
@@ -144,10 +153,19 @@ export const HandleGoogleAuthentication = async (formdata: any) => {
         createdAt: new Date()
       };
 
-
-      // If user does not exist yet, create record
+      // If user does not exist yet, create record with welcome notification
       if (!userSnap.exists()) {
-        await setDoc(userRef, userData);
+        await setDoc(userRef, {
+          ...userData,
+          notifications: [
+            {
+              type: "welcome",
+              message: "Welcome! Your account has been successfully created. Kindly set up your Profile.",
+              seen: false,
+              timestamp: new Date(),
+            },
+          ],
+        });
       } else {
         // Merge to update missing fields
         await setDoc(userRef, userData, { merge: true });
@@ -167,8 +185,29 @@ export const HandleGoogleAuthentication = async (formdata: any) => {
 
 export const ResetPassword = async (resetEmail: string) => {
   try {
+    // Send reset email
     await sendPasswordResetEmail(auth, resetEmail);
     toast.success("Reset Email sent.");
+
+    // Find the user by email in Firestore
+    const userQuery = await getDocs(
+      collection(db, "user")
+    );
+
+    userQuery.forEach(async (docSnap) => {
+      const userData = docSnap.data();
+      if (userData.email === resetEmail) {
+        // Add a notification about password reset
+        await updateDoc(doc(db, "user", docSnap.id), {
+          notifications: arrayUnion({
+            type: "password_reset",
+            message: "A Password reset email was requested.",
+            seen: false,
+            timestamp: new Date()
+          }),
+        });
+      }
+    });
   } catch (error: any) {
     console.error("Reset Email Failed:", error);
 
