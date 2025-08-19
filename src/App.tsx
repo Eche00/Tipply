@@ -13,10 +13,12 @@ import NotFound from "./components/NotFound"
 import Tipboard from "./pages/Tipboard"
 import Authentication from "./auth/Authentication"
 import GeneralChat from "./dashboard/dashpages/GeneralChat"
+import { Toaster } from "react-hot-toast";
 
 function App() {
   return (
     <div className=" bg-[#050520] text-white h-[100vh] relative w-full overflow-x-hidden">
+      <Toaster position="top-right"  reverseOrder={false} />
         <Routes>
           {/* General Routes */}
            <Route element={<Container/>}>
