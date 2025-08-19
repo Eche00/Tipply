@@ -6,13 +6,14 @@ import { HandleGoogleAuthentication, HandleLogin, HandleRegisteration, ResetPass
 import Loader from "../components/Loader";
 import { auth } from "../lib/firebase";
 
-interface Project{
-  title: string,
-  link: string,
+interface Project {
+  title: string;
+  description: string;
+  link: string;
+  createdAt?: number; // optional timestamp
 }
-interface Wallet{
-  title: string,
-}
+
+
 
 // Transactions for tipping
 interface Transaction {
@@ -39,7 +40,7 @@ interface FormData {
   dob: string;
   gender: string;
   address: string;
-  wallet: Wallet[];
+  wallet: string;
   balance: number;                // Current wallet balance
   transactions: Transaction[];    // Track tips sent/received
   tipsReceived: number;           // Number of times user was tipped
@@ -76,7 +77,7 @@ function Authentication() {
   dob: "",
   gender: "",
   address: "",
-  wallet: [],              
+  wallet: "",              
   balance: 0,              
   transactions: [],        
   tipsReceived: 0,         
