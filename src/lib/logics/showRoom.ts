@@ -20,8 +20,8 @@ export const useDevProjectDatas = () => {
             userData.projects.forEach((project: any) => {
               allProjects.push({
                 ...project,
-                username: userData.username || "unknown",
-                name: userData.name || "Anonymous",
+                username: userData.username || "Guest",
+                name: userData.name || "Guest",
                 profileImg: userData.profileImg || "/profile.webp",
               });
             });

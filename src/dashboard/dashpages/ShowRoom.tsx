@@ -18,12 +18,12 @@ function ShowRoom() {
           placeholder="Search projects by title..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          className="sm:w-[500px] w-fit border border-gray-300 rounded-lg px-4 py-2 text-sm focus:outline-none"
+          className="sm:max-w-[400px] sm:w-full w-fit border border-gray-300 rounded-lg px-4 py-2 text-sm focus:outline-none"
         />
       </div>
 
       {/* Loop through filtered projects */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1  md:grid-cols-2 xxl:grid-cols-3  gap-6">
         {filteredProjects.map((proj: any, idx: number) => (
           <div
             key={idx}
