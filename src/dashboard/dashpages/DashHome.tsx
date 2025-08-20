@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { Icons } from "../../lib/icons/Icons";
 import {
   BarChart,
@@ -11,65 +10,16 @@ import {
 import { Circle, Close, NotificationsActive } from "@mui/icons-material";
 import { useUserInfo } from "../../lib/logics/profileLogic";
 import { motion, AnimatePresence } from "framer-motion";
+import { dashboardLogics } from "../../lib/logics/dashLogics";
 
-type Prices = {
-  [key: string]: {
-    usd: number;
-    usd_24h_change: number;
-  };
-};
+
 
 function DashHome() {
-  const [prices, setPrices] = useState<Prices | null>(null);
-  const [notificationD, setNotificatioD] = useState<boolean>(false);
-const {user,markNotificationsAsSeen} = useUserInfo();
-  useEffect(() => {
-    const fetchPrices = async () => {
-      try {
-        const res = await fetch(
-          "https://api.coingecko.com/api/v3/simple/price?ids=ethereum,bitcoin,binancecoin,solana&vs_currencies=usd&include_24hr_change=true"
-        );
-        const data = await res.json();
-        setPrices(data);
-      } catch (err) {
-        console.error("Failed to fetch prices:", err);
-      }
-    };
+const {user,notificationD, setNotificatioD,unseenNotification} = useUserInfo();
+const {prices,coins} = dashboardLogics();
 
-    fetchPrices();
-    const interval = setInterval(fetchPrices, 1000); // refresh every 60s
-    return () => clearInterval(interval);
-  }, []);
-useEffect(() => {
-  if (notificationD) {
-    setTimeout(() => {
-      markNotificationsAsSeen();
-    }, 5000);
-  }
-}, [notificationD]);
-  const coins = [
-    {
-      id: "bitcoin",
-      name: "Bitcoin (BTC)",
-      logo: "https://thumbs.dreamstime.com/b/bitcoin-orange-logo-icon-circle-cryptocurrency-btc-payment-symbol-flat-style-illustration-isolated-white-background-226221967.jpg",
-    },
-     {
-      id: "ethereum",
-      name: "Ethereum (ETH)",
-      logo: "https://www.cdnlogo.com/logos/e/81/ethereum-eth.svg",
-    },
-   
-    // {
-    //   id: "binancecoin",
-    //   name: "BNB",
-    //   logo: "https://cryptologos.cc/logos/bnb-bnb-logo.png",
-    // },
-    {
-      id: "solana",
-      name: "Solana (SOL)",
-      logo: "https://www.creativefabrica.com/wp-content/uploads/2021/06/16/Cryptocurrency-Solana-Logo-Graphics-13460284-1.jpg",
-    },
-  ];
+
+  
 
   return (
     <div className="bg-[#141718] sm:h-[98%] rounded-2xl overflow-hidden flex flex-col gap-5 p-5 overflow-y-scroll">
@@ -80,9 +30,18 @@ useEffect(() => {
           <h2 className="text-lg font-medium border border-[#FFFFFF14] py-1 px-6 rounded-lg bg-[#FFFFFF0A]">
             Total Tips:
           </h2>
-          <button className="text-lg font-medium border border-[#FFFFFF14] py-1 px-6 rounded-lg bg-[#034FE3] cursor-pointer" onClick={()=>setNotificatioD(!notificationD)}>
-            <NotificationsActive/>
-          </button>
+         <button
+  onClick={() => setNotificatioD(!notificationD)}
+  className="relative flex items-center justify-center gap-2 rounded-xl bg-[#034FE3] px-4 py-2 text-white font-medium text-lg shadow-md border border-[#FFFFFF14] hover:bg-[#0363ff] transition-colors duration-200"
+>
+  <NotificationsActive className="w-5 h-5" />
+  
+  {/* Notification Badge */}
+  <span className="absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-red-500 text-xs font-bold text-white shadow-md">
+    {unseenNotification}
+  </span>
+</button>
+
         </div>
       </section>
 
