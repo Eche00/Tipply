@@ -14,11 +14,12 @@ import Tipboard from "./pages/Tipboard"
 import Authentication from "./auth/Authentication"
 import GeneralChat from "./dashboard/dashpages/GeneralChat"
 import { Toaster } from "react-hot-toast";
+import ScrollToTop from "./components/ScrollTOTop"
 
 function App() {
   return (
     <div className=" bg-[#050520] text-white h-[100vh] relative w-full overflow-x-hidden">
-
+   
 <Toaster
   position="top-right"
   reverseOrder={false}
@@ -50,7 +51,7 @@ function App() {
     },
   }}
 />
-
+<ScrollToTop/>
         <Routes>
           {/* General Routes */}
            <Route element={<Container/>}>
