@@ -43,7 +43,7 @@ function ShowRoom() {
             {/* Project Info */}
             <div className="bg-[#1A1D1F] rounded-lg p-4 shadow-md border border-gray-800/50 hover:border-blue-500/50 hover:shadow-blue-500/10 transition">
               <h4 className="text-white font-semibold">{proj.title}</h4>
-              <p className="text-gray-400 text-sm mb-2">{proj.description}</p>
+              <p className="text-gray-400 text-sm mb-2 line-clamp-1">{proj.description}</p>
               <a
                 href={proj.link}
                 target="_blank"

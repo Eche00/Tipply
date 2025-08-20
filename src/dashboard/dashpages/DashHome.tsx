@@ -7,18 +7,23 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
-import { Circle, Close, NotificationsActive } from "@mui/icons-material";
+import { Circle, Close, NotificationsActive, OpenInFull} from "@mui/icons-material";
 import { useUserInfo } from "../../lib/logics/profileLogic";
 import { motion, AnimatePresence } from "framer-motion";
 import { dashboardLogics } from "../../lib/logics/dashLogics";
+import { useDevProjectDatas } from "../../lib/logics/showRoom";
+import { chatLogics } from "../../lib/logics/chatLogic";
+import { Link } from "react-router";
 
 
 
 function DashHome() {
 const {user,notificationD, setNotificatioD,unseenNotification} = useUserInfo();
 const {prices,coins} = dashboardLogics();
+const { projects} = useDevProjectDatas();
+const { messages } = chatLogics();
 
-
+ const lastTwo = messages.slice(-2);
   
 
   return (
@@ -53,9 +58,9 @@ const {prices,coins} = dashboardLogics();
             Total Earning
           </h2>
           <p className="text-[42px]  md:text-[24px] lg:text-[42px]  font-extrabold leading-tight">
-            200 ETH{" "}
+            {user.balance} ETH{" "}
             <span className="ml-2 text-lg font-medium text-gray-400">
-              ≈ $650,000
+             ≈ ${user.balance}  {/*  would convert this later */}
             </span>{" "}
             <br />
             <span className="ml-2 text-base font-medium text-gray-400">
@@ -195,39 +200,42 @@ const {prices,coins} = dashboardLogics();
   {/* Top Section: Last Project */}
   <div className="bg-gray-900 rounded-xl p-4 shadow-md">
     <h3 className="text-white text-lg font-bold mb-2">Last Project Added</h3>
-    <div className="bg-gray-800 rounded-lg p-3">
-      <h4 className="text-white font-semibold">Crypto Dashboard</h4>
-      <p className="text-gray-400 text-sm">A live crypto market overview app built with React & Tailwind.</p>
-      <a 
-        href="#" 
-        className="text-blue-400 text-sm mt-2 inline-block hover:underline"
-      >
-        View Project →
-      </a>
-    </div>
+    
+   {projects.length > 0 && (
+  <div className="bg-gray-800 rounded-lg p-3">
+    <h4 className="text-white font-semibold">{projects[0].title}</h4>
+    <p className="text-gray-400 text-sm line-clamp-1">{projects[0].description}</p>
+    <a
+      href={projects[0].link}
+      target="_blank"
+      rel="noreferrer"
+      className="text-blue-400 text-sm mt-2 inline-block hover:underline"
+    >
+      View Project →
+    </a>
+  </div>
+)}
+
   </div>
 
   {/* Bottom Section: Notifications */}
-  <div className="bg-gray-900 rounded-xl p-4 shadow-md flex-1">
-    <h3 className="text-white text-lg font-bold mb-3">Live Chat Notifications</h3>
-    <div className="flex flex-col gap-3 max-h-40 overflow-y-auto">
-      <div className="bg-gray-800 rounded-lg p-3">
-        <p className="text-gray-300 text-sm">
-          <span className="font-bold text-white">Eche:</span> Just pushed an update to Tipply UI 🚀
-        </p>
-      </div>
-      <div className="bg-gray-800 rounded-lg p-3">
-        <p className="text-gray-300 text-sm">
-          <span className="font-bold text-white">Alex:</span> New project "NFT Marketplace" is live 🎉
-        </p>
-      </div>
-      <div className="bg-gray-800 rounded-lg p-3">
-        <p className="text-gray-300 text-sm">
-          <span className="font-bold text-white">Maya:</span> Fixed the ETH price fetch bug 🔧
-        </p>
+   <div className="bg-gray-900 rounded-xl p-4 shadow-md flex-1">
+      <h3 className="text-white text-lg font-bold mb-3 flex items-center justify-between" >Live Chat Notifications <Link to="/dashboard/chat" className=" cursor-pointer border border-dashed rounded-[4px] w-[30px] py-1 hover:scale-[102%] flex items-center justify-center"><OpenInFull fontSize="small"/></Link></h3>
+      <div className="flex flex-col gap-3 max-h-40 overflow-y-auto">
+        {lastTwo.map((msg: any) => (
+          <div key={msg.id} className="bg-gray-800 rounded-lg p-3">
+            <p className="text-gray-300 text-sm">
+              <span className="font-bold text-white">@{msg.username || msg.name }:</span>{" "}
+              {msg.text}
+            </p>
+          </div>
+        ))}
+
+        {lastTwo.length === 0 && (
+          <p className="text-gray-500 text-sm">No recent chats</p>
+        )}
       </div>
     </div>
-  </div>
 </div>
 
 
