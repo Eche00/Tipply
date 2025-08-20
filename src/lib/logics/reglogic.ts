@@ -1,5 +1,5 @@
 import { createUserWithEmailAndPassword, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
-import { arrayUnion, collection, doc, getDoc, getDocs, setDoc, updateDoc } from "firebase/firestore";
+import { arrayUnion, collection, doc, getDoc, getDocs, query, setDoc, updateDoc, where } from "firebase/firestore";
 import { toast } from "react-hot-toast";
 import { auth, db, googleProvider } from "../firebase";
 
@@ -29,22 +29,31 @@ export const HandleRegisteration = async (formdata: any) => {
   } = formdata;
 
   try {
-    const userCresidentials = await createUserWithEmailAndPassword(auth, email, password)
+    //  Checking if username already exists
+    const q = query(collection(db, "user"), where("username", "==", username));
+    const querySnapshot = await getDocs(q);
+
+    if (!querySnapshot.empty) {
+      throw new Error("USERNAME_EXISTS");
+    }
+
+    // 🔹 Create new Auth user
+    const userCresidentials = await createUserWithEmailAndPassword(auth, email, password);
     const user = userCresidentials.user;
 
-    // Add a default welcome notification
+    // 🔹 Add a default welcome notification
     const initialNotifications: Notification[] = [
       {
         type: "welcome",
-        message: `Welcome ${name || username}! Your account has been successfully created, Kindly set up your Profile.`,
+        message: `Welcome ${name || username}! Your account has been successfully created. Kindly set up your Profile.`,
         seen: false,
         timestamp: new Date(),
       },
       ...(notifications || []),
     ];
 
-    // setting user details to db
-    await setDoc(doc(db, 'user', user.uid), {
+    //  Save user to Firestore
+    await setDoc(doc(db, "user", user.uid), {
       username,
       name,
       email,
@@ -65,18 +74,24 @@ export const HandleRegisteration = async (formdata: any) => {
       projects,
       status,
       notifications: initialNotifications,
-      createdAt: new Date()
+      createdAt: new Date(),
     });
 
-    toast.success("User Registered Successfully");
+    toast.success("User Registered Successfully ");
     return user;
 
-  } catch (error) {
-    console.error('Registeration Failed:', error);
-    toast.error("User Registeration Failed !!");
+  } catch (error: any) {
+    console.error("Registration Failed:", error);
+
+    if (error.message === "USERNAME_EXISTS") {
+      toast.error("Username already exists, please choose another one.");
+    } else {
+      toast.error("User Registration Failed ");
+    }
+
     throw error;
   }
-}
+};
 
 
 
