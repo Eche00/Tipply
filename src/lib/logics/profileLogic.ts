@@ -15,6 +15,7 @@ export const useUserInfo = () => {
     description: "",
     link: "",
   });
+  const [notificationD, setNotificatioD] = useState<boolean>(false);
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(async (authUser) => {
@@ -157,7 +158,14 @@ export const useUserInfo = () => {
       toast.error("Unable to sign out. Please try again.");
     }
   }
-
+  useEffect(() => {
+    if (notificationD) {
+      setTimeout(() => {
+        markNotificationsAsSeen();
+      }, 5000);
+    }
+  }, [notificationD]);
+  const unseenNotification = user?.notifications?.filter((n: any) => !n.seen).length || 0
   return {
     user,
     edit,
@@ -171,6 +179,9 @@ export const useUserInfo = () => {
     handleChangeProject,
     handleAddProject,
     handleLogOutUser,
-    markNotificationsAsSeen
+    markNotificationsAsSeen,
+    notificationD,
+    setNotificatioD,
+    unseenNotification
   };
 };
