@@ -37,11 +37,11 @@ export const HandleRegisteration = async (formdata: any) => {
       throw new Error("USERNAME_EXISTS");
     }
 
-    // 🔹 Create new Auth user
+    //  Create new Auth user
     const userCresidentials = await createUserWithEmailAndPassword(auth, email, password);
     const user = userCresidentials.user;
 
-    // 🔹 Add a default welcome notification
+    //  Add a default welcome notification
     const initialNotifications: Notification[] = [
       {
         type: "welcome",
@@ -51,11 +51,12 @@ export const HandleRegisteration = async (formdata: any) => {
       },
       ...(notifications || []),
     ];
-
+    //  Generating name 
+    const generatedName = name && name.trim('') !== '' ? name : `Guest${Math.floor(1000 + Math.random() * 9000)}`
     //  Save user to Firestore
     await setDoc(doc(db, "user", user.uid), {
       username,
-      name,
+      name: generatedName,
       email,
       phone,
       dob,
