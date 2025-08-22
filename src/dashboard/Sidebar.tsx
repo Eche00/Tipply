@@ -137,7 +137,7 @@ function Sidebar({ compress, setCompress }: SidebarProp) {
             {!compress && <span>Profile</span>}
           </NavLink>
 
-  <NavLink
+  {/* <NavLink
             to="/dashboard/admin"
             className={({ isActive }) =>
               isActive
@@ -147,7 +147,7 @@ function Sidebar({ compress, setCompress }: SidebarProp) {
             {" "}
             <AdminPanelSettings />
             {!compress && <span>Admin</span>}
-          </NavLink>
+          </NavLink> */}
   <NavLink
             to="/"
             className={({ isActive }) =>
