@@ -7,7 +7,7 @@ import Loader from "../../components/Loader";
 import { developerInfoLogics } from "../../lib/logics/devLogics";
 
 function Devs() {
-const {tip, setTip,loading, searchTerm, setSearchTerm, currentPage,totalPages,currentUsers,goToPage} = developerInfoLogics()
+const {tip, setTip,loading, searchTerm, setSearchTerm, currentPage,totalPages,currentUsers,goToPage,handleView} = developerInfoLogics()
   return (
     <div className="bg-[linear-gradient(to_right,#4f4f4f0e_0.8px,transparent_0.1px),linear-gradient(to_bottom,#4f4f4f0e_0.8px,transparent_0.1px)] md:bg-[size:104px_104px] bg-[size:50px_50px] [mask-image:radial-gradient(ellipse_100%_70%_at_50%_100%,#000_70%,transparent_[200%])] h-fit flex items-center justify-center w-full">
       
@@ -17,7 +17,7 @@ const {tip, setTip,loading, searchTerm, setSearchTerm, currentPage,totalPages,cu
       <div className="absolute top-[-10%] right-[-3%] w-[180px] h-[180px] bg-[#FFFFFF]/40 rounded-[50%] blur-[50px] z-10" />
       <img src="/stars.png" alt="" className="absolute top-[-32%] right-[0%] rotate-[-43.54deg] w-[269px] h-[585px] object-cover opacity-[70%] z-10" />
 
-      <section className="flex flex-col w-[90%] mx-auto py-[50px] relative z-30 sm:h-[100vh]">
+      <section className="flex flex-col w-[90%] mx-auto py-[50px] relative z-30 min-h-[100vh]">
         {/* Header */}
         <div className="flex sm:flex-row flex-col sm:items-center sm:justify-between gap-[20px] relative z-30">
           <h2 className="flex-1 text-[40px] leading-[55px] capitalize bg-gradient-to-r from-[#008CFF] to-[#FFFFFF69] font-extrabold bg-clip-text text-transparent">
@@ -63,7 +63,7 @@ const {tip, setTip,loading, searchTerm, setSearchTerm, currentPage,totalPages,cu
                 </div>
 
                 <div className="w-[90%] mx-auto flex gap-[15px] items-center pb-[20px]">
-                  <button className="flex-1 py-[8px] bg-[#56565653] rounded-[13px] flex items-center justify-center border-b border-[#008CFF] cursor-pointer hover:scale-[102%] transition-all duration-300 font-extrabold">
+                  <button className="flex-1 py-[8px] bg-[#56565653] rounded-[13px] flex items-center justify-center border-b border-[#008CFF] cursor-pointer hover:scale-[102%] transition-all duration-300 font-extrabold" onClick={()=>handleView(user?.username)}>
                     View
                   </button>
                   <button

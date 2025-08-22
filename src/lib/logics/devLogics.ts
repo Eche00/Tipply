@@ -1,6 +1,7 @@
 import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { db } from "../firebase";
+import { useNavigate } from "react-router";
 
 
 
@@ -11,7 +12,7 @@ export const developerInfoLogics = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 8;
-
+  const navigate = useNavigate()
   // Fetch all users with real-time updates
   useEffect(() => {
     setLoading(true);
@@ -59,6 +60,9 @@ export const developerInfoLogics = () => {
     setCurrentPage(page);
   };
 
+  const handleView = (username: string) => {
+    navigate(`/dev/${username}`)
+  }
 
-  return { tip, setTip, loading, searchTerm, setSearchTerm, currentPage, totalPages, currentUsers, goToPage }
+  return { tip, setTip, loading, searchTerm, setSearchTerm, currentPage, totalPages, currentUsers, goToPage, handleView }
 }

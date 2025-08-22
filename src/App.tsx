@@ -14,7 +14,8 @@ import Tipboard from "./pages/Tipboard"
 import Authentication from "./auth/Authentication"
 import GeneralChat from "./dashboard/dashpages/GeneralChat"
 import { Toaster } from "react-hot-toast";
-import ScrollToTop from "./components/ScrollTOTop"
+import ScrollToTop from "./components/ScrollToTop"
+import ProfilePreview from "./pages/ProfilePreview"
 
 function App() {
   return (
@@ -59,6 +60,8 @@ function App() {
             <Route path="/about-us" element={<AboutUs/>}/>
             <Route path="/dev-spot" element={<DevSpot/>}/>
             <Route path="/tip-board" element={<Tipboard/>}/>
+              <Route path="/dev/:username" element={<ProfilePreview/>}/>
+
            </Route>
 
            {/* Indipendent Route  */}
