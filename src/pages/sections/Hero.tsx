@@ -17,7 +17,7 @@ function Hero() {
 
         <motion.h1 className=" bg-gradient-to-r from-[#008CFF] to-[#FFFFFF69] bg-clip-text text-transparent sm:text-[64px] text-[44px] font-extrabold sm:leading-[82px] leading-[62px] capitalize" initial={{ y: 20, opacity: 0 }}
           whileInView={{ y: 1, opacity: 1 }}
-          transition={{ duration: 1.5, delay: 0.3 }}  viewport={{once:true}}>Tipply, Your Web3 Tipping Vault</motion.h1>
+          transition={{ duration: 1.5, delay: 0.3 }}  viewport={{once:true}}>Tipply, Your Web3 Tipping Chain</motion.h1>
         <motion.p className=" text-[#AFB3CA] text-[16px] font-[400] leading-[24px]" initial={{ y: 20, opacity: 0 }}
           whileInView={{ y: 1, opacity: 1 }}
           transition={{ duration: 1.5, delay: 0.3 }}  viewport={{once:true}}>Tip, Discover, and Support Developers with Showcases That Inspire</motion.p>
