@@ -58,7 +58,7 @@ const {tip, setTip,loading, searchTerm, setSearchTerm, currentPage,totalPages,cu
                     @{user.username || "unknown"}
                   </h3>
                   <p className="bg-[#FFFFFF0A] px-[10px] py-[5px] border-[1px] shadow-sm border-[#FFFFFF14] text-[#FFFFFF] text-[10px] font-bold leading-[16px] flex items-center justify-center gap-[10px] rounded-full uppercase">
-                    {user.role || "Developer"}
+                    {user.devType || "Developer"}
                   </p>
                 </div>
 

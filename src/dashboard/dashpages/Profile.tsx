@@ -77,22 +77,34 @@ const Profile = () => {
               Account Information
             </h3>
             <div className="grid grid-cols-2 gap-4 text-sm text-gray-300">
-              {["username", "name", "email", "phone","wallet"].map((field) =>
-                edit ? (
-                  <input
-                    key={field}
-                    className="bg-[#1A1D1F] p-2 rounded-lg"
-                    value={user?.[field] || ""}
-                    onChange={(e) => handleChange(field, e.target.value)}
-                    placeholder={field}
-                  />
-                ) : (
-                  <p key={field}>
-                    <span className="font-semibold text-white">{field[0].toUpperCase() + field.slice(1)}:</span>{" "}
-                    {user?.[field] || "N/A"}
-                  </p>
-                )
-              )}
+             {["username", "name", "email", "phone", "wallet"].map((field) =>
+  edit ? (
+    field === "email" ? (
+      <p key={field}>
+        <span className="font-semibold text-white">
+          {field[0].toUpperCase() + field.slice(1)}:
+        </span>{" "}
+        {user?.[field] || "N/A"}
+      </p>
+    ) : (
+      <input
+        key={field}
+        className="bg-[#1A1D1F] p-2 rounded-lg"
+        value={user?.[field] || ""}
+        onChange={(e) => handleChange(field, e.target.value)}
+        placeholder={field}
+      />
+    )
+  ) : (
+    <p key={field}>
+      <span className="font-semibold text-white">
+        {field[0].toUpperCase() + field.slice(1)}:
+      </span>{" "}
+      {user?.[field] || "N/A"}
+    </p>
+  )
+)}
+
             </div>
           </div>
 
@@ -208,7 +220,7 @@ const Profile = () => {
     {user?.techStacks?.length > 0 ? user?.techStacks?.map((stack: string, idx: number) => (
           <span
             key={idx}
-            className="bg-[#1A1D1F] px-3 py-1 rounded-lg text-xs font-medium text-gray-200 border border-gray-800/50"
+            className="bg-[#1A1D1F] px-3 py-1 rounded-lg text-xs font-medium text-gray-200 border border-gray-800/50 mr-2"
           >
             {stack}
           </span>
