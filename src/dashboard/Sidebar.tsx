@@ -1,5 +1,5 @@
 import {
-  // AdminPanelSettings,
+  AdminPanelSettings,
   ArrowBackIos,
   ArrowForwardIos,
   Dashboard,
@@ -137,7 +137,8 @@ function Sidebar({ compress, setCompress }: SidebarProp) {
             {!compress && <span>Profile</span>}
           </NavLink>
 
-  {/* <NavLink
+  {user?.role === 'admin' &&
+  <NavLink
             to="/dashboard/admin"
             className={({ isActive }) =>
               isActive
@@ -147,7 +148,7 @@ function Sidebar({ compress, setCompress }: SidebarProp) {
             {" "}
             <AdminPanelSettings />
             {!compress && <span>Admin</span>}
-          </NavLink> */}
+          </NavLink>}
   <NavLink
             to="/"
             className={({ isActive }) =>
