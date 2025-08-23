@@ -16,6 +16,7 @@ import GeneralChat from "./dashboard/dashpages/GeneralChat"
 import { Toaster } from "react-hot-toast";
 import ScrollToTop from "./components/ScrollToTop"
 import ProfilePreview from "./pages/ProfilePreview"
+import AdminPage from "./dashboard/dashpages/AdminPage"
 
 function App() {
   return (
@@ -75,6 +76,7 @@ function App() {
               <Route path="/dashboard/chat" element={<GeneralChat/>}/>
               <Route path="/dashboard/showroom" element={<ShowRoom/>}/>
               <Route path="/dashboard/profile" element={<Profile/>}/>
+              <Route path="/dashboard/admin" element={<AdminPage/>}/>
            </Route>
               
              {/* Handling !existing Route  */}
