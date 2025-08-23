@@ -46,6 +46,7 @@ interface FormData {
   tipsReceived: number;           // Number of times user was tipped
   tippers: string[];              // User IDs who tipped this user
   devType: string;
+  role: string;
   bio?: string;
   techStacks: string[];
   twitter?: string;
@@ -83,6 +84,7 @@ function Authentication() {
   tipsReceived: 0,         
   tippers: [],             
   devType: "",
+  role: "user",
   bio: "",                 
   techStacks: [],          
   twitter: "",             
