@@ -68,8 +68,8 @@ function CoreValues() {
               <Link to='/dev-spot'  className="w-[146px] h-[40px] bg-[#56565653] border-b border-[#008CFF] flex  items-center justify-center rounded-[13px]">View Devs</Link>
            </div>
            <div className="flex sm:items-end justify-baseline sm:w-[35%] w-full sm:pr-[70px] pr-[0px] relative ">
-              <div className="absolute sm:top-1/5 top-[100px] sm:left-0 left-1/2 sm:-translate-x-0 -translate-x-1/2  sm:w-fit w-[90%]  h-fit  bg-black rounded-[34px] p-[27px]">
-                <img src="/hey.png" alt="" className="w-[238px] h-[484px]  object-cover rounded-[20px] mx-auto" />
+              <div className="absolute sm:top-1/8 top-[100px] sm:left-0 left-1/2 sm:-translate-x-0 -translate-x-1/2  sm:w-fit w-[90%]  h-fit  bg-black rounded-[34px] p-[27px]">
+                <img src="/success.webp" alt="" className="w-[238px] h-[484px]  object-cover rounded-[20px] mx-auto" />
              </div>
 
            </div>

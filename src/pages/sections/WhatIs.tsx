@@ -35,10 +35,15 @@ function WhatIs() {
              <h3 className=" text-[#CAD1E9] text-[32px] font-[400]">Multichain Tipping</h3>
              <p className=" text-[#AFB3CA] text-[16px] font-[400] max-w-[750px]">A secure, non-custodial platform for tipping and supporting developers across multiple blockchains. Keep full control of your funds while easily interacting with Web3 projects and developer profiles — privacy and simplicity guaranteed.</p>
            </div>
-           <div className="flex sm:items-end justify-baseline sm:w-[35%] w-full sm:pr-[70px] pr-[0px] relative ">
+           
+            <div className="flex sm:items-end justify-baseline sm:w-[35%] w-full sm:pr-[70px] pr-[0px] relative ">
               <div className="absolute sm:top-1/5 top-[100px] sm:left-0 left-1/2 sm:-translate-x-0 -translate-x-1/2  sm:w-fit w-[90%]  h-fit  bg-black rounded-[34px] p-[27px]">
-                <img src="/hey.png" alt="" className="w-[238px] h-[484px]  object-cover rounded-[20px] mx-auto" />
+                <img src="/tip.webp" alt="" className="w-[238px] h-[484px]  object-cover rounded-[20px] mx-auto" />
              </div>
+              {/* <div className="absolute sm:top-1/2 top-[100px] sm:left-[80px] left-1/2 sm:-translate-x-0 -translate-x-1/2  sm:w-fit w-[90%]  h-fit  bg-black rounded-[34px] sm:flex hidden">
+                <img src="/success.webp" alt="" className="w-[238px] h-[484px]  object-cover rounded-[20px] mx-auto" />
+             </div> */}
+              
 
            </div>
           </motion.div>
@@ -52,14 +57,10 @@ function WhatIs() {
              <h3 className=" text-[#CAD1E9] text-[32px] font-[400]">Explore & Support </h3>
              <p className=" text-[#AFB3CA] text-[16px] font-[400] max-w-[750px]">Discover and explore developers’ projects across multiple blockchains in a secure, non-custodial platform. Easily browse Web3 creations and support your favorite developers directly keeping full control of your funds with privacy and simplicity.</p>
            </div>
-           <div className="flex sm:items-end justify-baseline sm:w-[35%] w-full sm:pr-[70px] pr-[0px] relative ">
+          <div className="flex sm:items-end justify-baseline sm:w-[35%] w-full sm:pr-[70px] pr-[0px] relative ">
               <div className="absolute sm:top-1/5 top-[100px] sm:left-0 left-1/2 sm:-translate-x-0 -translate-x-1/2  sm:w-fit w-[90%]  h-fit  bg-black rounded-[34px] p-[27px]">
-                <img src="/hey.png" alt="" className="w-[238px] h-[484px]  object-cover rounded-[20px] mx-auto" />
+                <img src="/explore.webp" alt="" className="w-[238px] h-[484px]  object-cover rounded-[20px] mx-auto" />
              </div>
-              <div className="absolute sm:top-1/2 top-[100px] sm:left-[80px] left-1/2 sm:-translate-x-0 -translate-x-1/2  sm:w-fit w-[90%]  h-fit  bg-black rounded-[34px] sm:flex hidden">
-                <img src="/hey.png" alt="" className="w-[238px] h-[484px]  object-cover rounded-[20px] mx-auto" />
-             </div>
-              
 
            </div>
           </motion.div>
