@@ -28,7 +28,7 @@ function Hero() {
         <motion.div className="relative w-[400px] mx-auto flex   top-1/2 gap-[20px]" initial={{ scale: 0.8, opacity: 0 }} whileInView={{ scale:1,opacity: 1 }}
               transition={{ duration: 1}} viewport={{once:true}}>
           <img src="/dashboards.webp" alt="" className=" sm:w-[238px] w-[198px] sm:h-[484px] h-[384px] bg-black sm:object-cover  rounded-[34px]" />
-          <img src="/dashboard.webp" alt="" className="absolute top-[50px] sm:right-[0px] right-[10%] sm:w-[238px] w-[198px] sm:h-[484px] h-[384px] bg-black sm:object-cover  rounded-[34px]" />
+          <img src="/dashboard.webp" alt="" className="absolute top-[50px] sm:right-[-20px] right-[10%] sm:w-[238px] w-[198px] sm:h-[484px] h-[384px] bg-black sm:object-cover  rounded-[34px]" />
         </motion.div>
       </section>
       </div>
