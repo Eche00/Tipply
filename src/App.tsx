@@ -1,4 +1,4 @@
-import {  Routes, Route } from "react-router"
+import {  Routes, Route } from "react-router-dom"
 import Container from "./components/Container"
 import Home from "./pages/Home"
 import AboutUs from "./pages/AboutUs"
@@ -18,9 +18,12 @@ import ScrollToTop from "./components/ScrollToTop"
 import ProfilePreview from "./pages/ProfilePreview"
 import AdminPage from "./dashboard/dashpages/AdminPage"
 
+
 function App() {
+    
   return (
-    <div className=" bg-[#050520] text-white h-[100vh] relative w-full overflow-x-hidden">
+    <div className=" bg-[#050520] text-white  relative w-full overflow-x-hidden" >
+<ScrollToTop/>
    
 <Toaster
   position="top-right"
@@ -53,7 +56,6 @@ function App() {
     },
   }}
 />
-<ScrollToTop/>
         <Routes>
           {/* General Routes */}
            <Route element={<Container/>}>
