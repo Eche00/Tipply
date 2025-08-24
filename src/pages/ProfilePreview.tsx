@@ -14,7 +14,8 @@ const ProfilePreview = () => {
   if(loading) return <Loader/>
  
   return (
-    <div className="bg-[#141718] rounded-2xl flex flex-col gap-5 p-5 overflow-y-scroll sm:w-[80%] w-[90%] mx-auto my-5">
+   <div className=" min-h-[100vh]">
+     <div className="bg-[#141718] rounded-2xl flex flex-col gap-5 p-5 overflow-y-scroll sm:w-[80%] w-[90%] mx-auto my-5 ">
       
         {/* Hero left  background blur */}
           <div 
@@ -34,7 +35,7 @@ const ProfilePreview = () => {
         <Link to="/dev-spot"  className=""><ArrowBack/></Link>
       </div>
 
-      <div className="flex sm:flex-row flex-col gap-6">
+      <div className="flex sm:flex-row flex-col gap-6"  >
         {/* Left Sidebar */}
         <div className="sm:w-fit w-full sm:p-[80px] p-6 bg-[#0D0F10] rounded-xl flex flex-col items-center shadow-md border border-gray-800/50 h-fit">
           <img
@@ -174,6 +175,7 @@ const ProfilePreview = () => {
       {tip && <Tip tip={tip} setTip={setTip} />}
       
     </div>
+   </div>
   );
 };
 
