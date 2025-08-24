@@ -1,4 +1,4 @@
-import { Link } from "react-router"
+import { Link, NavLink } from "react-router"
 import { Svgs } from "../lib/svg/Svg"
 
 function Footer() {
@@ -14,8 +14,10 @@ function Footer() {
           <div className="flex-1 flex sm:flex-row flex-col items-start justify-between gap-[30px]">
             <ul className="flex flex-col ">
               <p className="text-[#F2F6FA] text-[16px] font-[300] opacity-[0.5] mb-[16px]">Routes</p>
-              <Link to='/about-us' className="text-[#F2F6FA] text-[16px] leading-[24px] font-[400] ">About</Link>
-              <Link to='/dev-spot' className="text-[#F2F6FA] text-[16px] leading-[24px] font-[400] ">DevSpot</Link>
+              <NavLink to='/' className={({isActive})=> isActive ? 'text-[#008CFF]':"text-[#F2F6FA] text-[16px] leading-[24px] font-[400] hover:underline" }>Home</NavLink>
+              <NavLink to='/about-us' className={({isActive})=> isActive ? 'text-[#008CFF]':"text-[#F2F6FA] text-[16px] leading-[24px] font-[400] hover:underline" }>About</NavLink>
+              <NavLink to='/dev-spot' className={({isActive})=> isActive ? 'text-[#008CFF]':"text-[#F2F6FA] text-[16px] leading-[24px] font-[400] hover:underline" }>DevSpot</NavLink>
+              <NavLink to='/tip-board' className={({isActive})=> isActive ? 'text-[#008CFF]':"text-[#F2F6FA] text-[16px] leading-[24px] font-[400] hover:underline" }>Tipboard</NavLink>
             </ul>
             <ul className="flex flex-col ">
               <p className="text-[#F2F6FA] text-[16px] font-[300] opacity-[0.5] mb-[16px]">Resources</p>
