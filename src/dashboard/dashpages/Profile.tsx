@@ -215,16 +215,18 @@ const Profile = () => {
       />
     </div>
     </>
-  ) : (<>
+  ) : (< >
     <p className="text-gray-400 text-sm mb-4 italic">{user?.bio || "No bio available"}</p>
-    {user?.techStacks?.length > 0 ? user?.techStacks?.map((stack: string, idx: number) => (
+   <div className="flex flex-wrap gap-2">
+     {user?.techStacks?.length > 0 ? user?.techStacks?.map((stack: string, idx: number) => (
           <span
             key={idx}
-            className="bg-[#1A1D1F] px-3 py-1 rounded-lg text-xs font-medium text-gray-200 border border-gray-800/50 mr-2"
+            className="bg-[#1A1D1F] px-3 py-1 rounded-lg text-xs font-medium text-gray-200 border border-gray-800/50   w-fit "
           >
             {stack}
           </span>
         )) :  <p className="text-gray-400 text-sm mb-4 italic">No tech stack added</p>}
+   </div>
         </>
   )}
 </div>
