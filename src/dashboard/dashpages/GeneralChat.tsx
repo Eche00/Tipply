@@ -13,7 +13,7 @@ function GeneralChat() {
   }, [messages]);
 
   return (
-   <div className="bg-[#141718] sm:h-[98%] h-[85vh] rounded-2xl overflow-hidden flex flex-col">
+   <div className="bg-[#141718] sm:h-[98%] h-[70vh] rounded-2xl overflow-hidden flex flex-col">
   {/* Header */}
   <div className="p-4 sm:p-5 border-b border-gray-800/50 flex items-center gap-2 justify-between">
     <h2 className="text-xl sm:text-[28px] font-extrabold">General Chat</h2>
