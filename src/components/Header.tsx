@@ -1,26 +1,15 @@
 import { Link, NavLink } from "react-router"
 import { Icons } from "../lib/icons/Icons"
-import { useEffect, useState } from "react"
+// import {  useState } from "react"
 import { Close } from "@mui/icons-material"
-import { auth, db } from "../lib/firebase"
-import { doc, getDoc } from "firebase/firestore"
+import GeneralNav from "./GeneralNav"
+import { useUserInfo } from "../lib/logics/profileLogic"
+import { headerLogics } from "../lib/logics/headerLogic"
 
 function Header() {
-  const [dropDown,setDropDown] = useState(false)
-  const [user,setUser] = useState<any>()
+  const {user} = useUserInfo()
+  const {dropDown,setDropDown} = headerLogics()
 
-  useEffect(()=>{
-    const unsubscribe = auth.onAuthStateChanged(async(authUser)=>{
-      if(authUser){
-        const userDocRef = doc(db,'user',authUser.uid);
-        const userDoc = await getDoc(userDocRef);
-        if(userDoc.exists()){
-          setUser(userDoc.data())
-        }
-      }
-    })
-    return ()=> unsubscribe()
-  },[])
   return (
     <div className="bg-[#050520]/20 backdrop-blur-[24.7px] fixed top-0 left-0 w-full z-50" >
       <section className="flex items-center justify-between max-w-[85%] sm:max-w-[90%] md:max-w-[85%] mx-auto py-[20px]">
@@ -41,9 +30,9 @@ function Header() {
          </div>
 
       {/* auth button  */}
-         {user? 
+         {user?.username ? 
          <div className="md:flex flex-1 items-end justify-end gap-[10px] md:pl-2 hidden">
-         <p className="w-[50px] h-[50px] rounded-full bg-black border-2 border-[#008CFF] flex items-center justify-center">{user?.username.slice(0,1)}</p> <div className="flex flex-col gap-1">
+         <p className="w-[50px] h-[50px] rounded-full bg-black border-2 border-[#008CFF] flex items-center justify-center">{user?.username?.slice(0,1)}</p> <div className="flex flex-col gap-1">
           <p className=" text-[14px] font-bold bg-gradient-to-r from-[#008CFF] to-[#FFFFFF69] bg-clip-text text-transparent">{user?.username}</p>
           <Link to='/dashboard/home'  className=" shadow-sm text-gray-400 text-[12px] font-bold cursor-pointer hover:underline">Dashboard</Link>
          </div>
@@ -55,32 +44,8 @@ function Header() {
          <button className=" md:hidden flex" onClick={()=>setDropDown(!dropDown)}>{dropDown ? <Close fontSize="large"/> : Icons.menu }</button>
        </section>
 
-       {dropDown &&    <section 
-      
-       className="fixed top-[70px] left-0 w-full h-[100vh] bg-[#050520] z-50 flex flex-col gap-[32px] md:hidden">
-          <div className="flex flex-col  text-white text-[16px] font-[500]" onClick={()=>setDropDown(!dropDown)}>
-          <NavLink to='/' className={({isActive})=> isActive ? 'text-[#008CFF] font-bold text-sm cursor-pointer p-[10px]  border-b border-gray-500': ' text-white font-bold text-sm cursor-pointer p-[10px]  border-b border-gray-500'}>Home</NavLink>
-          <NavLink to='/about-us' className={({isActive})=> isActive ? 'text-[#008CFF] font-bold text-sm cursor-pointer p-[10px]  border-b border-gray-500': ' text-white font-bold text-sm cursor-pointer p-[10px]  border-b border-gray-500'}>About Us</NavLink>
-          <NavLink to='/dev-spot' className={({isActive})=> isActive ? 'text-[#008CFF] font-bold text-sm cursor-pointer p-[10px]  border-b border-gray-500': ' text-white font-bold text-sm cursor-pointer p-[10px]  border-b border-gray-500'}>DevSpot</NavLink>
-          <NavLink to='/tip-board' className={({isActive})=> isActive ? 'text-[#008CFF] font-bold text-sm cursor-pointer p-[10px]  border-b border-gray-500': ' text-white font-bold text-sm cursor-pointer p-[10px]  border-b border-gray-500'}>Tipboard </NavLink>
-           </div>
-             {user? 
-         <div className="flex  justify-between  gap-[10px] w-[90%] h-fit mx-auto border-b border-gray-500 pb-[10px]">
-         <p className="w-[50px] h-[50px] rounded-full bg-black border-2 border-[#008CFF] flex items-center justify-center">{user?.username.slice(0,1)}</p> 
-         <div className="flex flex-col gap-1 items-end">
-          <p className=" text-[14px] font-bold bg-gradient-to-r from-[#008CFF] to-[#FFFFFF69] bg-clip-text text-transparent">{user?.username}</p>
-          <Link to='/dashboard/home'  className="bg-[#FFFFFF0A] px-[15px] py-[8px] border-[1px] shadow-sm  border-[#FFFFFF14] text-[#FFFFFF] text-[12px] font-bold leading-[16px] flex items-center justify-center gap-[10px] rounded-full ">Dashboard</Link>
-         </div>
-         </div>:
-          <div className="flex sm:flex-row flex-col sm:items-center gap-[20px]">
-             <Link to='/connect-wallet'  className=" px-[32px] py-[10px] text-[16px] mx-[20px] rounded-[8px] bg-[#56565653] text-white cursor-pointer hover:scale-[105%] transition-all duration-300 text-center flex-1">Connect Wallet</Link>
-           <Link to='/auth'  className=" px-[32px] py-[10px] text-[16px] mx-[20px] rounded-[8px] bg-[#008CFF] text-white cursor-pointer hover:scale-[105%] transition-all duration-300 text-center flex-1">Register</Link>
-
-          </div>
-}
-            {/* bg */}
-         <span className=" circleBlurLH md:hidden inline-block"></span>
-        </section>}
+       {dropDown &&    
+       <GeneralNav />}
     </div>
   )
 }
