@@ -160,10 +160,7 @@ function Sidebar({ compress, setCompress }: SidebarProp) {
             <Home />
             {!compress && <span>Home</span>}
           </NavLink>
-      <button className="sm:hidden w-full flex items-center  gap-[5px] bg-[#14141438]   py-[10px] px-[12px] rounded-[10px] text-white transition-all duration-300 cursor-pointer" onClick={handleLogOut}>
-         <Logout />
-          {!compress && <span>Logout</span>}
-       </button>
+     
       </nav>
 
 
