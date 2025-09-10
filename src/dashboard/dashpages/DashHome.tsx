@@ -33,7 +33,7 @@ const { messages } = useChatLogics();
         <h2 className="text-[32px] font-extrabold">Dashboard</h2>
         <div className="flex items-center gap-5">
           <h2 className="text-lg font-medium border border-[#FFFFFF14] py-1 px-6 rounded-lg bg-[#FFFFFF0A]">
-            Total Tips:
+            Notifications:
           </h2>
          <button
   onClick={() => setNotificatioD(!notificationD)}
