@@ -12,8 +12,8 @@ import { useUserInfo } from "../../lib/logics/profileLogic";
 import { motion, AnimatePresence } from "framer-motion";
 import { dashboardLogics } from "../../lib/logics/dashLogics";
 import { useDevProjectDatas } from "../../lib/logics/showRoom";
-import { chatLogics } from "../../lib/logics/chatLogic";
 import { Link } from "react-router";
+import { useChatLogics } from "../../lib/logics/chatLogic";
 
 
 
@@ -21,7 +21,7 @@ function DashHome() {
 const {user,notificationD, setNotificatioD,unseenNotification} = useUserInfo();
 const {prices,coins} = dashboardLogics();
 const { projects} = useDevProjectDatas();
-const { messages } = chatLogics();
+const { messages } = useChatLogics();
 
  const lastTwo = messages.slice(-2);
   

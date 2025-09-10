@@ -1,5 +1,6 @@
-import { Add, GitHub, Twitter } from "@mui/icons-material";
+import { Add, Delete, GitHub, Twitter } from "@mui/icons-material";
 import { useUserInfo } from "../../lib/logics/profileLogic";
+import { adminLogics } from "../../lib/logics/adminLogic";
 
 const Profile = () => {
   const {user,
@@ -14,6 +15,7 @@ const Profile = () => {
     handleChangeProject,
     handleAddProject
   } = useUserInfo();
+  const {deleteProject} = adminLogics()  
   
  
 
@@ -21,7 +23,7 @@ const Profile = () => {
   return (
      <div className="bg-[#141718] sm:h-[98%] rounded-2xl flex flex-col gap-5 p-5 overflow-y-scroll">
       <div className="flex justify-between items-center">
-        <h2 className="text-[32px] font-extrabold">Profile</h2>
+        <h2 className="text-[32px] font-extrabold">Profile </h2>
         <div className="flex items-center gap-[10px]">
           {edit &&
            <button
@@ -42,11 +44,12 @@ const Profile = () => {
       <div className="flex sm:flex-row flex-col gap-6">
         {/* Left Sidebar */}
         <div className="sm:w-fit w-full sm:p-[80px] p-6 bg-[#0D0F10] rounded-xl flex flex-col items-center shadow-md border border-gray-800/50 h-fit">
-          <img
+          {/* <img
             src="/profile.webp"
             alt="Profile"
             className="w-28 h-28 rounded-full border-2 border-gray-700 shadow-md mb-3 object-cover"
-          />
+          /> */}
+         <p className="w-28 h-28 rounded-full text-[50px] bg-black border-2 border-gray-700 shadow-md flex items-center justify-center mb-3">{user?.username?.slice(0,1)}</p> 
           <h2 className="text-xl font-bold">{user?.name  || "Guest"}</h2>
           <p className="text-gray-400 text-sm">@{user?.username || "Guest user"}</p>
           <p className="mt-2 text-sm bg-[#1A1D1F] px-3 py-1 rounded-full border border-gray-800/50">
@@ -174,7 +177,7 @@ const Profile = () => {
       />        
       <input
         className="bg-[#1A1D1F] w-full p-3 rounded-lg mb-4"
-        value={user?.devType || ""}
+        value={user?.devType  || ""}
         onChange={(e) => handleChange("devType", e.target.value)}
         placeholder="Software Developer..."
       />        
@@ -240,8 +243,9 @@ const Profile = () => {
         {user?.projects?.map((project: any, index: number) => (
           <div
             key={index}
-            className="bg-[#1A1D1F] rounded-xl p-4 shadow-md border border-gray-800/50 hover:border-blue-500/50 hover:shadow-blue-500/10 transition"
+            className="bg-[#1A1D1F] rounded-xl p-4 shadow-md border border-gray-800/50 hover:border-blue-500/50 hover:shadow-blue-500/10 transition relative"
           >
+            <p onClick={() => deleteProject(user?.uid, project.createdAt)} className=" absolute top-1 right-2 cursor-pointer text-red-600"><Delete/></p>
             <h4 className="text-white font-semibold">{project.title}</h4>
             <p className="text-gray-400 text-sm line-clamp-1">{project.description}</p>
             <a

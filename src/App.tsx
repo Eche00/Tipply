@@ -75,7 +75,7 @@ function App() {
             <Route path="/dashboard"  element={<DashContainer/>}>
               <Route path="/dashboard/home" element={<DashHome/>}/>
               <Route path="/dashboard/history" element={<LeaderBoard/>}/>
-              <Route path="/dashboard/chat" element={<GeneralChat/>}/>
+              <Route path="/dashboard/chatwithTipply" element={<GeneralChat/>}/>
               <Route path="/dashboard/showroom" element={<ShowRoom/>}/>
               <Route path="/dashboard/profile" element={<Profile/>}/>
               <Route path="/dashboard/admin" element={<AdminPage/>}/>

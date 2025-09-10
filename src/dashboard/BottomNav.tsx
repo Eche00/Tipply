@@ -26,7 +26,7 @@ function BottomNav() {
 
         {/* news  */}
         <NavLink
-          to="/dashboard/chat"
+          to="/dashboard/chatwithTipply"
           className={({ isActive }) =>
             isActive
               ? "flex items-center justify-center gap-[5px] bg-blue-600  font-extrabold py-[6px] px-[12px] rounded-[10px] text-white transition-all duration-300"

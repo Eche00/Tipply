@@ -94,7 +94,7 @@ function Sidebar({ compress, setCompress }: SidebarProp) {
 
          
           <NavLink
-            to="/dashboard/chat"
+            to="/dashboard/chatwithTipply"
             className={({ isActive }) =>
               isActive
                 ? "flex items-center  gap-[5px] bg-[#141414]  font-extrabold py-[10px] px-[12px] rounded-[10px] text-white transition-all duration-300 "
@@ -102,7 +102,7 @@ function Sidebar({ compress, setCompress }: SidebarProp) {
             }>
             {" "}
             <Message fontSize="small" />
-            {!compress && <span>General Chat</span>}
+            {!compress && <span>Chat with Tipply</span>}
           </NavLink>
           <NavLink
             to="/dashboard/history"

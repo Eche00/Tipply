@@ -2,16 +2,16 @@ import { addDoc, collection, onSnapshot, orderBy, query, serverTimestamp } from 
 import { useEffect, useState } from "react";
 import { db } from "../firebase";
 import { useUserInfo } from "./profileLogic";
+import { askQwen } from "../../lib/openai/qwen";
 
-
-export const chatLogics = () => {
+export const useChatLogics = () => {
   const [messages, setMessages] = useState<any[]>([]);
   const [newMessage, setNewMessage] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
 
-  const { user } = useUserInfo()
+  const { user } = useUserInfo();
 
-  //  Real-time listener for messages
+  // 🔹 Real-time listener for messages
   useEffect(() => {
     const q = query(
       collection(db, "generalChat"),
@@ -29,17 +29,17 @@ export const chatLogics = () => {
     return () => unsubscribe();
   }, []);
 
-  //  Handle send message
+  // 🔹 Handle send message + AI response
   const handleSend = async () => {
     if (!newMessage.trim()) return;
-
 
     if (!user) {
       alert("Please log in to chat");
       return;
     }
 
-    const newMsg = {
+    // Save user message
+    const userMsg = {
       uid: user.uid,
       username: user.username || "Guest",
       name: user.name || "Guest",
@@ -47,8 +47,28 @@ export const chatLogics = () => {
       createdAt: serverTimestamp(),
     };
 
-    await addDoc(collection(db, "generalChat"), newMsg);
-    setNewMessage(""); // clear input after sending
+    await addDoc(collection(db, "generalChat"), userMsg);
+
+    // reset input
+    const userInput = newMessage;
+    setNewMessage("");
+
+    try {
+      // Get AI reply
+      const aiText = await askQwen(userInput);
+
+      const aiMsg = {
+        uid: "tipply-ai",
+        username: "Tipply AI",
+        name: "Tipply AI",
+        text: aiText,
+        createdAt: serverTimestamp(),
+      };
+
+      await addDoc(collection(db, "generalChat"), aiMsg);
+    } catch (err) {
+      console.error("AI reply error:", err);
+    }
   };
 
   const filteredMessages = messages.filter(
@@ -58,5 +78,5 @@ export const chatLogics = () => {
       msg.name?.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  return { messages, newMessage, setNewMessage, handleSend, setSearchTerm, filteredMessages }
-}
+  return { messages, newMessage, setNewMessage, handleSend, setSearchTerm, filteredMessages };
+};
