@@ -1,6 +1,5 @@
 import { useRef, useEffect } from "react";
 import { useChatLogics } from "../../lib/logics/chatLogic";
-// import { PunchClock } from "@mui/icons-material";
 
 export default function GeneralChat() {
   const {
@@ -135,18 +134,7 @@ export default function GeneralChat() {
           </button>
         </div>
       </div>
-      {/* <div className="text-center p-6 h-[80vh] flex items-center justify-center flex-col">
-       
-        <h1 className="text-5xl font-extrabold mb-4">TIPPLY AI</h1>
-        <h1 className="text-2xl font-extrabold mb-4">Coming Soon 
-          <PunchClock  className="animate-pulse" />
-
-        </h1>
-        <p className="text-lg opacity-80 mb-6">
-          Working hard to bring you something amazing. Stay tuned!
-        </p>
-        
-      </div> */}
+     
     </div>
   );
 }
