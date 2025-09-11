@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "CommonJS",
+    "outDir": "dist", // <—
+    "rootDir": ".", // <— so it preserves server/deepseek.ts under dist/server/
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "strict": true,
+    "skipLibCheck": true
+  },
+  "include": [
+    "server/**/*.ts"
+  ]
+}

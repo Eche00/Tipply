@@ -1,8 +1,15 @@
-import { addDoc, collection, onSnapshot, orderBy, query, serverTimestamp } from "firebase/firestore";
+import {
+  addDoc,
+  collection,
+  onSnapshot,
+  orderBy,
+  query,
+  serverTimestamp,
+} from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { db } from "../firebase";
 import { useUserInfo } from "./profileLogic";
-import { askQwen } from "../../lib/openai/qwen";
+import { askDeepSeek } from "../openai/deepseek";
 
 export const useChatLogics = () => {
   const [messages, setMessages] = useState<any[]>([]);
@@ -13,10 +20,7 @@ export const useChatLogics = () => {
 
   // 🔹 Real-time listener for messages
   useEffect(() => {
-    const q = query(
-      collection(db, "generalChat"),
-      orderBy("createdAt", "asc")
-    );
+    const q = query(collection(db, "generalChat"), orderBy("createdAt", "asc"));
 
     const unsubscribe = onSnapshot(q, (snapshot) => {
       const msgs = snapshot.docs.map((doc) => ({
@@ -38,7 +42,6 @@ export const useChatLogics = () => {
       return;
     }
 
-    // Save user message
     const userMsg = {
       uid: user.uid,
       username: user.username || "Guest",
@@ -47,15 +50,15 @@ export const useChatLogics = () => {
       createdAt: serverTimestamp(),
     };
 
-    await addDoc(collection(db, "generalChat"), userMsg);
-
-    // reset input
-    const userInput = newMessage;
-    setNewMessage("");
-
     try {
+      // Save user message
+      await addDoc(collection(db, "generalChat"), userMsg);
+
+      const userInput = newMessage;
+      setNewMessage("");
+
       // Get AI reply
-      const aiText = await askQwen(userInput);
+      const aiText = await askDeepSeek(userInput);
 
       const aiMsg = {
         uid: "tipply-ai",
@@ -67,16 +70,28 @@ export const useChatLogics = () => {
 
       await addDoc(collection(db, "generalChat"), aiMsg);
     } catch (err) {
-      console.error("AI reply error:", err);
+      console.error("Message send error:", err);
     }
   };
 
-  const filteredMessages = messages.filter(
-    (msg) =>
-      msg.text.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      msg.username.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      msg.name?.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  // 🔹 Search filter
+  const filteredMessages = messages.filter((msg) => {
+    const text = msg.text?.toLowerCase?.() || "";
+    const username = msg.username?.toLowerCase?.() || "";
+    const name = msg.name?.toLowerCase?.() || "";
+    return (
+      text.includes(searchTerm.toLowerCase()) ||
+      username.includes(searchTerm.toLowerCase()) ||
+      name.includes(searchTerm.toLowerCase())
+    );
+  });
 
-  return { messages, newMessage, setNewMessage, handleSend, setSearchTerm, filteredMessages };
+  return {
+    messages,
+    newMessage,
+    setNewMessage,
+    handleSend,
+    setSearchTerm,
+    filteredMessages,
+  };
 };

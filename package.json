@@ -2,7 +2,7 @@
   "name": "tipply",
   "private": true,
   "version": "0.0.0",
-  "type": "module",
+  "type": "commonjs",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
@@ -15,6 +15,7 @@
     "@mui/icons-material": "^7.3.1",
     "@mui/material": "^7.3.1",
     "@tailwindcss/vite": "^4.1.11",
+    "cors": "^2.8.5",
     "dotenv": "^17.2.2",
     "express": "^5.1.0",
     "firebase": "^12.1.0",
