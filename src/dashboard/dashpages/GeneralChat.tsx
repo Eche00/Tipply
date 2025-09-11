@@ -87,10 +87,10 @@ export default function GeneralChat() {
               </svg>
             </div>
             <p className="text-gray-400 text-sm italic">
-              No messages found...
+              {/* No messages found... */}Tipply AI
             </p>
             <span className="text-xs text-gray-500">
-              Start the conversation
+              {/* Start the conversation */} coming soon...
             </span>
           </div>
         )}
@@ -112,6 +112,7 @@ export default function GeneralChat() {
               }
             }}
             className="flex-1 bg-transparent text-white sm:text-sm focus:outline-none placeholder-gray-400 text-base"
+            disabled
           />
           <button
             onClick={handleSend}
