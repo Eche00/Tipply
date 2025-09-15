@@ -1,16 +1,18 @@
+import Loader from "../../components/Loader";
 import { useDevProjectDatas } from "../../lib/logics/showRoom";
 
 function ShowRoom() {
-  const { projects, searchTerm, setSearchTerm } = useDevProjectDatas();
+  const { loading, projects, searchTerm, setSearchTerm } = useDevProjectDatas();
 
   // Filter projects based on search term
   const filteredProjects = projects.filter((proj: any) =>
     proj.title?.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
+  if(loading) <Loader/>
   return (
     <div className="bg-[#141718] sm:h-[98%] rounded-2xl overflow-hidden flex flex-col gap-5 p-5 overflow-y-scroll">
-      <div className="flex items-center justify-between gap-[12px]">
+      <div className="flex sm:flex-row flex-col sm:items-center justify-between gap-[12px]">
         <h2 className="text-[32px] font-extrabold mb-4">ShowRoom</h2>
 
         <input
@@ -18,7 +20,7 @@ function ShowRoom() {
           placeholder="Search projects by title..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          className="sm:max-w-[400px] sm:w-full w-fit border border-gray-300 rounded-lg px-4 py-2 text-sm focus:outline-none"
+          className="sm:max-w-[400px] sm:w-full w-full border border-gray-300 rounded-lg px-4 py-2 text-sm focus:outline-none "
         />
       </div>
 
@@ -57,9 +59,13 @@ function ShowRoom() {
         ))}
       </div>
 
-      {filteredProjects.length === 0 && (
-        <p className="text-gray-400 text-center">No projects found</p>
-      )}
+      
+     {loading ? (
+  <Loader />
+) : filteredProjects.length === 0 ? (
+  <p className="text-gray-400 text-center">No projects found</p>
+): ''}
+
     </div>
   );
 }
