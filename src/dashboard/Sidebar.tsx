@@ -105,7 +105,7 @@ function Sidebar({ compress, setCompress }: SidebarProp) {
             {!compress && <span>Chat with Tipply</span>}
           </NavLink>
           <NavLink
-            to="/dashboard/history"
+            to="/dashboard/transactions"
             className={({ isActive }) =>
               isActive
                 ? "flex items-center  gap-[5px] bg-[#141414]  font-extrabold py-[10px] px-[12px] rounded-[10px] text-white transition-all duration-300 "
@@ -113,7 +113,7 @@ function Sidebar({ compress, setCompress }: SidebarProp) {
             }>
             {" "}
             <History fontSize="small" />
-            {!compress && <span>History</span>}
+            {!compress && <span>Transactions</span>}
           </NavLink>
           <NavLink
             to="/dashboard/showroom"

@@ -3,14 +3,15 @@ import { Icons } from "../../lib/icons/Icons"
 function LeaderBoard() {
   return (
   <div className="bg-[#141718]   h-[98%] rounded-[16px] overflow-hidden flex flex-col gap-[20px] p-[20px]">
-    <section className="flex items-center justify-between gap-[20px]">
-          <h2 className="text-[32px] font-extrabold  w-fit">History</h2>
-          <div className="flex items-center gap-[20px]">
-            <h2 className="text-[20px] font-[400] border-[1px] shadow-sm  border-[#FFFFFF14] w-fit py-[5px] px-[32px] rounded-[8px] bg-[#FFFFFF0A]">Total Tips:</h2>
-            <h2 className="text-[20px] font-[400] border-[1px] shadow-sm  border-[#FFFFFF14] w-fit py-[5px] px-[32px] rounded-[8px] bg-[#034FE3]">Total Tips:</h2>
-          </div>
+      <div className="flex sm:flex-row flex-col sm:items-center justify-between gap-[12px]">
+        <h2 className="text-[32px] font-extrabold mb-4">Transactions</h2>
 
-      </section>
+        <input
+          type="text"
+          placeholder="Search Transactions by title..."
+          className="sm:max-w-[400px] sm:w-full w-full border border-gray-300 rounded-lg px-4 py-2 text-sm focus:outline-none "
+        />
+      </div>
      <main className="flex-1 bg-[#0D0F10] shadow-md border border-gray-800/50 h-fit rounded-[16px] p-[20px]">
        {/* Tip board  */}
                           <table className=" w-full text-left ">

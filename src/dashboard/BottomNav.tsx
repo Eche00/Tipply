@@ -38,7 +38,7 @@ function BottomNav() {
 
         {/* matches  */}
         <NavLink
-          to="/dashboard/history"
+          to="/dashboard/transactions"
           className={({ isActive }) =>
             isActive
               ? "flex items-center justify-center gap-[5px] bg-blue-600  font-extrabold py-[6px] px-[12px] rounded-[10px] text-white transition-all duration-300"
