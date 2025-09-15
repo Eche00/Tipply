@@ -220,7 +220,7 @@ const { messages } = useChatLogics();
 
   {/* Bottom Section: Notifications */}
    <div className="bg-gray-900 rounded-xl p-4 shadow-md flex-1">
-      <h3 className="text-white text-lg font-bold mb-3 flex items-center justify-between" >Live Chat Notifications <Link to="/dashboard/chat" className=" cursor-pointer border border-dashed rounded-[4px] w-[30px] py-1 hover:scale-[102%] flex items-center justify-center"><OpenInFull fontSize="small"/></Link></h3>
+      <h3 className="text-white text-lg font-bold mb-3 flex items-center justify-between" >Live Chat Notifications <Link to="/dashboard/chatwithTipply" className=" cursor-pointer border border-dashed rounded-[4px] w-[30px] py-1 hover:scale-[102%] flex items-center justify-center"><OpenInFull fontSize="small"/></Link></h3>
       <div className="flex flex-col gap-3 max-h-40 overflow-y-auto">
         {lastTwo.map((msg: any) => (
           <div key={msg.id} className="bg-gray-800 rounded-lg p-3">
