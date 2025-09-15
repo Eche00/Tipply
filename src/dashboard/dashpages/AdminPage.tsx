@@ -49,8 +49,8 @@ const {users,projects, loading, showUsersModal, setShowUsersModal,showProjectsMo
                 <tr>
                   <th className="px-4 py-3 text-left">Username</th>
                   <th className="px-4 py-3 text-left">Name</th>
-                  <th className="px-4 py-3 text-left">Email</th>
-                  <th className="px-4 py-3 text-left">Role</th>
+                  <th className="px-4 py-3 text-left lg:flex hidden">Email</th>
+                  <th className="px-4 py-3 text-left ">Role</th>
                 </tr>
               </thead>
               <tbody>
@@ -63,7 +63,7 @@ const {users,projects, loading, showUsersModal, setShowUsersModal,showProjectsMo
                   >
                     <td className="px-4 py-3">{u.username || "No name"}</td>
                     <td className="px-4 py-3">{u.name || "N/A"}</td>
-                    <td className="px-4 py-3">{u.email || "N/A"}</td>
+                    <td className="px-4 py-3 lg:flex hidden ">{u.email || "N/A"}</td>
                     <td className="px-4 py-3">{u.role || "N/A"}</td>
                   </tr>
                 ))}
@@ -92,8 +92,8 @@ const {users,projects, loading, showUsersModal, setShowUsersModal,showProjectsMo
               <tr>
                 <th className="px-4 py-3 text-left">Title</th>
                 <th className="px-4 py-3 text-left">Owner</th>
-                <th className="px-4 py-3 text-left">Created At</th>
-                <th className="px-4 py-3 text-left">Action</th>
+                <th className="px-4 py-3 text-left lg:flex hidden">Created At</th>
+                <th className="px-4 py-3 text-left ">Action</th>
               </tr>
             </thead>
             <tbody>
@@ -104,15 +104,15 @@ const {users,projects, loading, showUsersModal, setShowUsersModal,showProjectsMo
                     idx % 2 === 0 ? "bg-[#141718]" : "bg-[#0D0F10]"
                   } border-t border-[#FFFFFF14]`}
                 >
-                  <td className="px-4 py-3">{p.title || "Untitled"}</td>
+                  <td className="px-4 py-3">{p?.title?.slice(0,8) || "Untitled"}</td>
                   <td className="px-4 py-3">{p.username || "Guest"}</td>
-                  <td className="px-4 py-3">
+                  <td className="px-4 py-3 lg:flex hidden">
                     {p.createdAt ? new Date(p.createdAt).toLocaleDateString() : "N/A"}
                   </td>
                   <td className="px-4 py-3">
                      <button
                         onClick={() => deleteProject(p.userId, p.createdAt)}
-                        className="text-red-400 hover:underline cursor-pointer"
+                        className="text-red-400 hover:underline cursor-pointer "
                       >
                         Delete
                       </button>
@@ -127,7 +127,7 @@ const {users,projects, loading, showUsersModal, setShowUsersModal,showProjectsMo
       {/* ---- USERS MODAL ---- */}
       {showUsersModal && (
         <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50">
-          <div className="bg-[#1A1D1F] p-6 rounded-2xl w-[600px] max-h-[80vh] overflow-y-auto shadow-xl">
+          <div className="bg-[#1A1D1F] p-6 sm:rounded-2xl w-[600px] max-h-[80vh] overflow-y-auto shadow-xl">
             <h3 className="text-xl font-semibold mb-4">All Users</h3>
             <table className="min-w-full border border-gray-700 rounded-lg overflow-hidden">
               <thead className="bg-gray-800 text-gray-300 text-sm">
@@ -176,7 +176,7 @@ const {users,projects, loading, showUsersModal, setShowUsersModal,showProjectsMo
       {/* ---- PROJECTS MODAL ---- */}
       {showProjectsModal && (
         <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50">
-          <div className="bg-[#1A1D1F] p-6 rounded-2xl w-[700px] max-h-[80vh] overflow-y-auto shadow-xl">
+          <div className="bg-[#1A1D1F] p-6 sm:rounded-2xl w-[700px] max-h-[80vh] overflow-y-auto shadow-xl">
             <h3 className="text-xl font-semibold mb-4">All Projects</h3>
             <table className="min-w-full border border-gray-700 rounded-lg overflow-hidden">
               <thead className="bg-gray-800 text-gray-300 text-sm">
