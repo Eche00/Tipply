@@ -75,7 +75,7 @@ const Profile = () => {
         {/* Right Side */}
         <div className="flex-1 flex flex-col gap-6">
           {/* Account Info */}
-          <div className="bg-[#0D0F10] rounded-xl p-6 shadow-md border border-gray-800/50">
+          <div className="bg-[#0D0F10] rounded-xl p-6 shadow-md border border-gray-800/50 overflow-scroll">
             <h3 className="text-lg font-semibold border-b border-gray-800/50 pb-2 mb-4">
               Account Information
             </h3>
@@ -84,7 +84,7 @@ const Profile = () => {
   edit ? (
     field === "email" ? (
       <p key={field}>
-        <span className="font-semibold text-white">
+        <span className="font-semibold text-white ">
           {field[0].toUpperCase() + field.slice(1)}:
         </span>{" "}
         {user?.[field] || "N/A"}
@@ -100,7 +100,7 @@ const Profile = () => {
     )
   ) : (
     <p key={field}>
-      <span className="font-semibold text-white">
+      <span className="font-semibold text-white ">
         {field[0].toUpperCase() + field.slice(1)}:
       </span>{" "}
       {user?.[field] || "N/A"}
