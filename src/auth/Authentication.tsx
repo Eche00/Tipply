@@ -253,7 +253,7 @@ useEffect(()=>{
 </div>
 
                  ) : (
-                  <div className=" dark:bg-[#141718] bg-[#F3F5F7] rounded-[12px] flex items-center py-[14px] px-[16px] gap-[12px]">
+                  <div className=" bg-[#141718] rounded-[12px] flex items-center py-[14px] px-[16px] gap-[12px]">
                     <Email/>{" "}
                     <input
                       type="text"
@@ -308,7 +308,7 @@ useEffect(()=>{
                   <form className="flex flex-col gap-[16px] xl:w-[504px]  md:w-[447px] sm:w-[463px] w-[291px]" onSubmit={handleSignIn}>
                     {/* input container  */}
                     <section className=" flex flex-col gap-[16px]">
-                      <div className=" dark:bg-[#141718] bg-[#F3F5F7] rounded-[12px] flex items-center py-[14px] px-[16px] gap-[12px]">
+                      <div className=" bg-[#141718] rounded-[12px] flex items-center py-[14px] px-[16px] gap-[12px]">
                         <Email/>{" "}
                         <input
                           type="text"
@@ -319,7 +319,7 @@ useEffect(()=>{
                           onChange={handleChangeLogin}
                         />
                       </div>
-                      <div className=" dark:bg-[#141718] bg-[#F3F5F7] rounded-[12px] flex items-center py-[14px] px-[16px] gap-[12px]">
+                      <div className=" bg-[#141718] rounded-[12px] flex items-center py-[14px] px-[16px] gap-[12px]">
                         <Password/>{" "}
                         <input
                           type="password"
@@ -350,7 +350,7 @@ useEffect(()=>{
                   <form className="flex flex-col gap-[16px] xl:w-[504px]  md:w-[447px] sm:w-[463px] w-[291px]" onSubmit={handleSignUp}>
                     {/* input container  */}
                     <section className=" flex flex-col gap-[16px]">
-                      <div className=" dark:bg-[#141718] bg-[#F3F5F7] rounded-[12px] flex items-center py-[14px] px-[16px] gap-[12px]">
+                      <div className=" bg-[#141718] rounded-[12px] flex items-center py-[14px] px-[16px] gap-[12px]">
                         <SupportAgent/>{" "}
                         <input
                           type="text"
@@ -362,7 +362,7 @@ useEffect(()=>{
                           min={4}
                         />
                       </div>
-                      <div className=" dark:bg-[#141718] bg-[#F3F5F7] rounded-[12px] flex items-center py-[14px] px-[16px] gap-[12px]">
+                      <div className=" bg-[#141718] rounded-[12px] flex items-center py-[14px] px-[16px] gap-[12px]">
                         <Email/>{" "}
                         <input
                           type="email"
@@ -373,7 +373,7 @@ useEffect(()=>{
                           onChange={handleChange}
                         />
                       </div>
-                      <div className=" dark:bg-[#141718] bg-[#F3F5F7] rounded-[12px] flex items-center py-[14px] px-[16px] gap-[12px]">
+                      <div className=" bg-[#141718] rounded-[12px] flex items-center py-[14px] px-[16px] gap-[12px]">
                         <Password/>{" "}
                         <input
                           type="password"
