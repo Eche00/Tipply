@@ -99,7 +99,7 @@ MIT License – free to use, modify, and distribute.
 
 ⸻
 
-🌐 Live Demo (coming soon)
+🌐 Kindly DM for Live Demo, ui and backend as a service feature active.
 
 Stay tuned for the deployed version on Vercel + Polygon.
 
