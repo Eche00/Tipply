@@ -1,4 +1,4 @@
-Tipply 
+#Tipply 
 
 A decentralized tipping platform that connects developers with supporters.  
 Developers can showcase their projects, receive direct wallet-to-wallet tips, and join a growing community of builders.  
