@@ -1,10 +1,10 @@
-#Tipply 
+# Tipply 
 
 A decentralized tipping platform that connects developers with supporters.  
 Developers can showcase their projects, receive direct wallet-to-wallet tips, and join a growing community of builders.  
 Supporters can browse profiles, explore projects, and send crypto tips instantly.
-
- Features
+---
+## Features
 
 -  Developer Profiles – Sign up with your wallet, set up your profile (bio, skills, links).
 -  Project Showcase – Add and display your projects with title + demo/live link.
@@ -12,8 +12,8 @@ Supporters can browse profiles, explore projects, and send crypto tips instantly
 -  Leaderboard – Track top tippers, total tips, and community stats.
 -  Dev Chat – A dedicated page where all developers can interact and collaborate.
 -  Minimum Tip Amount – Enforced $5 equivalent in ETH/MATIC to support fair contributions.
-
- Tech Stack
+---
+## Tech Stack
 
 Frontend
 - React + Tailwind CSS  
@@ -30,8 +30,8 @@ Backend / Services
 Deployment
 - Frontend → Vercel 
 - Contracts → Sepolia Testnet → Ethereum Mainnet or Polygon  
-
- How It Works
+---
+## How It Works
 
  For Developers
 1.  sign up.  
@@ -50,8 +50,8 @@ Leaderboard
 - Tracks top tippers and most tipped developers.  
 - Data comes from on-chain events + Firebase metadata.  
 - Displays amounts in both crypto & USD equivalent.  
-
- Roadmap
+---
+## Roadmap
 
 Phase 1 – Planning & Setup 
 - Repo init, UI wireframes, basic React + Tailwind setup.
@@ -78,8 +78,8 @@ Phase 4 – Leaderboard & Dev Chat 💬
  Phase 6 – Deployment 🌍
 - Deploy frontend to Vercel.
 - Launch contract on Ethereum mainnet (or Polygon for lower fees).  
-
- Crypto Handling
+---
+## Crypto Handling
 
 - MVP Token: ETH or MATIC  
 - $5 minimum tip enforced via price feed (e.g., Chainlink).  
